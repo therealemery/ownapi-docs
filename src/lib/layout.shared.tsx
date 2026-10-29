@@ -1,4 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
+import { gatewayRepoUrl, productName, upstreamGatewayRepoUrl } from '@/lib/brand';
 import { getLocalePath, i18n } from '@/lib/i18n';
 import Image from 'next/image';
 import type { LinkItemType } from 'fumadocs-ui/layouts/docs';
@@ -6,7 +7,7 @@ import type { LinkItemType } from 'fumadocs-ui/layouts/docs';
 export const linkItems: LinkItemType[] = [
   {
     type: 'icon',
-    url: 'https://github.com/QuantumNous/new-api',
+    url: gatewayRepoUrl,
     label: 'GitHub',
     text: 'GitHub',
     icon: (
@@ -23,9 +24,9 @@ export const linkItems: LinkItemType[] = [
   },
   {
     type: 'icon',
-    url: 'https://atomgit.com/QuantumNous/new-api',
-    label: 'AtomGit',
-    text: 'AtomGit',
+    url: upstreamGatewayRepoUrl,
+    label: 'Upstream',
+    text: 'Upstream',
     icon: (
       <svg
         role="img"
@@ -45,8 +46,8 @@ export const linkItems: LinkItemType[] = [
 
 export const logo = (
   <Image
-    alt="New API"
-    src="/assets/newapi.svg"
+    alt={productName}
+    src="/assets/ownapi.svg"
     width={20}
     height={20}
     className="size-5"
@@ -64,7 +65,7 @@ export function baseOptions(locale: string): BaseLayoutProps {
         <>
           {logo}
           <span className="font-medium in-[header]:text-[15px] [.uwu_&]:hidden">
-            New API
+            {productName}
           </span>
         </>
       ),

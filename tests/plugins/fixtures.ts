@@ -51,7 +51,7 @@ export const catalog: PluginCatalog = {
     owner: 'QuantumNous',
     repo: 'new-api-plugins',
     url: 'https://github.com/QuantumNous/new-api-plugins',
-    indexUrl: 'https://www.newapi.ai/api/v1/plugins/index.json',
+    indexUrl: 'https://ownapi.dev/api/v1/plugins/index.json',
   },
   fetchedAt: '2026-09-11T12:00:00Z',
   plugins: [

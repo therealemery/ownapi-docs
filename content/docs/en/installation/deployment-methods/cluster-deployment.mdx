@@ -2,7 +2,7 @@
 title: Cluster Deployment
 ---
 
-This document provides detailed configuration steps and best practices for New API cluster deployment, helping you build a highly available, load-balanced distributed system.
+This document provides detailed configuration steps and best practices for Ownapi cluster deployment, helping you build a highly available, load-balanced distributed system.
 
 ## Prerequisites
 
@@ -14,7 +14,7 @@ This document provides detailed configuration steps and best practices for New A
 
 ## Cluster Architecture Overview
 
-The New API cluster adopts a master-slave architecture design:
+The Ownapi cluster adopts a master-slave architecture design:
 
 1.  **Master Node**: Responsible for handling all write operations and some read operations
 2.  **Slave Nodes**: Primarily responsible for handling read operations, improving overall system throughput
@@ -185,7 +185,7 @@ Data synchronization between cluster nodes depends on the following environment 
 
 ### Redis High Availability Configuration
 
-New API connects through one Redis-compatible endpoint in `REDIS_CONN_STRING`; it does not natively parse Redis Cluster or Sentinel node lists. For Redis high availability, use a managed service or proxy that exposes one compatible endpoint:
+Ownapi connects through one Redis-compatible endpoint in `REDIS_CONN_STRING`; it does not natively parse Redis Cluster or Sentinel node lists. For Redis high availability, use a managed service or proxy that exposes one compatible endpoint:
 
 ```yaml
 environment:

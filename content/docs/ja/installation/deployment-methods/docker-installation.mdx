@@ -2,7 +2,7 @@
 title: Docker デプロイ
 ---
 
-このドキュメントでは、Dockerを使用してNew APIをデプロイする詳細な手順を説明します。
+このドキュメントでは、Dockerを使用してOwnapiをデプロイする詳細な手順を説明します。
 
 <Callout type="warn" title="強く推奨">
   Dockerコンテナを手動で起動するのではなく、[Docker Compose
@@ -31,7 +31,7 @@ docker run --name new-api -d --restart always \
 ```
 
 <Callout type="info" title="データベースの選択">
-  本番環境では PostgreSQL を優先して推奨します。New API は引き続き MySQL
+  本番環境では PostgreSQL を優先して推奨します。Ownapi は引き続き MySQL
   と互換性があります。SQLite はローカル評価や一時的なテスト向けです。
 </Callout>
 

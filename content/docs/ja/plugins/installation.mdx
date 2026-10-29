@@ -8,7 +8,7 @@ import { OfficialPluginLinks } from '@/components/plugins/official-links';
 
 ## 準備作業
 
-**Root（スーパー管理者）**としてNew APIインスタンスにログインし、「タスクプラグイン」（`/task-plugins`）を開きます。デプロイバージョンにタスクプラグイン機能が含まれていることを確認し、ページ上部のタスクプラグインの全体スイッチをオンにしてください。
+**Root（スーパー管理者）**としてOwnapiインスタンスにログインし、「タスクプラグイン」（`/task-plugins`）を開きます。デプロイバージョンにタスクプラグイン機能が含まれていることを確認し、ページ上部のタスクプラグインの全体スイッチをオンにしてください。
 
 通常のAPIキーはモデル呼び出しに使用され、プラグインのインストールには使用できません。ページが表示されない場合や403エラーが返される場合は、まずアカウントロールとデプロイバージョンを確認してください。
 
@@ -30,16 +30,15 @@ import { OfficialPluginLinks } from '@/components/plugins/official-links';
 
 1. [ドキュメントサイトのプラグインマーケットプレイス](/ja/plugins)を開きます。
 2. プラグインカードまたは詳細で「インストールURLをコピー」をクリックします。
-3. 自分のNew APIインスタンスに戻り、「プラグインをアップロード」を選択し、「URLからインポート」（Import from URL）にURLを貼り付けてソースコードを読み込みます。
+3. 自分のOwnapiインスタンスに戻り、「プラグインをアップロード」を選択し、「URLからインポート」（Import from URL）にURLを貼り付けてソースコードを読み込みます。
 4. プラグイン情報とソースコードを確認後、保存し、プラグインが有効化されていることを確認します。
 
-コピーされるのは、公式サイトでホストされている `plugin.js` のURLです。`docs.newapi.pro` は `www.newapi.pro` を使用し、`docs.newapi.ai` は `www.newapi.ai` を使用します。言語はドメイン選択に影響しません。
+コピーされるのは、公式サイトでホストされている `plugin.js` のURLです。`docs.ownapi.dev` は `www.ownapi.dev` を使用し、`docs.ownapi.dev` は `www.ownapi.dev` を使用します。言語はドメイン選択に影響しません。
 
 インストールURLの形式は次のとおりです。
 
 ```text
-https://www.newapi.pro/api/v1/plugins/<plugin-key>/plugin.js
-https://www.newapi.ai/api/v1/plugins/<plugin-key>/plugin.js
+https://ownapi.dev/api/v1/plugins/<plugin-key>/plugin.js
 ```
 
 このようなバージョンが固定されていないURLは、インポート時に公式サイトの現在の最新バージョンを取得しますが、**インストール済みのプラグインを自動更新することはありません**。バージョンを指定する必要がある場合は、インスタンス内のマーケットプレイスでバージョンを選択することを優先してください。過去の更新履歴を確認しても、ドキュメントサイトのコピーボタンが提供する最新バージョンのURLは変更されません。
@@ -55,7 +54,7 @@ https://www.newapi.ai/api/v1/plugins/<plugin-key>/plugin.js
 上記の公式マーケットプレイスソースURLは、現在のドキュメントサイトのドメインに基づいて選択されます。一般的なGitHubソースは次のとおりです。
 
 ```text
-https://raw.githubusercontent.com/QuantumNous/new-api-plugins/main/index.json
+https://raw.githubusercontent.com/therealemery/new-api-plugins/main/index.json
 ```
 
 サードパーティソースを追加する際は、インデックスとそのインデックスが参照するプラグインファイルがすべてアクセス可能であることを確認してください。ブラウザからのインポートには、オリジンサイトがクロスオリジン読み取りを許可している必要もあります。ダウンロードできない場合は、ネットワーク、CORS、およびファイルサイズを確認してください。現在のプラグインソースコードの最大サイズは **1 MiB** です。

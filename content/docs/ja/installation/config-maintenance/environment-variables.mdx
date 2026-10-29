@@ -2,10 +2,10 @@
 title: 環境変数設定ガイド
 ---
 
-このドキュメントでは、New APIがサポートするすべての環境変数とその設定について説明します。これらの環境変数を設定することで、システムの動作をカスタマイズできます。
+このドキュメントでは、Ownapiがサポートするすべての環境変数とその設定について説明します。これらの環境変数を設定することで、システムの動作をカスタマイズできます。
 
 <Callout type="info" title="ヒント">
-  New API は `.env` ファイルから環境変数を読み込むことをサポートしています。`.env.example`
+  Ownapi は `.env` ファイルから環境変数を読み込むことをサポートしています。`.env.example`
   ファイルを参照し、使用する際は `.env` に名前を変更してください。
 </Callout>
 
@@ -46,7 +46,7 @@ title: 環境変数設定ガイド
 
 Session Redis Hash の TTL は、Session の残り有効期間と有効な `SYNC_FREQUENCY` のうち短い方です。読み取りでは TTL は延長されません。独立 Redis 構成では、値を大きくすると Session 状態の収束が遅くなり、値を小さくするとデータベース参照が増えます。遅延して完了した active キャッシュの書き戻しにも、元のデータベース参照時点から残っている観測ウィンドウだけが使われます。
 
-New API が直接受け付ける Redis 設定は `REDIS_CONN_STRING` と `REDIS_POOL_SIZE` です。Redis Cluster や Sentinel のノード一覧をアプリケーションへ直接渡す方式には対応していません。高可用性が必要な場合は、`REDIS_CONN_STRING` に単一の Redis 互換接続エンドポイントを指定してください。
+Ownapi が直接受け付ける Redis 設定は `REDIS_CONN_STRING` と `REDIS_POOL_SIZE` です。Redis Cluster や Sentinel のノード一覧をアプリケーションへ直接渡す方式には対応していません。高可用性が必要な場合は、`REDIS_CONN_STRING` に単一の Redis 互換接続エンドポイントを指定してください。
 
 ## マルチノードとセキュリティ設定
 

@@ -17,6 +17,7 @@ import { type UIMessage, useChat, type UseChatHelpers } from '@ai-sdk/react';
 import type { ProvideLinksToolSchema } from '../lib/inkeep-qa-schema';
 import type { z } from 'zod';
 import { DefaultChatTransport } from 'ai';
+import { productName, productSiteUrl } from '@/lib/brand';
 import { Markdown } from './markdown';
 import { Presence } from '@radix-ui/react-presence';
 
@@ -40,11 +41,11 @@ function Header() {
         <p className="text-fd-muted-foreground text-xs">
           Powered by{' '}
           <a
-            href="https://www.newapi.ai"
+            href={productSiteUrl}
             target="_blank"
             rel="noreferrer noopener"
           >
-            New API
+            {productName}
           </a>
         </p>
       </div>
@@ -247,7 +248,7 @@ function Input(props: ComponentProps<'textarea'>) {
 
 const roleName: Record<string, string> = {
   user: 'you',
-  assistant: 'New API Docs',
+  assistant: 'Ownapi Docs',
 };
 
 function Message({

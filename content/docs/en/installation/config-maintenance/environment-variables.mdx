@@ -2,10 +2,10 @@
 title: Environment Variable Configuration Guide
 ---
 
-This document provides all environment variables supported by New API and their configuration instructions. You can customize the system's behavior by setting these environment variables.
+This document provides all environment variables supported by Ownapi and their configuration instructions. You can customize the system's behavior by setting these environment variables.
 
 <Callout type="info" title="Tip">
-  New API supports reading environment variables from `.env` files. Please refer to the `.env.example`
+  Ownapi supports reading environment variables from `.env` files. Please refer to the `.env.example`
   file and rename it to `.env` when using it.
 </Callout>
 
@@ -45,7 +45,7 @@ This document provides all environment variables supported by New API and their 
 | `BATCH_UPDATE_ENABLED`        | Enable database batch update aggregation                     | `false`       | `BATCH_UPDATE_ENABLED=true`                                |
 | `BATCH_UPDATE_INTERVAL`       | Batch update aggregation interval (seconds)                  | `5`           | `BATCH_UPDATE_INTERVAL=10`                                 |
 
-`REDIS_CONN_STRING` must point to one Redis-compatible endpoint. New API does not natively parse Redis Cluster or Sentinel node lists. For Redis high availability, use a managed service or proxy that exposes one compatible endpoint.
+`REDIS_CONN_STRING` must point to one Redis-compatible endpoint. Ownapi does not natively parse Redis Cluster or Sentinel node lists. For Redis high availability, use a managed service or proxy that exposes one compatible endpoint.
 
 The database is authoritative for dashboard Sessions. Redis caches each Session for the smaller of its remaining lifetime and the effective `SYNC_FREQUENCY`, and reads do not renew that TTL. With independent Redis per node, Session revocation and version changes therefore converge after a database fallback within this window. Delayed active-cache fills keep only the unused portion of their original database-observation window.
 

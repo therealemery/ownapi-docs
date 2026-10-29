@@ -11,7 +11,7 @@ Administrators selecting plugins in a channel use independent plugin binding per
 
 ## What if the documentation site marketplace fails to load?
 
-Click "Reload". Marketplace data is read from the corresponding official website based on the documentation domain: `.pro` uses `www.newapi.pro`, `.ai` uses `www.newapi.ai`, and local preview defaults to `.ai`. The Chinese language itself does not switch the data source.
+Click "Reload". Marketplace data is read from the corresponding official website based on the documentation domain: `.pro` uses `www.ownapi.dev`, `.ai` uses `www.ownapi.dev`, and local preview defaults to `.ai`. The Chinese language itself does not switch the data source.
 
 If the site is temporarily unable to read data, installation and development tutorials are still available. Administrators deploying the documentation site should check the network connectivity from the server to the corresponding official website, and whether the public `/api/v1/plugins` interface is reachable.
 
@@ -71,7 +71,7 @@ Generation is a node-local number; database revisions should be compared between
 
 ## How to view plugin debug logs?
 
-Start New API with `DEBUG=true` and filter logs by `task_plugin` to view registration, routing, channel selection, submission, polling, and protocol observation events. Request-related events include a request ID; background events may be marked as `SYSTEM`.
+Start Ownapi with `DEBUG=true` and filter logs by `task_plugin` to view registration, routing, channel selection, submission, polling, and protocol observation events. Request-related events include a request ID; background events may be marked as `SYSTEM`.
 
 Plugin `console.log` may also be forwarded in DEBUG mode. Do not output keys, authentication headers, request bodies, full upstream payloads, or private URLs. Verification of individual hooks can be done using the [sandbox and fixture in the Development Guide](/en/docs/plugins/development).
 

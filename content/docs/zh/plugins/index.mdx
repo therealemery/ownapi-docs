@@ -1,6 +1,6 @@
 ---
 title: 插件
-description: 通过任务插件扩展 New API 的图片、视频、音乐及其他任务能力，了解安装、配置与开发流程。
+description: 通过任务插件扩展 Ownapi 的图片、视频、音乐及其他任务能力，了解安装、配置与开发流程。
 ---
 
 import { Card, Cards } from 'fumadocs-ui/components/card';
@@ -9,13 +9,13 @@ import { Blocks, Download, Settings, Code2 } from 'lucide-react';
 
 ## 什么是任务插件
 
-任务插件是运行在 New API 网关内的单文件 JavaScript 模块，用于对接上游的任务提交、结果解析、轮询和产物下载。管理员可以通过插件扩展图片、视频、音乐等生成能力，无需为每个上游重新编译网关。
+任务插件是运行在 Ownapi 网关内的单文件 JavaScript 模块，用于对接上游的任务提交、结果解析、轮询和产物下载。管理员可以通过插件扩展图片、视频、音乐等生成能力，无需为每个上游重新编译网关。
 
-插件负责把请求和响应转换为统一的数据结构。New API 宿主负责鉴权、渠道选择、HTTP 请求、任务持久化、重试、轮询和计费结算。插件只报告用量事实，不自行决定用户应付的价格。
+插件负责把请求和响应转换为统一的数据结构。Ownapi 宿主负责鉴权、渠道选择、HTTP 请求、任务持久化、重试、轮询和计费结算。插件只报告用量事实，不自行决定用户应付的价格。
 
 <Callout title="版本状态">
   当前插件仓库仍将 Task Plugin API v1
-  标记为尚未正式发布的契约。本文依据当前插件仓库和 New API
+  标记为尚未正式发布的契约。本文依据当前插件仓库和 Ownapi
   实现编写；安装前请确认你的网关版本支持插件声明的字段和能力，不能仅凭
   `apiVersion: 1` 判断兼容性。
 </Callout>
@@ -53,7 +53,7 @@ import { Blocks, Download, Settings, Code2 } from 'lucide-react';
 
 | 类型                 | 来源                    | 管理方式                                             |
 | -------------------- | ----------------------- | ---------------------------------------------------- |
-| 内置插件（Factory）  | 随 New API 程序提供     | 不可单独删除或停用；可由同 key 的自定义版本覆盖      |
+| 内置插件（Factory）  | 随 Ownapi 程序提供     | 不可单独删除或停用；可由同 key 的自定义版本覆盖      |
 | 覆盖版本（Override） | 安装或上传的同 key 插件 | 启用后覆盖内置版本；停用或删除覆盖版本后恢复内置插件 |
 | 第三方插件           | 安装或上传的新 key 插件 | 停用或删除后，相应插件能力不可用                     |
 
@@ -76,8 +76,8 @@ import { Blocks, Download, Settings, Code2 } from 'lucide-react';
 
 ## 规范与源码
 
-- [官方插件仓库](https://github.com/QuantumNous/new-api-plugins)
-- [Task Plugin API v1](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/README.md)
-- [市场索引与发布说明规范](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/marketplace.md)
+- [官方插件仓库](https://github.com/therealemery/new-api-plugins)
+- [Task Plugin API v1](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/README.md)
+- [市场索引与发布说明规范](https://github.com/therealemery/new-api-plugins/blob/main/docs/marketplace.md)
 
 具体插件的版本、支持模型和更新记录以市场实时数据为准。

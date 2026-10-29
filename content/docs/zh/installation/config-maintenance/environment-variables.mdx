@@ -2,10 +2,10 @@
 title: 环境变量配置指南
 ---
 
-本文档提供了New API支持的所有环境变量及其配置说明。您可以通过设置这些环境变量来自定义系统的行为。
+本文档提供了Ownapi支持的所有环境变量及其配置说明。您可以通过设置这些环境变量来自定义系统的行为。
 
 <Callout type="info" title="提示">
-  New API 支持从 `.env` 文件中读取环境变量，请参照 `.env.example`
+  Ownapi 支持从 `.env` 文件中读取环境变量，请参照 `.env.example`
   文件，使用时请将其重命名为 `.env`。
 </Callout>
 
@@ -44,7 +44,7 @@ title: 环境变量配置指南
 | `BATCH_UPDATE_ENABLED`  | 启用数据库批量更新聚合   | `false` | `BATCH_UPDATE_ENABLED=true`                                |
 | `BATCH_UPDATE_INTERVAL` | 批量更新聚合时间间隔(秒) | `5`     | `BATCH_UPDATE_INTERVAL=10`                                 |
 
-`REDIS_CONN_STRING` 必须指向单一的 Redis 兼容连接端点，认证信息应直接包含在 URI 中。New API 不原生解析 Redis Cluster 或 Sentinel 节点列表；如需 Redis 高可用，请由托管服务或代理提供单一兼容端点。
+`REDIS_CONN_STRING` 必须指向单一的 Redis 兼容连接端点，认证信息应直接包含在 URI 中。Ownapi 不原生解析 Redis Cluster 或 Sentinel 节点列表；如需 Redis 高可用，请由托管服务或代理提供单一兼容端点。
 
 数据库是面板 Session 状态的唯一权威来源。Redis 中 Session Hash 的 TTL 取 Session 剩余寿命与有效 `SYNC_FREQUENCY` 的较小值，读取不会续期。延迟完成的 active 缓存回写只使用数据库读取时观察窗口的剩余部分，因此不会在撤销 tombstone 过期后重新获得完整 TTL。
 

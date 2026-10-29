@@ -11,7 +11,7 @@ const translations = {
     questions: [
       {
         id: 'q1',
-        question: '1. New API 是什么？',
+        question: '1. Ownapi 是什么？',
         options: [
           {
             value: 'a',
@@ -32,7 +32,7 @@ const translations = {
         ],
         correct: 'b',
         errorMessage:
-          'New API 是开源的 AI 接口管理和分发系统，请阅读项目介绍。',
+          'Ownapi 是开源的 AI 接口管理和分发系统，请阅读项目介绍。',
       },
       {
         id: 'q2',
@@ -53,7 +53,7 @@ const translations = {
       },
       {
         id: 'q3',
-        question: '3. 使用 New API 时，可以忽略其开源协议吗？',
+        question: '3. 使用 Ownapi 时，可以忽略其开源协议吗？',
         options: [
           {
             value: 'true',
@@ -66,7 +66,7 @@ const translations = {
         ],
         correct: 'false',
         errorMessage:
-          '根据社区规则第 4 条：使用 New API 应遵守 GNU AGPLv3 开源协议。',
+          '根据社区规则第 4 条：使用 Ownapi 应遵守 GNU AGPLv3 开源协议。',
       },
       {
         id: 'q4',
@@ -107,7 +107,7 @@ const translations = {
     answerAllQuestions: '请回答所有问题后再提交。',
     successTitle: '验证通过，欢迎加入 Discord！',
     successMessage:
-      '感谢您阅读社区规则。点击下方邀请链接，加入 New API Discord 社区。',
+      '感谢您阅读社区规则。点击下方邀请链接，加入 Ownapi Discord 社区。',
     joinLink: '接受邀请，加入 Discord',
     incorrectAnswer: '请检查答案',
   },
@@ -115,7 +115,7 @@ const translations = {
     questions: [
       {
         id: 'q1',
-        question: '1. What is New API?',
+        question: '1. What is Ownapi?',
         options: [
           {
             value: 'a',
@@ -137,7 +137,7 @@ const translations = {
         ],
         correct: 'b',
         errorMessage:
-          'New API is an open-source AI interface management and distribution system. Please read the project introduction.',
+          'Ownapi is an open-source AI interface management and distribution system. Please read the project introduction.',
       },
       {
         id: 'q2',
@@ -159,7 +159,7 @@ const translations = {
       },
       {
         id: 'q3',
-        question: '3. May I ignore the open-source license when using New API?',
+        question: '3. May I ignore the open-source license when using Ownapi?',
         options: [
           {
             value: 'true',
@@ -216,7 +216,7 @@ const translations = {
     answerAllQuestions: 'Please answer all questions before submitting.',
     successTitle: 'Verification passed — welcome to Discord!',
     successMessage:
-      'Thank you for reading the community rules. Use the invitation below to join the New API Discord community.',
+      'Thank you for reading the community rules. Use the invitation below to join the Ownapi Discord community.',
     joinLink: 'Accept invitation and join Discord',
     incorrectAnswer: 'Please check your answers',
   },
@@ -224,7 +224,7 @@ const translations = {
     questions: [
       {
         id: 'q1',
-        question: '1. New API とは何ですか？',
+        question: '1. Ownapi とは何ですか？',
         options: [
           {
             value: 'a',
@@ -245,7 +245,7 @@ const translations = {
         ],
         correct: 'b',
         errorMessage:
-          'New API はオープンソースの AI インターフェース管理・配布システムです。プロジェクト紹介をご確認ください。',
+          'Ownapi はオープンソースの AI インターフェース管理・配布システムです。プロジェクト紹介をご確認ください。',
       },
       {
         id: 'q2',
@@ -268,7 +268,7 @@ const translations = {
       {
         id: 'q3',
         question:
-          '3. New API の利用時にオープンソースライセンスを無視できますか？',
+          '3. Ownapi の利用時にオープンソースライセンスを無視できますか？',
         options: [
           {
             value: 'true',
@@ -325,13 +325,13 @@ const translations = {
     answerAllQuestions: 'すべての質問に回答してから送信してください。',
     successTitle: '確認が完了しました。Discord へようこそ！',
     successMessage:
-      'コミュニティルールをご確認いただきありがとうございます。下の招待リンクから New API Discord コミュニティにご参加ください。',
+      'コミュニティルールをご確認いただきありがとうございます。下の招待リンクから Ownapi Discord コミュニティにご参加ください。',
     joinLink: '招待を受けて Discord に参加',
     incorrectAnswer: '回答をご確認ください',
   },
 };
 
-const FAILED_ATTEMPT_KEY = 'newapi-community-quiz-failed';
+const FAILED_ATTEMPT_KEY = 'ownapi-community-quiz-failed';
 
 const attemptMessages = {
   zh: {

@@ -2,7 +2,7 @@
 title: 集群部署
 ---
 
-本文档提供了 New API 集群部署的详细配置步骤和最佳实践，帮助您构建高可用、负载均衡的分布式系统。
+本文档提供了 Ownapi 集群部署的详细配置步骤和最佳实践，帮助您构建高可用、负载均衡的分布式系统。
 
 ## 前置要求
 
@@ -14,7 +14,7 @@ title: 集群部署
 
 ## 集群架构概述
 
-New API 集群采用主从架构设计：
+Ownapi 集群采用主从架构设计：
 
 1. **主节点**：负责处理所有写操作和部分读操作
 2. **从节点**：主要负责处理读操作，提高系统整体吞吐量
@@ -183,7 +183,7 @@ server {
 
 ### Redis 连接与高可用
 
-New API 通过 `REDIS_CONN_STRING` 连接单一的 Redis 兼容端点，密码应直接包含在连接 URI 中；连接池大小使用 `REDIS_POOL_SIZE`。应用不原生解析 Redis Cluster 或 Sentinel 节点列表。如需 Redis 高可用，请使用能提供单一兼容端点的托管服务或代理：
+Ownapi 通过 `REDIS_CONN_STRING` 连接单一的 Redis 兼容端点，密码应直接包含在连接 URI 中；连接池大小使用 `REDIS_POOL_SIZE`。应用不原生解析 Redis Cluster 或 Sentinel 节点列表。如需 Redis 高可用，请使用能提供单一兼容端点的托管服务或代理：
 
 ```yaml
 environment:

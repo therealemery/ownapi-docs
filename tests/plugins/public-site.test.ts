@@ -15,6 +15,18 @@ import { detail } from './fixtures';
 
 test('official domains follow the hostname, including ports and normalized hosts', () => {
   for (const hostname of [
+    'docs.ownapi.dev',
+    'ownapi.dev',
+    'www.ownapi.dev:443',
+    'DOCS.OWNAPI.DEV.',
+    'preview.ownapi.dev',
+    'localhost:3000',
+    '127.0.0.1',
+    '',
+    'preview.vercel.app',
+  ])
+    assert.equal(pluginSiteFromHostname(hostname), 'ownapi');
+  for (const hostname of [
     'docs.newapi.pro',
     'newapi.pro',
     'www.newapi.pro:443',
@@ -22,20 +34,17 @@ test('official domains follow the hostname, including ports and normalized hosts
     'preview.newapi.pro',
   ])
     assert.equal(pluginSiteFromHostname(hostname), 'pro');
-  for (const hostname of [
-    'docs.newapi.ai',
-    'newapi.ai',
-    'localhost:3000',
-    '127.0.0.1',
-    '',
-    'preview.vercel.app',
-    'another.pro',
-    'newapi.pro.example.com',
-  ])
+  for (const hostname of ['docs.newapi.ai', 'newapi.ai'])
     assert.equal(pluginSiteFromHostname(hostname), 'ai');
+  for (const hostname of ['another.pro', 'newapi.pro.example.com'])
+    assert.equal(pluginSiteFromHostname(hostname), 'ownapi');
 });
 
 test('installation always uses the selected official host, never docs or a supplied download URL', () => {
+  assert.equal(
+    officialPluginInstallUrl('ownapi', 'sora'),
+    'https://ownapi.dev/api/v1/plugins/sora/plugin.js'
+  );
   assert.equal(
     officialPluginInstallUrl('pro', 'sora'),
     'https://www.newapi.pro/api/v1/plugins/sora/plugin.js'

@@ -120,7 +120,7 @@ export function CopyInstallButton({
         }
       >
         {status === 'copied'
-          ? '官网安装地址已复制，可在 New API 任务插件页面导入。'
+          ? '官网安装地址已复制，可在 Ownapi 任务插件页面导入。'
           : status === 'error'
             ? '复制失败，请手动复制下方地址。'
             : ''}

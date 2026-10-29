@@ -1,6 +1,6 @@
 ---
 title: API とプレイグラウンドの使用
-description: プレイグラウンドでAIモデルをオンラインでテストおよび体験し、OpenAI互換インターフェースを通じてNew APIを呼び出します。
+description: プレイグラウンドでAIモデルをオンラインでテストおよび体験し、OpenAI互換インターフェースを通じてOwnapiを呼び出します。
 ---
 
 import { Callout } from 'fumadocs-ui/components/callout';
@@ -96,8 +96,8 @@ curl "https://your-platform.com/v1beta/models/gemini-1.5-pro:generateContent?key
 | コンテンツモデレーション | `POST /v1/moderations` | テキストまたはその他の入力に対してコンテンツモデレーションを実行します。モデルが提供されていない場合は、デフォルトのモデレーションモデル候補が使用されます。 |
 | Responses API | `POST /v1/responses` | OpenAI Responses形式のAPI。入力、ツール、応答イベントなどの機能をサポートします。 |
 | Responses圧縮 | `POST /v1/responses/compact` | Responsesリクエストコンテキストに対して圧縮処理を実行します。 |
-| Codexウェブ検索 | `POST /v1/alpha/search` | Codex独立ウェブ検索形式のAPI。現在、この機能をサポートするSub2API、New API、Codex、および高度なカスタムチャネルのみが処理を許可されています。 |
-| Claude Messages | `POST /v1/messages` | Anthropic Claude Messages互換API。`model`とメッセージ内容の提供が必要で、必要に応じてNew APIによってアップストリームプロトコルに変換されます。 |
+| Codexウェブ検索 | `POST /v1/alpha/search` | Codex独立ウェブ検索形式のAPI。現在、この機能をサポートするSub2API、Ownapi、Codex、および高度なカスタムチャネルのみが処理を許可されています。 |
+| Claude Messages | `POST /v1/messages` | Anthropic Claude Messages互換API。`model`とメッセージ内容の提供が必要で、必要に応じてOwnapiによってアップストリームプロトコルに変換されます。 |
 | リアルタイム対話 | `GET /v1/realtime`（WebSocket） | OpenAI Realtimeスタイルの双方向リアルタイム通信API。モデルは通常クエリパラメータを介して渡され、APIキーはBearer TokenまたはWebSocketサブプロトコルを介して渡すことができます。 |
 | Geminiネイティブモデル呼び出し | `POST /v1beta/models/{model}:{action}` | Geminiネイティブ形式のAPI。`generateContent`、`streamGenerateContent`、埋め込み関連操作などのモデル操作パスをサポートします。 |
 | Gemini互換モデル呼び出し | `POST /v1/models/{model}:{action}` | `/v1`プレフィックスでGeminiスタイルのモデル操作リクエストを受け入れ、Gemini Relayが解析と変換を担当します。 |

@@ -1,9 +1,10 @@
 import { App, Octokit } from 'octokit';
 import type { ActionResponse, Feedback } from '@/components/feedback';
+import { docsRepoName, docsRepoOwner } from '@/lib/brand';
 
 // GitHub repository info
-export const owner = 'QuantumNous';
-export const repo = 'new-api-docs-v1';
+export const owner = docsRepoOwner;
+export const repo = docsRepoName;
 export const DocsCategory = 'Docs Feedback'; // GitHub Discussion
 
 let instance: Octokit | undefined;

@@ -7,7 +7,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 ## 调用前确认
 
-管理员需要先[安装插件](/zh/docs/plugins/installation)、[配置渠道](/zh/docs/plugins/configuration)和[设置价格](/zh/docs/plugins/billing)。调用者使用**自己 New API 实例的 API 密钥**，并确认密钥可访问相应模型和分组。
+管理员需要先[安装插件](/zh/docs/plugins/installation)、[配置渠道](/zh/docs/plugins/configuration)和[设置价格](/zh/docs/plugins/billing)。调用者使用**自己 Ownapi 实例的 API 密钥**，并确认密钥可访问相应模型和分组。
 
 本页中的 `https://your-newapi.example` 是实例地址占位符，不是官网。官网用于浏览和下载插件；实际生成请求发往你配置的实例。
 
@@ -36,7 +36,7 @@ curl 'https://your-newapi.example/v1/tasks/<plugin-key>' \
 
 替换 `<plugin-key>`、`<model>` 和 `<NEW_API_KEY>`。`model` 是必填项，其余字段由所选插件的请求构造逻辑决定。上面是请求结构示意，具体插件可能要求图片、视频、时长或其他字段；不是任意插件都接受仅有 `prompt` 的请求。
 
-通用提交响应包含 New API 生成的公开任务 ID，例如：
+通用提交响应包含 Ownapi 生成的公开任务 ID，例如：
 
 ```json
 {
@@ -85,7 +85,7 @@ curl 'https://your-newapi.example/v1/tasks/<public-task-id>/artifacts/<artifact-
 
 ## 插件原生路由
 
-插件可通过 `meta.routes` 提供厂商风格的原生接口。使用市场详情列出的**实际路径、HTTP 方法和请求结构**，仍然向自己的 New API 实例发送请求并提供实例 API 密钥。
+插件可通过 `meta.routes` 提供厂商风格的原生接口。使用市场详情列出的**实际路径、HTTP 方法和请求结构**，仍然向自己的 Ownapi 实例发送请求并提供实例 API 密钥。
 
 原生路由的响应封装由插件决定，不能把上面的通用任务响应字段直接套用到所有原生接口。查询路由由宿主先验证任务所有权；提交和动态路由还会根据声明检查模型范围。
 

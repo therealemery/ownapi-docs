@@ -10,15 +10,18 @@ const config = {
     serverActions: {
       allowedOrigins: [
         'localhost:3000',
-        // newapi.pro domains
+        // Ownapi domains
+        'docs.ownapi.dev',
+        'ownapi.dev',
+        // Legacy New API domains (compatibility)
         'docs.newapi.pro',
         'newapi.pro',
         'www.newapi.pro',
-        // newapi.ai domains
         'docs.newapi.ai',
         'newapi.ai',
         'www.newapi.ai',
         // Vercel preview
+        'ownapi-docs.vercel.app',
         'new-api-docs-v1.vercel.app',
       ],
     },

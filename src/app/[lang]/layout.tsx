@@ -4,6 +4,7 @@ import { Provider } from '@/components/provider';
 import '../global.css';
 import type { Metadata, Viewport } from 'next';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { productName, productSiteUrl } from '@/lib/brand';
 import { createMetadata, siteMetadata } from '@/lib/metadata';
 import { notFound } from 'next/navigation';
 
@@ -58,8 +59,8 @@ export async function generateMetadata({
   return createMetadata({
     title: { default: content.title, template: `%s | ${content.title}` },
     description: content.description,
-    authors: [{ name: 'New API Team', url: 'https://www.newapi.ai/' }],
-    creator: 'New API Team',
+    authors: [{ name: `${productName} Team`, url: productSiteUrl }],
+    creator: `${productName} Team`,
   });
 }
 

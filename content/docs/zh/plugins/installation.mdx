@@ -8,7 +8,7 @@ import { OfficialPluginLinks } from '@/components/plugins/official-links';
 
 ## 准备工作
 
-使用 **Root（超级管理员）**登录你的 New API 实例，打开「任务插件」（`/task-plugins`）。确认部署版本包含任务插件功能，并开启页面顶部的任务插件总开关。
+使用 **Root（超级管理员）**登录你的 Ownapi 实例，打开「任务插件」（`/task-plugins`）。确认部署版本包含任务插件功能，并开启页面顶部的任务插件总开关。
 
 普通 API 密钥用于模型调用，不能用于安装插件。若页面不可见或返回 403，请先检查账号角色和部署版本。
 
@@ -31,16 +31,15 @@ import { OfficialPluginLinks } from '@/components/plugins/official-links';
 
 1. 打开[文档站插件市场](/zh/plugins)。
 2. 在插件卡片或详情中点击「复制安装地址」。
-3. 返回自己的 New API 实例，选择「上传插件」，在「从 URL 导入」（Import from URL）中粘贴地址并读取源码。
+3. 返回自己的 Ownapi 实例，选择「上传插件」，在「从 URL 导入」（Import from URL）中粘贴地址并读取源码。
 4. 检查插件信息与源码后保存，确认插件已启用。
 
-复制的是官网托管的 `plugin.js` 地址。`docs.newapi.pro` 使用 `www.newapi.pro`，`docs.newapi.ai` 使用 `www.newapi.ai`；语言不影响域名选择。
+复制的是官网托管的 `plugin.js` 地址。`docs.ownapi.dev` 使用 `www.ownapi.dev`，`docs.ownapi.dev` 使用 `www.ownapi.dev`；语言不影响域名选择。
 
 安装地址的形式为：
 
 ```text
-https://www.newapi.pro/api/v1/plugins/<plugin-key>/plugin.js
-https://www.newapi.ai/api/v1/plugins/<plugin-key>/plugin.js
+https://ownapi.dev/api/v1/plugins/<plugin-key>/plugin.js
 ```
 
 这类未固定版本的地址在导入时获取官网当前最新版，**不会让已安装插件自动更新**。需要指定版本时，优先在实例内的市场选择版本；查看历史更新日志不会改变文档站复制按钮所提供的最新版地址。
@@ -56,7 +55,7 @@ https://www.newapi.ai/api/v1/plugins/<plugin-key>/plugin.js
 以上官方市场源地址会根据当前文档站域名选择。通用 GitHub 源为：
 
 ```text
-https://raw.githubusercontent.com/QuantumNous/new-api-plugins/main/index.json
+https://raw.githubusercontent.com/therealemery/new-api-plugins/main/index.json
 ```
 
 新增第三方源时，确认索引及其引用的插件文件均能访问。浏览器导入还需要源站允许跨域读取；无法下载时检查网络、CORS 和文件大小。当前插件源码上限为 **1 MiB**。

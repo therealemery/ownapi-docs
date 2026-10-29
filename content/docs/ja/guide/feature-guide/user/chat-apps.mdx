@@ -1,22 +1,22 @@
 ---
 title: チャットアプリ連携
-description: New API の設定を様々な AI チャットアプリに素早くインポート
+description: Ownapi の設定を様々な AI チャットアプリに素早くインポート
 ---
 
 import { Callout } from 'fumadocs-ui/components/callout';
 
-- New API は、様々な AI チャットアプリへの設定の高速インポートに対応しており、テストや日常利用に便利です。
+- Ownapi は、様々な AI チャットアプリへの設定の高速インポートに対応しており、テストや日常利用に便利です。
 
 ## チャット連携方法
 
-- New API のチャット連携には3つの方法があります。
+- Ownapi のチャット連携には3つの方法があります。
 1. **チャットプリセットの一括インポート設定**
 2. **APIキーの一括インポート設定**
 3. **チャットアプリの手動設定**
 
 ### 使用前の準備
 
-1. New API にログインし、「APIキー」ページでキーを作成します。
+1. Ownapi にログインし、「APIキー」ページでキーを作成します。
 2. キーが有効な状態であり、クォータが十分であり、キーの有効期限が切れておらず、現在のIP、グループ、モデル制限が今回の呼び出しを許可していることを確認してください。
 
 <Callout type="info">
@@ -50,11 +50,11 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 一括インポートに対応していないアプリの場合、手動で設定できます。
 
-- New API から以下の設定情報を取得します。<br/>
+- Ownapi から以下の設定情報を取得します。<br/>
 
 | 設定項目 | 説明 | 取得場所 |
 | --- | --- | --- |
-| API Base URL | APIインターフェースアドレス | New APIアドレス、例: `https://api.example.com/v1` |
+| API Base URL | APIインターフェースアドレス | Ownapiアドレス、例: `https://api.example.com/v1` |
 | API Key | APIキー | APIキーページ |
 | 利用可能なモデル | サポートされているモデルリスト | モデル広場でキーが属するグループ下の利用可能なモデルをフィルタリングして確認 |
 
@@ -66,7 +66,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 4. 設定を保存すると使用できます。
 
 <Callout type="info">
-  1. OpenAI API互換インターフェースをサポートするほとんどのアプリは、カスタムAPIアドレスを入力することでNew APIに接続できます。
+  1. OpenAI API互換インターフェースをサポートするほとんどのアプリは、カスタムAPIアドレスを入力することでOwnapiに接続できます。
   2. アプリが完全なエンドポイントを要求する場合、`https://api.example.com/v1/chat/completions` を使用し、アプリの具体的な設定説明を参照してパスを補完してください。
   3. **現在検証済みのサポートされているAIアプリリストおよび設定ガイドは、[AIアプリ](/ja/docs/apps)ページを参照してください。**
 </Callout>

@@ -7,7 +7,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 ## Creating Task Plugin Channels
 
-After installing and enabling the plugin, open "Channel" management in your New API instance and add a channel:
+After installing and enabling the plugin, open "Channel" management in your Ownapi instance and add a channel:
 
 1. Select **Task Plugin (Type 61)**.
 2. Select a registered plugin.
@@ -19,9 +19,9 @@ Channels are bound to plugins via `setting.task_plugin_key`. The plugin must be 
 
 Plugin management is performed by Root; administrators binding plugin channels require `task_plugin:bind` permission and corresponding channel management permissions.
 
-## Connecting to another New API gateway
+## Connecting to another Ownapi gateway
 
-When the upstream is also New API, select **New API (Type 60)**, enter the upstream gateway URL and its API key, and bind plugins supporting the `new_api` upstream kind. Both gateways must have the same plugin installed and enabled, with versions supporting the required contract. A plugin cannot bind to this channel unless `meta.upstreams` declares `new_api`.
+When the upstream is also Ownapi, select **Ownapi (Type 60)**, enter the upstream gateway URL and its API key, and bind plugins supporting the `new_api` upstream kind. Both gateways must have the same plugin installed and enabled, with versions supporting the required contract. A plugin cannot bind to this channel unless `meta.upstreams` declares `new_api`.
 
 Type 60 supports multiple plugins through `setting.task_extend_plugin_keys` and also accepts `setting.task_plugin_key`. If several bound plugins support a model, the first eligible candidate in ascending plugin-key order executes. The host sends the upstream gateway key as Bearer credentials; the plugin constructs its native paths according to `ctx.upstream.kind`. Vendor API keys or OAuth credentials are not upstream gateway keys.
 

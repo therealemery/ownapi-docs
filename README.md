@@ -1,6 +1,6 @@
-# new-api-docs-v1
+# ownapi-docs
 
-A Next.js documentation site for New API.
+A Next.js documentation site for [Ownapi](https://ownapi.dev) — an AI gateway and model API management system (forked from [New API](https://github.com/QuantumNous/new-api)).
 
 ## Development
 
@@ -22,18 +22,40 @@ Build the application for production:
 bun run build
 ```
 
+For production deployments at **https://docs.ownapi.dev**, set the canonical origin before building:
+
+```bash
+SITE_URL=https://docs.ownapi.dev bun run build
+```
+
+Set the same variable in CI or on your host (for example Cloudflare Pages **Environment variables**). It must be a full HTTP(S) origin with no path, query, or fragment.
+
+## Deploying to Cloudflare Pages (docs.ownapi.dev)
+
+Ownapi documentation is intended to run on **Cloudflare Pages** at `https://docs.ownapi.dev`, not as a Docker container on the API/gateway server.
+
+Recommended Pages settings:
+
+| Setting | Value |
+| -------- | ----- |
+| Build command | `bun run build` (or `npm run build`) |
+| Build output | Standard Next.js app (`.next` after `next build`) — use Cloudflare’s **Next.js** / OpenNext adapter workflow, not a static `out/` export only |
+| Node.js | `24` (see `engines` in `package.json`) |
+| `SITE_URL` | `https://docs.ownapi.dev` (build-time; already the code default if unset) |
+
+Notes:
+
+- **Prebuild**: `prebuild` runs `scripts/prebuild.ts` (changelog from GitHub releases). Optional: `SOURCE_REPO=therealemery/new-api`, `GITHUB_TOKEN` for rate limits.
+- **Runtime routes**: `/api/chat`, `/api/search`, `/api/plugins`, `/api/proxy`, OG images, and middleware need a Next-compatible edge/Workers runtime — pure static hosting is not enough.
+- **Optional features**: `INKEEP_API_KEY` (AI search), `GITHUB_APP_ID` / `GITHUB_APP_PRIVATE_KEY` (docs feedback), `NEXT_PUBLIC_GA_ID` (analytics).
+
+Preview builds should still set `SITE_URL` to the production docs origin if you want canonical URLs to point at `docs.ownapi.dev`.
+
 ## SEO and canonical domain
 
-The canonical documentation origin defaults to `https://docs.newapi.ai`, including
-local builds and preview deployments. Set `SITE_URL` **before building** to choose
-another canonical domain, for example `SITE_URL=https://docs.newapi.pro`.
-Use a full HTTP(S) origin without a path, query, or fragment.
+The canonical documentation origin defaults to `https://docs.ownapi.dev`, including local builds and preview deployments. Set `SITE_URL` **before building** only if you need a different canonical domain.
 
-All page canonicals, language alternates, sharing metadata, structured data,
-`sitemap.xml`, and `robots.txt` use that origin. When one build is served on both
-domains, both use the same canonical origin to consolidate duplicate pages.
-Official website links to `www.newapi.ai` and `www.newapi.pro` remain visible on
-the homepage, quick start pages, and shared footer.
+All page canonicals, language alternates, sharing metadata, structured data, `sitemap.xml`, and `robots.txt` use that origin.
 
 SEO browser checks run against a production build:
 
@@ -57,9 +79,7 @@ Browser tests start the production server on port 3100 and mock catalog data.
 To use an installed Chrome instead of downloading Chromium, run
 `PLUGIN_TEST_BROWSER_CHANNEL=chrome bun run test:plugins:browser`.
 
-The marketplace reads the matching official `.pro` or `.ai` site at request time;
-building the docs does not fetch the plugin catalog. Installation URLs always
-point to the official site. Local previews use `.ai`.
+The marketplace reads plugin catalog data from the product site (`ownapi.dev` by default, or legacy New API hosts when configured). Building the docs does not fetch the plugin catalog. Local previews use the Ownapi default.
 
 ## Project Structure
 
@@ -70,6 +90,7 @@ point to the official site. Local previews use `.ai`.
 | `src/app/api/search/route.ts` | Search API endpoint          |
 | `content/docs/`               | Documentation content (MDX)  |
 | `src/lib/source.ts`           | Content source configuration |
+| `src/lib/brand.ts`            | Ownapi product URLs and repos |
 
 ## Learn More
 

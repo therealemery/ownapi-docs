@@ -9,7 +9,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 Plugins are single-file, synchronous ECMAScript modules. You cannot use `import`, `require`, `async`, `await`, `fetch`, file system, or environment variables. Network requests, authentication parsing, task saving, and billing are handled by the host.
 
-The current Plugin API v1 is still evolving. The [type declarations](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.d.ts) and [JSON Schema](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.schema.json) serve as the contract basis and are validated against the target host version.
+The current Plugin API v1 is still evolving. The [type declarations](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.d.ts) and [JSON Schema](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.schema.json) serve as the contract basis and are validated against the target host version.
 
 ## Minimal Complete Example
 
@@ -115,7 +115,7 @@ This example submits via the generic interface `POST /v1/tasks/demo-task`, with 
 4. The host periodically calls `buildQueryRequest` and `parseTaskResult` until the task reaches a final state or is cleaned up due to failure.
 5. The host reads usage facts and completes billing according to the saved billing configuration.
 
-`TaskQueryContext.taskId` is the upstream ID, and `publicTaskId` is the New API public ID; the polling context does not have `requestBody`. Data that needs to be preserved across polls should use `state` and should not rely on module global variables.
+`TaskQueryContext.taskId` is the upstream ID, and `publicTaskId` is the Ownapi public ID; the polling context does not have `requestBody`. Data that needs to be preserved across polls should use `state` and should not rely on module global variables.
 
 `Task.Data` saves the most recent upstream snapshot; it is updated with each successful parsing round. Unknown statuses should return `UNKNOWN`, not default to `IN_PROGRESS`, otherwise abnormal tasks might continuously occupy resources.
 
@@ -123,7 +123,7 @@ Treat hook arguments and nested values as read-only. Return updated values expli
 
 ## Compilation and Fixture Testing
 
-Validate the source code using the New API executable that includes the plugin CLI:
+Validate the source code using the Ownapi executable that includes the plugin CLI:
 
 ```bash
 new-api plugin lint plugin.js
@@ -209,6 +209,6 @@ Sandbox calls only run the selected synchronous function and do not execute the 
 - **Host Protocol**: Declare `meta.protocols` and implement protocol hooks for Image, Video, or Responses.
 - **Artifacts**: Implement `listArtifacts` and `buildContentRequest` in pairs.
 - **Submit-and-Complete or Upstream SSE**: Implement immediate final states, SSE snapshots, or incremental event hooks according to capability declarations.
-- **Gateway connections**: Implement vendor and New API paths, submission parsing, and querying before declaring `upstreams: ["new_api"]`; cover both `ctx.upstream.kind` values and the missing-field fallback.
+- **Gateway connections**: Implement vendor and Ownapi paths, submission parsing, and querying before declaring `upstreams: ["new_api"]`; cover both `ctx.upstream.kind` values and the missing-field fallback.
 
 For detailed constraints, see [API v1 Reference](/en/docs/plugins/api-reference). When preparing for release, add versions, logs, and generate an index according to the [Publishing Specification](/en/docs/plugins/publishing).

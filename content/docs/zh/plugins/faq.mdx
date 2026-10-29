@@ -11,7 +11,7 @@ description: 排查任务插件的权限、导入、兼容、路由、渠道、�
 
 ## 文档站市场加载失败怎么办？
 
-点击「重新加载」。市场数据按文档域名从对应官网读取：`.pro` 使用 `www.newapi.pro`，`.ai` 使用 `www.newapi.ai`，本地预览默认使用 `.ai`。中文语言本身不会切换数据源。
+点击「重新加载」。市场数据按文档域名从对应官网读取：`.pro` 使用 `www.ownapi.dev`，`.ai` 使用 `www.ownapi.dev`，本地预览默认使用 `.ai`。中文语言本身不会切换数据源。
 
 站点暂时无法读取数据时，安装和开发教程仍然可用。部署文档站的管理员应检查服务端到对应官网的网络，及公开 `/api/v1/plugins` 接口是否可达。
 
@@ -71,7 +71,7 @@ generation 是节点本地编号，不同节点间应比较数据库 revision。
 
 ## 如何查看插件调试日志？
 
-以 `DEBUG=true` 启动 New API，并按 `task_plugin` 过滤日志，可查看注册、路由、渠道选择、提交、轮询与协议观察事件。请求相关事件带 request id，后台事件可能标记为 `SYSTEM`。
+以 `DEBUG=true` 启动 Ownapi，并按 `task_plugin` 过滤日志，可查看注册、路由、渠道选择、提交、轮询与协议观察事件。请求相关事件带 request id，后台事件可能标记为 `SYSTEM`。
 
 插件 `console.log` 在 DEBUG 模式也可能被转发。不要输出密钥、认证头、请求 body、完整上游 payload 或私有 URL。单个钩子的验证可使用[开发指南中的沙盒与 fixture](/zh/docs/plugins/development)。
 

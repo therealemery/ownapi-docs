@@ -13,6 +13,14 @@ import {
   Sparkles,
   Blocks,
 } from 'lucide-react';
+import {
+  docsRepoSlug,
+  gatewayRepoSlug,
+  gatewayRepoUrl,
+  productName,
+  productSiteUrl,
+  upstreamGatewayRepoUrl,
+} from '@/lib/brand';
 import { createPageMetadata, siteMetadata, baseUrl } from '@/lib/metadata';
 import { OfficialSites } from '@/components/official-sites';
 import { getLocalePath, i18n } from '@/lib/i18n';
@@ -59,14 +67,14 @@ const contentMap = {
         'AI applications',
         'Connect your favorite clients and development tools.',
       ],
-      ['Skills', 'Use New API with coding agents and AI workflows.'],
+      ['Skills', 'Use Ownapi with coding agents and AI workflows.'],
       [
         'Help & support',
         'Find answers, troubleshoot issues, and join the community.',
       ],
     ],
     astrlink: {
-      label: 'AstrLink · New API ecosystem',
+      label: 'AstrLink · Ownapi ecosystem',
       title: 'Secrets stay local. Agents keep working.',
       description:
         'Secrets, phone numbers and names are swapped for placeholders on your machine, then restored when the reply arrives.',
@@ -94,11 +102,11 @@ const contentMap = {
       ['使用指南', '管理渠道、令牌与模型，了解控制台的各项功能。'],
       ['API 参考', '查阅接口参数、响应格式与调用示例。'],
       ['AI 应用接入', '连接常用 AI 客户端、开发工具与应用。'],
-      ['Skills', '让 AI 编程助手在工作流中使用和管理 New API。'],
+      ['Skills', '让 AI 编程助手在工作流中使用和管理 Ownapi。'],
       ['帮助与支持', '查找常见问题、排查故障，参与社区交流。'],
     ],
     astrlink: {
-      label: 'AstrLink · New API 生态',
+      label: 'AstrLink · Ownapi 生态',
       title: '过滤敏感信息，Agent 照样能干活',
       description:
         '密钥、手机号、人名先在本机换成占位符再发出，回复到达后自动还原。',
@@ -126,11 +134,11 @@ const contentMap = {
       ['ユーザーガイド', 'チャネル、トークン、モデルを管理。'],
       ['API リファレンス', 'パラメーター、レスポンス、接続サンプル。'],
       ['AI アプリの接続', 'クライアントや開発ツールとの連携。'],
-      ['Skills', 'AI コーディングエージェントで New API を活用。'],
+      ['Skills', 'AI コーディングエージェントで Ownapi を活用。'],
       ['ヘルプとサポート', 'よくある質問、問題の解決、コミュニティ。'],
     ],
     astrlink: {
-      label: 'AstrLink · New API エコシステム',
+      label: 'AstrLink · Ownapi エコシステム',
       title: '機密情報は手元に、エージェントはそのまま動く',
       description:
         'API キー、電話番号、氏名を手元でプレースホルダーに置き換えて送信し、返信が届くと自動で元に戻します。',
@@ -185,7 +193,7 @@ export default async function Page({
         '@type': 'WebSite',
         '@id': `${baseUrl.origin}/#website`,
         url: baseUrl.origin,
-        name: 'New API Documentation',
+        name: 'Ownapi Documentation',
         inLanguage: i18n.languages,
       },
       {
@@ -198,12 +206,9 @@ export default async function Page({
         isPartOf: { '@id': `${baseUrl.origin}/#website` },
         about: {
           '@type': 'SoftwareApplication',
-          name: 'New API',
-          url: 'https://www.newapi.ai/',
-          sameAs: [
-            'https://www.newapi.pro/',
-            'https://github.com/QuantumNous/new-api',
-          ],
+          name: productName,
+          url: productSiteUrl,
+          sameAs: [gatewayRepoUrl, upstreamGatewayRepoUrl],
         },
       },
     ],
@@ -288,7 +293,7 @@ export default async function Page({
               {content.getStarted}
             </Link>
             <a
-              href="https://github.com/QuantumNous/new-api"
+              href={gatewayRepoUrl}
               target="_blank"
               rel="noreferrer noopener"
               className="bg-fd-secondary text-fd-secondary-foreground hover:bg-fd-accent inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 font-medium tracking-tight transition-colors max-sm:text-sm"
@@ -297,13 +302,13 @@ export default async function Page({
               GitHub
             </a>
             <a
-              href="https://atomgit.com/QuantumNous/new-api"
+              href={upstreamGatewayRepoUrl}
               target="_blank"
               rel="noreferrer noopener"
               className="bg-fd-secondary text-fd-secondary-foreground hover:bg-fd-accent inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 font-medium tracking-tight transition-colors max-sm:text-sm"
             >
               <AtomGitIcon />
-              AtomGit
+              Upstream
             </a>
           </div>
         </Hero>
@@ -497,12 +502,12 @@ export default async function Page({
         </h2>
         <div className="mt-8 flex justify-center">
           <a
-            href="https://github.com/QuantumNous/new-api/graphs/contributors"
+            href={`${gatewayRepoUrl}/graphs/contributors`}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src="https://contrib.rocks/image?repo=QuantumNous/new-api"
+              src={`https://contrib.rocks/image?repo=${gatewayRepoSlug}`}
               alt="Development Contributors"
               loading="lazy"
               decoding="async"
@@ -519,12 +524,12 @@ export default async function Page({
         </h2>
         <div className="mt-8 flex justify-center">
           <a
-            href="https://github.com/QuantumNous/new-api-docs-v1/graphs/contributors"
+            href={`https://github.com/${docsRepoSlug}/graphs/contributors`}
             target="_blank"
             rel="noopener noreferrer"
           >
             <img
-              src="https://contrib.rocks/image?repo=QuantumNous/new-api-docs-v1"
+              src={`https://contrib.rocks/image?repo=${docsRepoSlug}`}
               alt="Documentation Contributors"
               loading="lazy"
               decoding="async"
