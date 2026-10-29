@@ -1,6 +1,6 @@
 import { createI18nMiddleware } from 'fumadocs-core/i18n/middleware';
 import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import type { NextFetchEvent, NextRequest } from 'next/server';
 import { i18n } from '@/lib/i18n';
 
 const i18nMiddleware = createI18nMiddleware(i18n);
@@ -30,10 +30,13 @@ function redirectHiddenDocs(pathname: string, request: NextRequest) {
   return null;
 }
 
-export default function middleware(request: NextRequest) {
+export default function middleware(
+  request: NextRequest,
+  event: NextFetchEvent
+) {
   const hidden = redirectHiddenDocs(request.nextUrl.pathname, request);
   if (hidden) return hidden;
-  return i18nMiddleware(request);
+  return i18nMiddleware(request, event);
 }
 
 export const config = {
