@@ -1,7 +1,7 @@
 {
   "title": "API Reference",
-  "description": "Ownapi Complete API Documentation",
+  "description": "Ownapi hosted gateway API",
   "icon": "Code",
   "root": true,
-  "pages": ["index", "ai-model", "management"]
+  "pages": ["index", "ai-model"]
 }

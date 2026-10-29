@@ -1,6 +1,7 @@
 import { createOpenAPI } from 'fumadocs-openapi/server';
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { productSiteUrl } from '@/lib/brand';
 
 async function walkJsonFiles(dir: string): Promise<string[]> {
   const out: string[] = [];
@@ -39,7 +40,16 @@ export const openapi = createOpenAPI({
     const entries = await Promise.all(
       files.map(async (p) => {
         const raw = await readFile(p, 'utf8');
-        return [p, JSON.parse(raw)] as const;
+        const doc = JSON.parse(raw) as Record<string, unknown>;
+        if (
+          !Array.isArray(doc.servers) ||
+          (doc.servers as unknown[]).length === 0
+        ) {
+          doc.servers = [
+            { url: productSiteUrl, description: 'Ownapi gateway' },
+          ];
+        }
+        return [p, doc] as const;
       })
     );
     return Object.fromEntries(entries);

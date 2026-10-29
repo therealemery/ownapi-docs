@@ -2,162 +2,76 @@ import Link from 'next/link';
 import { Hero } from './page.client';
 import {
   ArrowRight,
-  ArrowUpRight,
   BookOpen,
-  Boxes,
   Code2,
-  Github,
   Headphones,
-  Layers3,
-  Puzzle,
   Sparkles,
-  Blocks,
 } from 'lucide-react';
-import {
-  docsRepoSlug,
-  gatewayRepoSlug,
-  gatewayRepoUrl,
-  productName,
-  productSiteUrl,
-  upstreamGatewayRepoUrl,
-} from '@/lib/brand';
 import { createPageMetadata, siteMetadata, baseUrl } from '@/lib/metadata';
 import { OfficialSites } from '@/components/official-sites';
 import { getLocalePath, i18n } from '@/lib/i18n';
-import Image from 'next/image';
-import { AntifraudDialog } from '@/components/antifraud-dialog';
-import { astrlinkRepoUrl, astrlinkUrl } from '@/lib/ecosystem';
-
-const AtomGitIcon = () => (
-  <svg role="img" viewBox="0 0 24 24" fill="currentColor" className="size-4">
-    <path
-      fillRule="evenodd"
-      d="M15.5,5c.1,0,.3-.2.5-.3,0,.1,0,.2,0,.3,0,.1,0,.3,0,.4,0,1,.6,1.8,1.4,2,1.1.3,2.1-.2,2.7-1.1.7-1.1.4-2.4-.8-3.3C16.2.8,12.8.2,9.1,1.2,1.1,3.6-1.6,13.4,4,19.4c2.4,2.6,5.5,3.7,9,3.6,4.5-.1,7.7-2.3,9.7-6.2,1.5-2.7-.1-5.7-3.2-6.4-1.7-.3-3.5-.5-5.3-.3-.6,0-1.2.2-1.7.5-.6.3-.7.9-.7,1.5,0,.6.5.9,1,1,1,.2,2.1.3,3.1.3.3,0,.6,0,.9,0,.4,0,.9,0,1.3,0,1.2.2,1.6,1.2,1,2.3-.2.3-.3.5-.5.7-.8.9-1.9,1.5-3.1,1.8-2.2.5-4.3.6-6.5-.1-2.5-.8-3.9-2.6-4-5,0-1.5.4-3,1.1-4.3.3-.6.5-1.2.5-1.9,0-.3,0-.6,0-.9,0-.2,0-.3,0-.5.2,0,.5.1.7.2.9.4,1.9.5,2.9.3.6-.1,1.2-.2,1.8-.1,1,0,1.9-.2,2.7-.7.2-.1.4-.2.6-.4Z"
-    />
-  </svg>
-);
+import { productName, productSiteUrl } from '@/lib/brand';
 
 const contentMap = {
   en: {
-    badge: 'The Foundation of Your AI Universe',
-    title: 'Connect all AI providers, manage your AI assets,',
-    subtitle: 'build the',
-    highlight: 'future',
+    badge: 'Hosted AI gateway',
+    title: 'Call the Ownapi API at',
+    highlight: 'ownapi.dev',
     description:
-      'Your guide to a unified AI gateway. Deploy your instance, connect model providers, and make your first API call.',
-    getStarted: 'Get started',
-    browseTitle: 'Find the guide you need',
-    browseDescription:
-      'Practical documentation for every stage of your project.',
-    allDocs: 'All documentation',
+      'Bearer authentication, OpenAI-compatible chat/completions, model listing, and client setup—no self-hosting required.',
+    getStarted: 'API guide',
+    browseTitle: 'Documentation',
+    browseDescription: 'Everything you need to integrate as an API consumer.',
+    allDocs: 'Open docs',
     topics: [
-      [
-        'Installation & deployment',
-        'Docker, panels, clusters, and environment configuration.',
-      ],
-      [
-        'Administration & usage',
-        'Manage channels, tokens, models, and your instance.',
-      ],
-      [
-        'API reference',
-        'Request parameters, responses, and integration examples.',
-      ],
-      [
-        'AI applications',
-        'Connect your favorite clients and development tools.',
-      ],
-      ['Skills', 'Use Ownapi with coding agents and AI workflows.'],
-      [
-        'Help & support',
-        'Find answers, troubleshoot issues, and join the community.',
-      ],
+      ['Quick start', 'Base URL, auth, and your first chat completion request.'],
+      ['API reference', 'Endpoints, parameters, and interactive reference pages.'],
+      ['AI applications', 'Wire up Cherry Studio, Cursor, LangBot, and more.'],
+      ['Help & support', 'FAQ and troubleshooting.'],
     ],
-    astrlink: {
-      label: 'AstrLink · Ownapi ecosystem',
-      title: 'Secrets stay local. Agents keep working.',
-      description:
-        'Secrets, phone numbers and names are swapped for placeholders on your machine, then restored when the reply arrives.',
-      website: 'Visit astrlink.com',
-    },
-    partnersTitle: 'Our Partners & Clients',
-    partnersSubtitle: 'In no particular order',
-    sponsorPartnersTitle: 'Sponsor Partners',
-    devContributorsTitle: 'Development Contributors',
-    docsContributorsTitle: 'Documentation Contributors',
   },
   zh: {
-    badge: '人工智能应用基座',
-    title: '承载 AI 应用，管理数字资产，',
-    subtitle: '连接',
-    highlight: '未来',
+    badge: '托管 AI 网关',
+    title: '在',
+    highlight: 'ownapi.dev',
+    titleSuffix: '调用 Ownapi API',
     description:
-      '从部署你的第一个 AI 网关，到接入模型、管理令牌与调用 API。在这里找到每一步的指南。',
-    getStarted: '快速开始',
-    browseTitle: '找到你需要的文档',
-    browseDescription: '从初次部署到日常管理，按你的目标开始。',
-    allDocs: '浏览全部文档',
+      'Bearer 鉴权、OpenAI 兼容 Chat/Completions、模型列表与客户端接入——无需自建网关。',
+    getStarted: '阅读 API 指南',
+    browseTitle: '文档导航',
+    browseDescription: '面向 API 使用者的接入说明与参考。',
+    allDocs: '进入文档',
     topics: [
-      ['安装部署', 'Docker、可视化面板、集群部署与环境配置。'],
-      ['使用指南', '管理渠道、令牌与模型，了解控制台的各项功能。'],
-      ['API 参考', '查阅接口参数、响应格式与调用示例。'],
-      ['AI 应用接入', '连接常用 AI 客户端、开发工具与应用。'],
-      ['Skills', '让 AI 编程助手在工作流中使用和管理 Ownapi。'],
-      ['帮助与支持', '查找常见问题、排查故障，参与社区交流。'],
+      ['快速开始', 'Base URL、鉴权与第一次 Chat 请求。'],
+      ['API 参考', '接口参数与在线参考页。'],
+      ['AI 应用接入', 'Cherry Studio、Cursor、LangBot 等客户端配置。'],
+      ['帮助支持', '常见问题与排查。'],
     ],
-    astrlink: {
-      label: 'AstrLink · Ownapi 生态',
-      title: '过滤敏感信息，Agent 照样能干活',
-      description:
-        '密钥、手机号、人名先在本机换成占位符再发出，回复到达后自动还原。',
-      website: '访问 AstrLink 官网',
-    },
-    partnersTitle: '合作伙伴与客户',
-    partnersSubtitle: '排名不分先后',
-    sponsorPartnersTitle: '赞助合作伙伴',
-    devContributorsTitle: '开发贡献者',
-    docsContributorsTitle: '文档贡献者',
   },
   ja: {
-    badge: 'あなたの AI ユニバースの基盤',
-    title: 'すべての AI プロバイダーを接続し、AI アセットを管理し、',
-    subtitle: '',
-    highlight: '未来を構築',
+    badge: 'ホスト型 AI ゲートウェイ',
+    title: '',
+    highlight: 'ownapi.dev',
+    titleSuffix: 'で Ownapi API を呼び出す',
     description:
-      '統一 AI ゲートウェイの導入ガイド。インスタンスをデプロイし、モデルを接続して、最初の API リクエストを送信しましょう。',
-    getStarted: 'クイックスタート',
-    browseTitle: '必要なガイドを見つける',
-    browseDescription: '初めての導入から日々の運用まで。',
-    allDocs: 'すべてのドキュメント',
+      'Bearer 認証、OpenAI 互換 Chat/Completions、モデル一覧、クライアント設定。セルフホスト不要。',
+    getStarted: 'API ガイド',
+    browseTitle: 'ドキュメント',
+    browseDescription: 'API 利用者向けの接続ガイドとリファレンス。',
+    allDocs: 'ドキュメントを開く',
     topics: [
-      ['インストール', 'Docker、管理パネル、クラスターと環境設定。'],
-      ['ユーザーガイド', 'チャネル、トークン、モデルを管理。'],
-      ['API リファレンス', 'パラメーター、レスポンス、接続サンプル。'],
-      ['AI アプリの接続', 'クライアントや開発ツールとの連携。'],
-      ['Skills', 'AI コーディングエージェントで Ownapi を活用。'],
-      ['ヘルプとサポート', 'よくある質問、問題の解決、コミュニティ。'],
+      ['クイックスタート', 'Base URL、認証、最初の Chat リクエスト。'],
+      ['API リファレンス', 'エンドポイントとパラメーター。'],
+      ['AI アプリ連携', 'Cherry Studio、Cursor、LangBot など。'],
+      ['ヘルプとサポート', 'FAQ とトラブルシューティング。'],
     ],
-    astrlink: {
-      label: 'AstrLink · Ownapi エコシステム',
-      title: '機密情報は手元に、エージェントはそのまま動く',
-      description:
-        'API キー、電話番号、氏名を手元でプレースホルダーに置き換えて送信し、返信が届くと自動で元に戻します。',
-      website: 'AstrLink 公式サイト',
-    },
-    partnersTitle: 'パートナーとお客様',
-    partnersSubtitle: '順不同',
-    sponsorPartnersTitle: 'スポンサーパートナー',
-    devContributorsTitle: '開発貢献者',
-    docsContributorsTitle: 'ドキュメント貢献者',
   },
 };
 
 const topicRoutes = [
-  { path: 'docs/installation', icon: Boxes },
-  { path: 'docs/guide/home', icon: Layers3 },
+  { path: 'docs', icon: BookOpen },
   { path: 'docs/api', icon: Code2 },
   { path: 'docs/apps', icon: Sparkles },
-  { path: 'docs/skills', icon: Puzzle },
   { path: 'docs/support', icon: Headphones },
 ];
 
@@ -205,56 +119,32 @@ export default async function Page({
         inLanguage: lang,
         isPartOf: { '@id': `${baseUrl.origin}/#website` },
         about: {
-          '@type': 'SoftwareApplication',
-          name: productName,
+          '@type': 'WebApplication',
+          name: 'Ownapi',
           url: productSiteUrl,
-          sameAs: [gatewayRepoUrl, upstreamGatewayRepoUrl],
         },
       },
     ],
   };
 
-  const partners = [
-    {
-      name: 'Cherry Studio',
-      url: 'https://www.cherry-ai.com/',
-      logo: '/assets/partner/cherry-studio.png',
-    },
-    {
-      name: 'AionUi',
-      url: 'https://github.com/iOfficeAI/AionUi',
-      logo: '/assets/partner/aionui.png',
-    },
-    {
-      name: 'Peking University',
-      url: 'https://bda.pku.edu.cn/',
-      logo: '/assets/partner/pku.png',
-    },
-    {
-      name: 'UCloud',
-      url: 'https://www.compshare.cn/?ytag=GPU_yy_gh_newapi',
-      logo: '/assets/partner/ucloud.png',
-    },
-    {
-      name: 'Alibaba Cloud',
-      url: 'https://www.aliyun.com/',
-      logo: '/assets/partner/aliyun.png',
-    },
-    {
-      name: 'IO.NET',
-      url: 'https://io.net/',
-      logo: '/assets/partner/io-net.png',
-    },
-  ];
-
-  const sponsorPartners = [
-    {
-      name: 'RixAPI',
-      url: 'https://rixapi.com/',
-      lightLogo: '/assets/partner/rixapi-black.png',
-      darkLogo: '/assets/partner/rixapi-white.png',
-    },
-  ];
+  const heroTitle =
+    lang === 'zh' ? (
+      <>
+        {content.title}{' '}
+        <span className="text-brand">{content.highlight}</span>{' '}
+        {(content as (typeof contentMap)['zh']).titleSuffix}
+      </>
+    ) : lang === 'en' ? (
+      <>
+        {content.title}{' '}
+        <span className="text-brand">{content.highlight}</span>.
+      </>
+    ) : (
+      <>
+        <span className="text-brand">{content.highlight}</span>{' '}
+        {(content as (typeof contentMap)['ja']).titleSuffix}
+      </>
+    );
 
   return (
     <div
@@ -269,7 +159,7 @@ export default async function Page({
       />
       <div
         aria-labelledby="home-title"
-        className="text-landing-foreground relative mx-auto flex min-h-[clamp(600px,70vh,900px)] w-full max-w-[1400px] overflow-hidden rounded-2xl border bg-origin-border"
+        className="text-landing-foreground relative mx-auto flex min-h-[clamp(480px,60vh,720px)] w-full max-w-[1400px] overflow-hidden rounded-2xl border bg-origin-border"
       >
         <Hero>
           <p className="border-brand/50 text-brand w-fit rounded-full border p-2 text-xs font-medium">
@@ -279,11 +169,11 @@ export default async function Page({
             id="home-title"
             className="leading-tighter my-8 text-4xl font-medium text-balance xl:mb-12 xl:text-5xl"
           >
-            {content.title}
-            <br />
-            {content.subtitle}{' '}
-            <span className="text-brand">{content.highlight}</span>.
+            {heroTitle}
           </h1>
+          <p className="text-fd-muted-foreground mb-8 max-w-2xl text-lg leading-relaxed">
+            {content.description}
+          </p>
           <div className="flex w-fit flex-row flex-wrap items-center justify-center gap-4">
             <Link
               href={getLocalePath(lang, 'docs')}
@@ -293,22 +183,12 @@ export default async function Page({
               {content.getStarted}
             </Link>
             <a
-              href={gatewayRepoUrl}
+              href={productSiteUrl}
               target="_blank"
               rel="noreferrer noopener"
               className="bg-fd-secondary text-fd-secondary-foreground hover:bg-fd-accent inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 font-medium tracking-tight transition-colors max-sm:text-sm"
             >
-              <Github className="size-4" />
-              GitHub
-            </a>
-            <a
-              href={upstreamGatewayRepoUrl}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="bg-fd-secondary text-fd-secondary-foreground hover:bg-fd-accent inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 font-medium tracking-tight transition-colors max-sm:text-sm"
-            >
-              <AtomGitIcon />
-              Upstream
+              {lang === 'zh' ? '打开控制台' : lang === 'ja' ? 'コンソール' : 'Open console'}
             </a>
           </div>
         </Hero>
@@ -339,7 +219,7 @@ export default async function Page({
             <ArrowRight className="size-4" aria-hidden />
           </Link>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {topicRoutes.map(({ path, icon: Icon }, index) => (
             <Link
               key={path}
@@ -360,186 +240,7 @@ export default async function Page({
             </Link>
           ))}
         </div>
-        {lang === 'zh' && (
-          <div className="from-brand/8 to-fd-background mt-4 flex flex-wrap items-center justify-between gap-5 rounded-2xl border bg-gradient-to-r p-6">
-            <div className="flex items-start gap-4">
-              <Blocks className="text-brand mt-1 size-6 shrink-0" aria-hidden />
-              <div>
-                <h3 className="font-semibold">用任务插件，扩展更多模型能力</h3>
-                <p className="text-fd-muted-foreground mt-2 text-sm leading-6">
-                  浏览图片、视频与音乐生成插件，查看安装指南与开发文档。
-                </p>
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-4 text-sm font-medium">
-              <Link
-                href="/zh/plugins"
-                className="text-brand inline-flex items-center gap-2"
-              >
-                浏览插件市场
-                <ArrowRight className="size-4" aria-hidden />
-              </Link>
-              <Link href="/zh/docs/plugins" className="hover:text-brand">
-                插件文档
-              </Link>
-            </div>
-          </div>
-        )}
-        <div className="from-brand/8 to-fd-background mt-4 flex flex-wrap items-center justify-between gap-5 rounded-2xl border bg-gradient-to-r p-6">
-          <div className="flex items-start gap-4">
-            <Image
-              src="/assets/astrlink/logo.svg"
-              alt=""
-              width={40}
-              height={40}
-              className="size-10 shrink-0"
-              loading="lazy"
-              unoptimized
-            />
-            <div>
-              <p className="text-fd-muted-foreground text-xs font-medium">
-                {content.astrlink.label}
-              </p>
-              <h3 className="mt-1 font-semibold">{content.astrlink.title}</h3>
-              <p className="text-fd-muted-foreground mt-2 text-sm leading-6">
-                {content.astrlink.description}
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-wrap gap-4 text-sm font-medium">
-            {/* rel omits noreferrer so AstrLink can see visits come from the docs. */}
-            <a
-              href={astrlinkUrl(lang)}
-              target="_blank"
-              rel="noopener"
-              className="text-brand inline-flex items-center gap-2"
-            >
-              {content.astrlink.website}
-              <ArrowUpRight className="size-4" aria-hidden />
-            </a>
-            <a
-              href={astrlinkRepoUrl}
-              target="_blank"
-              rel="noopener"
-              className="hover:text-brand"
-            >
-              GitHub
-            </a>
-          </div>
-        </div>
       </section>
-
-      {/* Partners Section */}
-      <section className="mx-auto mt-16 border-t pt-12 text-center">
-        <h2 className="text-xl font-semibold">{content.partnersTitle}</h2>
-        <p className="text-fd-muted-foreground mt-2 text-sm">
-          {content.partnersSubtitle}
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10">
-          {partners.map((partner) => (
-            <a
-              key={partner.name}
-              href={partner.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="opacity-70 grayscale-[50%] transition-all duration-300 hover:opacity-100 hover:grayscale-0"
-            >
-              <Image
-                src={partner.logo}
-                alt={partner.name}
-                width={72}
-                height={60}
-                className="h-[50px] w-auto md:h-[60px]"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* Sponsor Partners Section */}
-      <section className="mx-auto mt-16 max-w-[1400px] px-4 text-center">
-        <h2 className="text-xl font-semibold">
-          {content.sponsorPartnersTitle}
-        </h2>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10">
-          {sponsorPartners.map((partner) => (
-            <a
-              key={partner.name}
-              href={partner.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="opacity-70 grayscale-[50%] transition-all duration-300 hover:opacity-100 hover:grayscale-0"
-            >
-              <Image
-                src={partner.lightLogo}
-                alt={partner.name}
-                width={120}
-                height={60}
-                className="block h-[50px] w-auto md:h-[60px] dark:hidden"
-                loading="lazy"
-                decoding="async"
-              />
-              <Image
-                src={partner.darkLogo}
-                alt={partner.name}
-                width={120}
-                height={60}
-                className="hidden h-[50px] w-auto md:h-[60px] dark:block"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          ))}
-        </div>
-      </section>
-
-      {/* Development Contributors Section */}
-      <section className="mx-auto mt-16 max-w-[1400px] px-4 text-center">
-        <h2 className="text-xl font-semibold">
-          {content.devContributorsTitle}
-        </h2>
-        <div className="mt-8 flex justify-center">
-          <a
-            href={`${gatewayRepoUrl}/graphs/contributors`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src={`https://contrib.rocks/image?repo=${gatewayRepoSlug}`}
-              alt="Development Contributors"
-              loading="lazy"
-              decoding="async"
-              className="max-w-full"
-            />
-          </a>
-        </div>
-      </section>
-
-      {/* Documentation Contributors Section */}
-      <section className="mx-auto mt-16 max-w-[1400px] px-4 text-center">
-        <h2 className="text-xl font-semibold">
-          {content.docsContributorsTitle}
-        </h2>
-        <div className="mt-8 flex justify-center">
-          <a
-            href={`https://github.com/${docsRepoSlug}/graphs/contributors`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src={`https://contrib.rocks/image?repo=${docsRepoSlug}`}
-              alt="Documentation Contributors"
-              loading="lazy"
-              decoding="async"
-              className="max-w-full"
-            />
-          </a>
-        </div>
-      </section>
-
-      <AntifraudDialog lang={lang} />
     </div>
   );
 }

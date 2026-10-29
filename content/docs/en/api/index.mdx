@@ -1,6 +1,6 @@
 ---
 title: API Reference
-description: Ownapi Complete API Documentation
+description: OpenAI-compatible APIs on the Ownapi hosted gateway (ownapi.dev)
 ---
 
 import { Card, Cards } from 'fumadocs-ui/components/card';
@@ -16,211 +16,92 @@ import {
   Image,
   Video,
   FileQuestion,
-  Server,
-  SlidersHorizontal,
-  UserCheck,
-  Users,
-  KeyRound,
-  Link2,
-  Network,
-  Blocks,
-  Key,
-  Ticket,
-  CreditCard,
-  ScrollText,
-  ChartBar,
-  ListTodo,
-  FolderKanban,
-  Store,
-  ShieldAlert,
 } from 'lucide-react';
 
-## Overview
+## Calling the API
 
-Ownapi provides a complete set of RESTful API interfaces, categorized into **AI Model APIs** and **Management APIs**. You can use these interfaces to invoke AI capabilities and perform system management functions.
+All AI model endpoints use **https://ownapi.dev/v1** with **Bearer** authentication:
 
-<Callout title="Online Debugging">
-  You can visit the [Apifox Playground](https://apifox.ownapi.dev/) to test and debug API interfaces online, or browse the API documentation below.
+```http
+Authorization: Bearer YOUR_API_KEY
+Content-Type: application/json
+```
+
+Create keys in the [ownapi.dev](https://ownapi.dev) console. Paths below are relative to the base URL (e.g. Chat is `POST /v1/chat/completions`).
+
+<Callout title="Note">
+  Interactive pages on this site use the configured gateway URL; use `https://ownapi.dev/v1` in your own clients.
 </Callout>
 
-## AI Model APIs
+## AI model endpoints
 
-AI Model APIs provide access to various AI capabilities and are compatible with the OpenAI API format.
+OpenAI-compatible shapes for chat, embeddings, images, audio, and more.
 
 <Cards>
   <Card
     icon={<List />}
-    title="Model List"
-    description="Retrieve a list of available models."
+    title="Models"
+    description="GET /v1/models"
     href="/en/docs/api/ai-model/models/list/listmodels"
   />
   <Card
     icon={<MessageSquare />}
     title="Chat"
-    description="Conversation completion interface."
+    description="POST /v1/chat/completions"
     href="/en/docs/api/ai-model/chat/openai/createchatcompletion"
   />
   <Card
     icon={<FileText />}
     title="Completions"
-    description="Traditional text completion interface."
+    description="POST /v1/completions"
     href="/en/docs/api/ai-model/completions/createcompletion"
   />
   <Card
     icon={<Database />}
     title="Embeddings"
-    description="Text embedding vector generation interface."
+    description="POST /v1/embeddings"
     href="/en/docs/api/ai-model/embeddings/createembedding"
   />
   <Card
     icon={<Search />}
     title="Rerank"
-    description="Document reranking interface."
+    description="POST /v1/rerank"
     href="/en/docs/api/ai-model/rerank/creatererank"
   />
   <Card
     icon={<ShieldCheck />}
     title="Moderations"
-    description="Content safety moderation interface. The content safety moderation interface is one of the compliance tools and does not replace the deployer's own safety governance obligations and upstream content policy requirements. Public-facing services should establish abuse reporting, log auditing, and handling mechanisms."
+    description="POST /v1/moderations"
     href="/en/docs/api/ai-model/moderations/createmoderation"
   />
   <Card
     icon={<Headphones />}
     title="Audio"
-    description="Speech recognition and speech synthesis interfaces."
+    description="Speech and transcription"
     href="/en/docs/api/ai-model/audio/openai/createspeech"
   />
   <Card
     icon={<Radio />}
-    title="Real-time Speech"
-    description="Real-time audio streaming interface."
+    title="Realtime"
+    description="Realtime sessions"
     href="/en/docs/api/ai-model/realtime/createrealtimesession"
   />
   <Card
     icon={<Image />}
     title="Images"
-    description="AI image generation interface."
+    description="Generation and edits"
     href="/en/docs/api/ai-model/images/openai/post-v1-images-generations"
   />
   <Card
     icon={<Video />}
-    title="Video"
-    description="AI video generation interface."
+    title="Videos"
+    description="Video generation tasks"
     href="/en/docs/api/ai-model/videos/sora/createvideo"
   />
   <Card
     icon={<FileQuestion />}
     title="Unimplemented"
-    description="Placeholder interface, not yet implemented."
+    description="Placeholder endpoints"
     href="/en/docs/api/ai-model/unimplemented/files/listfiles"
-  />
-</Cards>
-
-## Management APIs
-
-Management APIs are used for backend operations such as system configuration, user management, and business management.
-
-<Cards>
-  <Card
-    icon={<Server />}
-    title="System"
-    description="System information and status interface."
-    href="/en/docs/api/management/system/status-get"
-  />
-  <Card
-    icon={<SlidersHorizontal />}
-    title="System Settings"
-    description="System configuration management interface."
-    href="/en/docs/api/management/system-settings/option-get"
-  />
-  <Card
-    icon={<UserCheck />}
-    title="User Authentication"
-    description="User login, registration, password management, and other interfaces."
-    href="/en/docs/api/management/user-auth/user-login-post"
-  />
-  <Card
-    icon={<Users />}
-    title="User Management"
-    description="User information management interface."
-    href="/en/docs/api/management/user-management/user-self-get"
-  />
-  <Card
-    icon={<KeyRound />}
-    title="Two-Factor Authentication"
-    description="2FA Two-Factor Authentication interface."
-    href="/en/docs/api/management/two-factor-auth/user-2fa-status-get"
-  />
-  <Card
-    icon={<Link2 />}
-    title="OAuth"
-    description="Third-party OAuth login interface."
-    href="/en/docs/api/management/oauth/oauth-github-get"
-  />
-  <Card
-    icon={<Network />}
-    title="Channel Management"
-    description="API channel configuration management interface."
-    href="/en/docs/api/management/channel-management/channel-get"
-  />
-  <Card
-    icon={<Blocks />}
-    title="Model Management"
-    description="Model configuration management interface."
-    href="/en/docs/api/management/model-management/models-get"
-  />
-  <Card
-    icon={<Key />}
-    title="Token Management"
-    description="API token management interface."
-    href="/en/docs/api/management/token-management/token-get"
-  />
-  <Card
-    icon={<Ticket />}
-    title="Redemption Codes"
-    description="Redemption code management interface."
-    href="/en/docs/api/management/redemption/redemption-get"
-  />
-  <Card
-    icon={<CreditCard />}
-    title="Payment"
-    description="Payment and top-up interfaces."
-    href="/en/docs/api/management/payment/user-topup-info-get"
-  />
-  <Card
-    icon={<ScrollText />}
-    title="Logs"
-    description="Usage log query interface."
-    href="/en/docs/api/management/logs/log-get"
-  />
-  <Card
-    icon={<ChartBar />}
-    title="Statistics"
-    description="Data statistics interface."
-    href="/en/docs/api/management/statistics/data-get"
-  />
-  <Card
-    icon={<ListTodo />}
-    title="Tasks"
-    description="Asynchronous task management interface."
-    href="/en/docs/api/management/tasks/task-get"
-  />
-  <Card
-    icon={<FolderKanban />}
-    title="Groups"
-    description="User group management interface."
-    href="/en/docs/api/management/groups/group-get"
-  />
-  <Card
-    icon={<Store />}
-    title="Vendors"
-    description="Vendor management interface."
-    href="/en/docs/api/management/vendors/vendors-get"
-  />
-  <Card
-    icon={<ShieldAlert />}
-    title="Security Verification"
-    description="Security verification related interfaces."
-    href="/en/docs/api/management/security-verification/verify-status-get"
   />
 </Cards>

@@ -1,93 +1,83 @@
 ---
-title: Quick Start
-description: Deploy Ownapi, configure model channels and tokens, and make your first AI API call.
+title: Call the API
+description: Use the Ownapi hosted gateway at ownapi.dev—authentication, chat completions, models, and client integration.
 ---
 
-import { BookOpen, Bot, Boxes, Code2, Container, Handshake, Headphones, KeyRound, Network, Puzzle } from 'lucide-react';
+import { BookOpen, Bot, Code2, Headphones, KeyRound, List } from 'lucide-react';
 
-Ownapi is an open-source AI gateway and model API management system. Follow these steps to go from deployment to application integration.
+Ownapi runs a hosted AI gateway at [ownapi.dev](https://ownapi.dev). This site documents **how to call the API** as an end user, not how to self-host New API.
 
-## Start using Ownapi
+## Three steps
 
 <Cards className="sm:grid-cols-3">
   <Card
-    icon={<Boxes />}
-    title="1. Deploy your instance"
-    description="Start Ownapi with Docker, a management panel, or a cluster."
-    href="/en/docs/installation"
-  />
-  <Card
-    icon={<Network />}
-    title="2. Configure a channel"
-    description="Add a model provider, credentials, and available models."
-    href="/en/docs/guide/console/channel-management"
-  />
-  <Card
     icon={<KeyRound />}
-    title="3. Create an API token"
-    description="Create a token for your application and call the unified AI API."
-    href="/en/docs/guide/console/api-token"
+    title="1. Get an API key"
+    description="Create an access token (Bearer) in the Ownapi console."
+    href="https://ownapi.dev"
+  />
+  <Card
+    icon={<List />}
+    title="2. List models"
+    description="GET /v1/models returns model IDs available to your account."
+    href="/en/docs/api/ai-model/models/list/listmodels"
+  />
+  <Card
+    icon={<Code2 />}
+    title="3. Chat completion"
+    description="POST /v1/chat/completions—OpenAI-compatible SDKs and clients work out of the box."
+    href="/en/docs/api/ai-model/chat/openai/createchatcompletion"
   />
 </Cards>
 
-## Choose a deployment method
+## Basics
 
-<Cards>
-  <Card
-    icon={<Boxes />}
-    title="Docker Compose"
-    description="Run Ownapi alongside services such as MySQL and Redis."
-    href="/en/docs/installation/deployment-methods/docker-compose-installation"
-  />
-  <Card
-    icon={<Container />}
-    title="Docker single container"
-    description="Get started with a Docker image for evaluation or small deployments."
-    href="/en/docs/installation/deployment-methods/docker-installation"
-  />
-</Cards>
+| Item | Value |
+| --- | --- |
+| API base URL | `https://ownapi.dev/v1` |
+| Auth | `Authorization: Bearer <your API key>` |
+| Format | HTTPS REST + JSON; Chat/Completions follow the OpenAI API shape |
 
-Need a management panel, cluster, or local development environment? See [all deployment methods](/en/docs/installation).
+### cURL (non-streaming)
 
-## Explore the documentation
+```bash
+curl https://ownapi.dev/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{
+    "model": "gpt-4o-mini",
+    "messages": [{"role": "user", "content": "Hello"}]
+  }'
+```
+
+### List models
+
+```bash
+curl https://ownapi.dev/v1/models \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+Replace `YOUR_API_KEY` with your token. Use model IDs from `/v1/models`.
+
+## Next
 
 <Cards>
   <Card
     icon={<BookOpen />}
-    title="User guide"
-    description="Manage your instance, channels, tokens, and models."
-    href="/en/docs/guide/home"
-  />
-  <Card
-    icon={<Code2 />}
     title="API reference"
-    description="Find request parameters, response formats, and examples."
+    description="Chat, embeddings, images, audio, and more."
     href="/en/docs/api"
   />
   <Card
     icon={<Bot />}
     title="AI applications"
-    description="Connect AI clients and development tools."
+    description="Configure Base URL and keys in popular clients."
     href="/en/docs/apps"
-  />
-  <Card
-    icon={<Puzzle />}
-    title="Skills"
-    description="Use and manage Ownapi with AI coding agents."
-    href="/en/docs/skills"
   />
   <Card
     icon={<Headphones />}
     title="Help & support"
-    description="Find answers, troubleshoot, and join the community."
+    description="FAQ and troubleshooting."
     href="/en/docs/support"
   />
-  <Card
-    icon={<Handshake />}
-    title="Business cooperation"
-    description="Learn about collaboration and commercial services."
-    href="/en/docs/business"
-  />
 </Cards>
-
-Explore the project and ecosystem on the [Ownapi official website (ownapi.dev)](https://ownapi.dev/) or [Ownapi official website (ownapi.dev)](https://ownapi.dev/).
