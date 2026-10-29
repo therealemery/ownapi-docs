@@ -8,8 +8,8 @@ import { Callout } from 'fumadocs-ui/components/callout';
 <Callout title="契约状态与权威来源">
   当前仓库将 API v1 标记为尚未正式发布的契约。新增能力仍可能沿用 `apiVersion:
   1`，旧宿主会拒绝不认识的字段。以下为中文参考，完整签名与校验结构以
-  [v1.d.ts](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.d.ts)、[v1.schema.json](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.schema.json)
-  和[原始规范](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.md)为准。
+  [v1.d.ts](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.d.ts)、[v1.schema.json](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.schema.json)
+  和[原始规范](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.md)为准。
 </Callout>
 
 ## Manifest：`meta`
@@ -29,7 +29,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 | `sortPriority`                  | integer              | 展示排序，值越大越靠前；不影响路由优先级                            |
 | `baseUrl`                       | string               | 类型 61 渠道可使用的默认上游地址                                    |
 | `allowedHosts`                  | string[]             | 渠道主机之外允许访问的额外主机，可带端口                            |
-| `upstreams` | `("vendor" \| "new_api")[]` | 可选上游类型；默认支持厂商，声明 `new_api` 才能绑定类型 60 New API 渠道 |
+| `upstreams` | `("vendor" \| "new_api")[]` | 可选上游类型；默认支持厂商，声明 `new_api` 才能绑定类型 60 Ownapi 渠道 |
 | `auth`                          | string / object      | `none`、`api_key`、`vertex_oauth` 或规范定义的认证对象              |
 | `channelTypes`                  | number[]             | 可适配的旧渠道类型；第三方插件通常使用类型 61 的 key 绑定           |
 | `routes`                        | NativeRoute[]        | 插件自有原生路由                                                    |
@@ -83,7 +83,7 @@ description: {
 | 字段                      | 含义                               |
 | ------------------------- | ---------------------------------- |
 | `taskId`                  | 上游任务 ID                        |
-| `publicTaskId`            | New API 公开任务 ID                |
+| `publicTaskId`            | Ownapi 公开任务 ID                |
 | `model` / `upstreamModel` | 用户模型名与渠道映射后的上游模型名 |
 | `action`                  | 已持久化的标准化操作               |
 | `data`                    | 当前 `Task.Data` 快照              |
@@ -104,7 +104,7 @@ description: {
 
 ### 上游类型与网关互联
 
-`meta.upstreams` 只允许不重复的 `vendor` 和 `new_api`。所有插件默认支持 `vendor`；声明 `new_api` 表示驱动也能访问安装了同一插件的上游 New API 网关。类型 60 渠道可通过 `setting.task_plugin_key` / `setting.task_extend_plugin_keys` 绑定插件；`channelTypes` 不能声明 60 或 61，同一旧渠道类型仍只能由一个插件拥有。
+`meta.upstreams` 只允许不重复的 `vendor` 和 `new_api`。所有插件默认支持 `vendor`；声明 `new_api` 表示驱动也能访问安装了同一插件的上游 Ownapi 网关。类型 60 渠道可通过 `setting.task_plugin_key` / `setting.task_extend_plugin_keys` 绑定插件；`channelTypes` 不能声明 60 或 61，同一旧渠道类型仍只能由一个插件拥有。
 
 宿主在 `DriverContext`、`TaskQueryContext`、`BatchQueryContext` 和 `buildContentRequest` 上下文中提供 `ctx.upstream`，值为 `{ kind: "vendor" }` 或 `{ kind: "new_api" }`；字段缺失时按 `vendor` 处理。对于 `new_api`，驱动使用插件自己的原生路由，例如 `/doubao/api/v3/...`、`/ali/api/v1/...`，不能直接照搬厂商路径。已有路径与原生路由相同或只使用宿主协议时，无需添加前缀。
 

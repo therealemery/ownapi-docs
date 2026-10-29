@@ -14,10 +14,11 @@ import { LLMCopyButton, ViewOptions } from '@/components/page-actions';
 import { onRateAction } from '@/lib/github';
 import { i18n } from '@/lib/i18n';
 import { createPageMetadata } from '@/lib/metadata';
+import { docsRepoName, docsRepoOwner } from '@/lib/brand';
 
 // GitHub repository info for source links
-const owner = 'QuantumNous';
-const repo = 'new-api-docs-v1';
+const owner = docsRepoOwner;
+const repo = docsRepoName;
 const branch = 'main';
 
 export default async function Page(props: {

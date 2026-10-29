@@ -2,6 +2,11 @@ import Link from 'next/link';
 import { OfficialSites } from '@/components/official-sites';
 import { Github, MessageCircle } from 'lucide-react';
 import { getLocalePath } from '@/lib/i18n';
+import {
+  docsRepoUrl,
+  gatewayRepoUrl,
+  productSiteUrl,
+} from '@/lib/brand';
 import { astrlinkUrl, moejsRepoUrl } from '@/lib/ecosystem';
 
 interface FooterProps {
@@ -38,12 +43,12 @@ const ProductHuntIcon = (
 const socialLinks: { name: string; href: string; icon: React.ReactNode }[] = [
   {
     name: 'GitHub',
-    href: 'https://github.com/QuantumNous/new-api',
+    href: gatewayRepoUrl,
     icon: <Github className="size-4" />,
   },
   {
-    name: 'AtomGit',
-    href: 'https://atomgit.com/QuantumNous/new-api',
+    name: 'Docs',
+    href: docsRepoUrl,
     icon: AtomGitIcon,
   },
   {
@@ -57,19 +62,13 @@ const socialLinks: { name: string; href: string; icon: React.ReactNode }[] = [
     icon: <MessageCircle className="size-4" />,
   },
   {
-    name: 'Product Hunt',
-    href: 'https://www.producthunt.com/products/new-api',
+    name: 'Website',
+    href: productSiteUrl,
     icon: ProductHuntIcon,
   },
 ];
 
-const beianLinks: { text: string; href: string }[] = [
-  { text: '浙ICP备2025190188号-2', href: 'https://beian.miit.gov.cn/' },
-  {
-    text: '浙公网安备33010602014019号',
-    href: 'http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602014019',
-  },
-];
+const beianLinks: { text: string; href: string }[] = [];
 
 // External links (same labels across all languages)
 const relatedProjects: { label: string; href: string }[] = [
@@ -166,7 +165,7 @@ const translations: Record<string, FooterTranslation> = {
       relatedProjects: '相关项目',
       friendshipLinks: '友情链接',
     },
-    copyright: '© 2025 锟腾科技. All Rights Reserved.',
+    copyright: '© 2026 Ownapi. All Rights Reserved.',
   },
   en: {
     sections: {
@@ -190,7 +189,7 @@ const translations: Record<string, FooterTranslation> = {
       relatedProjects: 'Related Projects',
       friendshipLinks: 'Friendship Links',
     },
-    copyright: '© 2025 QuantumNous. All Rights Reserved.',
+    copyright: '© 2026 Ownapi. All Rights Reserved.',
   },
   ja: {
     sections: {
@@ -214,7 +213,7 @@ const translations: Record<string, FooterTranslation> = {
       relatedProjects: '関連プロジェクト',
       friendshipLinks: '友好リンク',
     },
-    copyright: '© 2025 QuantumNous. All Rights Reserved.',
+    copyright: '© 2026 Ownapi. All Rights Reserved.',
   },
 };
 

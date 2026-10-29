@@ -9,7 +9,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 插件是单文件、同步的 ECMAScript 模块。不能使用 `import`、`require`、`async`、`await`、`fetch`、文件系统或环境变量。请求网络、解析认证、保存任务和结算由宿主完成。
 
-当前插件 API v1 仍在演进。以[类型声明](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.d.ts)和 [JSON Schema](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.schema.json)为契约依据，并在目标宿主版本中验证。
+当前插件 API v1 仍在演进。以[类型声明](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.d.ts)和 [JSON Schema](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.schema.json)为契约依据，并在目标宿主版本中验证。
 
 ## 最小完整示例
 
@@ -115,7 +115,7 @@ export function extractUsage(ctx) {
 4. 宿主周期性调用 `buildQueryRequest` 和 `parseTaskResult`，直到任务终态或失败清理。
 5. 宿主读取用量事实，按保存的计费配置完成结算。
 
-`TaskQueryContext.taskId` 是上游 ID，`publicTaskId` 是 New API 公开 ID；轮询上下文没有 `requestBody`。需要跨轮询保留的数据使用 `state`，不能依赖模块全局变量。
+`TaskQueryContext.taskId` 是上游 ID，`publicTaskId` 是 Ownapi 公开 ID；轮询上下文没有 `requestBody`。需要跨轮询保留的数据使用 `state`，不能依赖模块全局变量。
 
 `Task.Data` 保存最近一次上游快照；每轮成功解析会更新它。未知状态返回 `UNKNOWN`，不要默认成 `IN_PROGRESS`，否则异常任务可能持续占用资源。
 
@@ -123,7 +123,7 @@ export function extractUsage(ctx) {
 
 ## 编译与 fixture 测试
 
-使用包含插件 CLI 的 New API 可执行文件验证源码：
+使用包含插件 CLI 的 Ownapi 可执行文件验证源码：
 
 ```bash
 new-api plugin lint plugin.js
@@ -209,6 +209,6 @@ Root 可以在已安装插件详情的「沙盒」（Sandbox）中选择钩子�
 - **宿主协议**：声明 `meta.protocols`，为 Image、Video 或 Responses 实现协议钩子。
 - **产物**：成对实现 `listArtifacts` 和 `buildContentRequest`。
 - **提交即完成或上游 SSE**：按能力声明实现即时终态、SSE 快照或增量事件钩子。
-- **网关互联**：实现厂商与 New API 上游路径、提交解析和查询后，再声明 `upstreams: ["new_api"]`；覆盖 `ctx.upstream.kind` 的两种取值和缺失字段回退。
+- **网关互联**：实现厂商与 Ownapi 上游路径、提交解析和查询后，再声明 `upstreams: ["new_api"]`；覆盖 `ctx.upstream.kind` 的两种取值和缺失字段回退。
 
 详细约束见 [API v1 参考](/zh/docs/plugins/api-reference)。准备发布时，按[发布规范](/zh/docs/plugins/publishing)添加版本、日志并生成索引。

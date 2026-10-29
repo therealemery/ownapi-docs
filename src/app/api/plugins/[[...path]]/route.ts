@@ -7,7 +7,7 @@ import {
   pluginIdSchema,
 } from '@/lib/plugins/schema';
 
-const siteSchema = z.enum(['pro', 'ai']);
+const siteSchema = z.enum(['ownapi', 'pro', 'ai']);
 
 function failure(message: string, status: number) {
   return Response.json(
@@ -24,7 +24,7 @@ export async function GET(
   context: { params: Promise<{ path?: string[] }> }
 ) {
   const url = new URL(request.url);
-  const site = siteSchema.safeParse(url.searchParams.get('site') ?? 'ai');
+  const site = siteSchema.safeParse(url.searchParams.get('site') ?? 'ownapi');
   if (!site.success) return failure('不支持的官网域名。', 400);
 
   const { path = [] } = await context.params;
@@ -47,7 +47,7 @@ export async function GET(
 
   try {
     const response = await fetch(upstream, {
-      headers: { Accept: 'application/json', 'User-Agent': 'new-api-docs-v1' },
+      headers: { Accept: 'application/json', 'User-Agent': 'ownapi-docs' },
       redirect: 'error',
       signal: AbortSignal.timeout(10_000),
       next: { revalidate: 300 },

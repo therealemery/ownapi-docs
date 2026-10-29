@@ -8,7 +8,7 @@ import { OfficialPluginLinks } from '@/components/plugins/official-links';
 
 ## Preparation
 
-Log in to your New API instance as **Root (Super Administrator)**, open "Task Plugins" (`/task-plugins`). Confirm that your deployment version includes the task plugin feature, and enable the main task plugin switch at the top of the page.
+Log in to your Ownapi instance as **Root (Super Administrator)**, open "Task Plugins" (`/task-plugins`). Confirm that your deployment version includes the task plugin feature, and enable the main task plugin switch at the top of the page.
 
 Regular API keys are used for model calls and cannot be used to install plugins. If the page is not visible or returns 403, please check your account role and deployment version first.
 
@@ -30,17 +30,18 @@ Marketplace installation uses the hash declared in the index to verify the sourc
 
 1. Open the [documentation site plugin marketplace](/en/plugins).
 2. Click "Copy Installation URL" on the plugin card or details page.
-3. Return to your New API instance, select "Upload Plugin", paste the URL in "Import from URL" and read the source code.
+3. Return to your Ownapi instance, select "Upload Plugin", paste the URL in "Import from URL" and read the source code.
 4. After checking the plugin information and source code, save it and confirm that the plugin is enabled.
 
-What is copied is the `plugin.js` URL hosted by the official website. `docs.newapi.pro` uses `www.newapi.pro`, `docs.newapi.ai` uses `www.newapi.ai`; language does not affect domain selection.
+What is copied is the `plugin.js` URL hosted on the product site. When you browse this documentation at `docs.ownapi.dev`, installation URLs use `ownapi.dev`; language does not affect domain selection.
 
 The installation URL format is:
 
 ```text
-https://www.newapi.pro/api/v1/plugins/<plugin-key>/plugin.js
-https://www.newapi.ai/api/v1/plugins/<plugin-key>/plugin.js
+https://ownapi.dev/api/v1/plugins/<plugin-key>/plugin.js
 ```
+
+Instances forked from upstream New API may still use `www.newapi.ai` or `www.newapi.pro` for plugin hosting; match the domain to your deployment.
 
 These unfixed-version URLs retrieve the current latest version from the official website upon import, and **will not automatically update already installed plugins**. When a specific version is required, prioritize selecting the version within the instance's marketplace; viewing historical update logs will not change the latest version URL provided by the documentation site's copy button.
 
@@ -55,7 +56,7 @@ The instance defaults to providing two sources: official website and GitHub. A m
 The above official market source addresses will be selected based on the current documentation site domain. The general GitHub source is:
 
 ```text
-https://raw.githubusercontent.com/QuantumNous/new-api-plugins/main/index.json
+https://raw.githubusercontent.com/therealemery/new-api-plugins/main/index.json
 ```
 
 When adding a third-party source, ensure that the index and its referenced plugin files are accessible. Browser import also requires the source site to allow cross-origin reading; if unable to download, check network, CORS, and file size. The current plugin source code limit is **1 MiB**.

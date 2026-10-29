@@ -53,7 +53,7 @@ test('search, official copy URL, detail tabs and keyboard dismissal', async ({
     .poll(() =>
       page.evaluate(() => (window as Window & { copied?: string }).copied)
     )
-    .toBe('https://www.newapi.ai/api/v1/plugins/demo/plugin.js');
+    .toBe('https://ownapi.dev/api/v1/plugins/demo/plugin.js');
   const trigger = page.getByRole('button', { name: '查看 Demo Video 详情' });
   await trigger.click();
   const dialog = page.getByRole('dialog');
@@ -257,7 +257,7 @@ test('mobile dark theme, icon failure, clipboard failure and modal scrolling', a
     });
     return true;
   });
-  await page.route('https://www.newapi.ai/**', (route) =>
+  await page.route('https://ownapi.dev/**', (route) =>
     route.fulfill({ status: 404, body: '' })
   );
   await page.goto('/zh/plugins');
@@ -265,7 +265,7 @@ test('mobile dark theme, icon failure, clipboard failure and modal scrolling', a
   await page.getByRole('button', { name: '复制安装地址', exact: true }).click();
   await expect(
     page.getByRole('textbox', { name: '官网安装地址', exact: true })
-  ).toHaveValue('https://www.newapi.ai/api/v1/plugins/demo/plugin.js');
+  ).toHaveValue('https://ownapi.dev/api/v1/plugins/demo/plugin.js');
   await expect(
     page.getByRole('article').getByText('D', { exact: true })
   ).toBeVisible();

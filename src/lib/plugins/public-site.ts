@@ -1,21 +1,26 @@
+import { productSiteUrl } from '@/lib/brand';
+
 export const OFFICIAL_PLUGIN_SITES = {
+  ownapi: productSiteUrl,
   pro: 'https://www.newapi.pro',
   ai: 'https://www.newapi.ai',
 } as const;
 
 export type PluginSite = keyof typeof OFFICIAL_PLUGIN_SITES;
 
-/** Select by hostname, never by UI language. Previews use the international site. */
+/** Select by hostname, never by UI language. Previews default to Ownapi. */
 export function pluginSiteFromHostname(hostname: string): PluginSite {
   try {
     const host = new URL(`https://${hostname}`).hostname
       .toLowerCase()
       .replace(/\.$/, '');
+    if (host === 'ownapi.dev' || host.endsWith('.ownapi.dev')) return 'ownapi';
     if (host === 'newapi.pro' || host.endsWith('.newapi.pro')) return 'pro';
+    if (host === 'newapi.ai' || host.endsWith('.newapi.ai')) return 'ai';
   } catch {
     // An absent/invalid host uses the same default as a local preview.
   }
-  return 'ai';
+  return 'ownapi';
 }
 
 export function officialPluginInstallUrl(

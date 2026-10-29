@@ -1,22 +1,22 @@
 ---
 title: 聊天应用集成
-description: 快速将 New API 配置导入到各类 AI 聊天应用中
+description: 快速将 Ownapi 配置导入到各类 AI 聊天应用中
 ---
 
 import { Callout } from 'fumadocs-ui/components/callout';
 
-- New API 支持快速导入配置到多种 AI 聊天应用，方便测试和日常使用。
+- Ownapi 支持快速导入配置到多种 AI 聊天应用，方便测试和日常使用。
 
 ## 聊天集成方式
 
-- New API 的聊天集成有三种方式：
+- Ownapi 的聊天集成有三种方式：
 1. **聊天预设一键导入配置**
 2. **API密钥一键导入配置**
 3. **手动配置聊天应用**
 
 ### 使用前准备
 
-1. 登录 New API，并在「API 密钥」页面创建一个密钥。
+1. 登录 Ownapi，并在「API 密钥」页面创建一个密钥。
 2. 确认密钥处于启用状态，额度充足，密钥状态未过期，并且当前 IP、分组和模型限制允许本次调用。
 
 <Callout type="info">
@@ -50,11 +50,11 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 对于不支持一键导入的应用，可以手动配置：
 
-- 从 New API 获取以下配置信息：<br/>
+- 从 Ownapi 获取以下配置信息：<br/>
 
 | 配置项 | 说明 | 获取位置 |
 | --- | --- | --- |
-| API Base URL | API 接口地址 | New API地址，例如 `https://api.example.com/v1` |
+| API Base URL | API 接口地址 | Ownapi地址，例如 `https://api.example.com/v1` |
 | API Key | API 密钥 | API 密钥页面 |
 | 可用模型 | 支持的模型列表 | 模型广场筛选查看密钥所在分组下的可用模型 |
 
@@ -66,7 +66,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 4. 保存配置后即可使用
 
 <Callout type="info">
-  1. 大多数支持 OpenAI API 兼容接口的应用都可以通过填写自定义 API 地址的方式接入 New API。
+  1. 大多数支持 OpenAI API 兼容接口的应用都可以通过填写自定义 API 地址的方式接入 Ownapi。
   2. 如果应用要求完整端点，则使用 `https://api.example.com/v1/chat/completions`，看应用具体配置说明补充路径。
   3. **目前已验证支持的AI应用列表及配置指南请参阅[AI应用](/zh/docs/apps)页面。**
 </Callout>

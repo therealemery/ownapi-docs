@@ -9,7 +9,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 プラグインは単一ファイルで同期的なECMAScriptモジュールです。`import`、`require`、`async`、`await`、`fetch`、ファイルシステム、または環境変数を使用することはできません。ネットワークリクエスト、認証の解析、タスクの保存、および決済はホストによって行われます。
 
-現在のプラグイン API v1 はまだ進化中です。[型宣言](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.d.ts)と [JSON Schema](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.schema.json)を契約の根拠とし、対象のホストバージョンで検証されます。
+現在のプラグイン API v1 はまだ進化中です。[型宣言](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.d.ts)と [JSON Schema](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.schema.json)を契約の根拠とし、対象のホストバージョンで検証されます。
 
 ## 最小限の完全な例
 
@@ -114,7 +114,7 @@ export function extractUsage(ctx) {
 4. ホストは、タスクが最終状態になるか、失敗してクリーンアップされるまで、`buildQueryRequest` と `parseTaskResult` を定期的に呼び出します。
 5. ホストは使用量データを読み取り、保存された課金設定に従って決済を完了します。
 
-`TaskQueryContext.taskId` はアップストリームIDであり、`publicTaskId` は New API の公開IDです。ポーリングコンテキストには `requestBody` がありません。ポーリング間で保持する必要があるデータは `state` を使用し、モジュールのグローバル変数に依存してはいけません。
+`TaskQueryContext.taskId` はアップストリームIDであり、`publicTaskId` は Ownapi の公開IDです。ポーリングコンテキストには `requestBody` がありません。ポーリング間で保持する必要があるデータは `state` を使用し、モジュールのグローバル変数に依存してはいけません。
 
 `Task.Data` は最新のアップストリームスナップショットを保存します。各ポーリングの成功解析で更新されます。不明なステータスは `UNKNOWN` を返し、`IN_PROGRESS` をデフォルトにしないでください。そうしないと、異常なタスクがリソースを継続的に占有する可能性があります。
 
@@ -122,7 +122,7 @@ export function extractUsage(ctx) {
 
 ## コンパイルとフィクスチャテスト
 
-プラグインCLIを含むNew API実行可能ファイルを使用してソースコードを検証します。
+プラグインCLIを含むOwnapi実行可能ファイルを使用してソースコードを検証します。
 
 ```bash
 new-api plugin lint plugin.js
@@ -208,6 +208,6 @@ Rootは、インストール済みのプラグイン詳細の「サンドボッ�
 - **ホストプロトコル**：`meta.protocols` を宣言し、Image、Video、Responses のプロトコルフックを実装します。
 - **成果物**：`listArtifacts` と `buildContentRequest` をペアで実装します。
 - **即時完了またはアップストリームSSE**：機能宣言に従って、即時最終状態、SSEスナップショット、または増分イベントフックを実装します。
-- **ゲートウェイ間接続**：ベンダーと New API のパス、送信結果解析、照会を実装してから `upstreams: ["new_api"]` を宣言します。`ctx.upstream.kind` の両方の値と、フィールドがない場合のフォールバックを検証します。
+- **ゲートウェイ間接続**：ベンダーと Ownapi のパス、送信結果解析、照会を実装してから `upstreams: ["new_api"]` を宣言します。`ctx.upstream.kind` の両方の値と、フィールドがない場合のフォールバックを検証します。
 
 詳細な制約については、[API v1 リファレンス](/ja/docs/plugins/api-reference)を参照してください。公開準備の際には、[公開仕様](/ja/docs/plugins/publishing)に従ってバージョン、ログを追加し、インデックスを生成してください。

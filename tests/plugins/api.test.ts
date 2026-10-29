@@ -7,7 +7,7 @@ const context = (path: string[] = []) => ({
   params: Promise.resolve({ path }),
 });
 const request = (query = '') =>
-  new Request(`https://docs.newapi.ai/api/plugins${query}`);
+  new Request(`https://docs.ownapi.dev/api/plugins${query}`);
 
 test('catalog fetch selects a fixed official origin with bounded requests and cache', async (t) => {
   const calls: {
@@ -36,7 +36,7 @@ test('catalog fetch selects a fixed official origin with bounded requests and ca
   assert.ok(calls[0].init?.signal instanceof AbortSignal);
   assert.deepEqual(calls[0].init?.headers, {
     Accept: 'application/json',
-    'User-Agent': 'new-api-docs-v1',
+    'User-Agent': 'ownapi-docs',
   });
 });
 
@@ -61,9 +61,9 @@ test('only catalog, detail and changelog paths are forwarded', async (t) => {
   assert.equal(fetchMock.mock.callCount(), 0);
 });
 
-test('detail defaults to .ai and preserves normalized usage and protocol data', async (t) => {
+test('detail defaults to Ownapi and preserves normalized usage and protocol data', async (t) => {
   t.mock.method(globalThis, 'fetch', async (input: URL) => {
-    assert.equal(input.href, 'https://www.newapi.ai/api/v1/plugins/demo');
+    assert.equal(input.href, 'https://ownapi.dev/api/v1/plugins/demo');
     return Response.json({ success: true, data: detail });
   });
   const response = await GET(request(), context(['demo']));

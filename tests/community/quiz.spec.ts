@@ -1,6 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const key = 'newapi-community-quiz-failed';
+const key = 'ownapi-community-quiz-failed';
 const path = '/zh/docs/support/community-interaction';
 const invite = 'a[href="https://discord.gg/9US8FvUCJE"]';
 
@@ -112,7 +112,7 @@ test('unavailable local storage prevents an unrecorded attempt', async ({
   await page.addInitScript(() => {
     const original = Storage.prototype.setItem;
     Storage.prototype.setItem = function (key, value) {
-      if (key.startsWith('newapi-community-quiz-failed'))
+      if (key.startsWith('ownapi-community-quiz-failed'))
         throw new DOMException('Storage unavailable', 'QuotaExceededError');
       return original.call(this, key, value);
     };

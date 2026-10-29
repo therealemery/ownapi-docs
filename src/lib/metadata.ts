@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
+import { docsSiteUrl } from '@/lib/brand';
 import { getLocalePath, i18n } from './i18n';
 
 // Set SITE_URL at build time to choose a different canonical documentation domain.
-export function resolveSiteUrl(value = 'https://docs.newapi.ai'): URL {
+export function resolveSiteUrl(value = docsSiteUrl): URL {
   const url = new URL(value);
   if (
     !['http:', 'https:'].includes(url.protocol) ||
@@ -13,7 +14,7 @@ export function resolveSiteUrl(value = 'https://docs.newapi.ai'): URL {
     url.pathname !== '/'
   ) {
     throw new Error(
-      'SITE_URL must be an absolute HTTP(S) origin, e.g. https://docs.newapi.ai'
+      `SITE_URL must be an absolute HTTP(S) origin, e.g. ${docsSiteUrl}`
     );
   }
   return url;
@@ -26,19 +27,19 @@ export const siteMetadata: Record<
   { title: string; description: string }
 > = {
   en: {
-    title: 'New API Documentation',
+    title: 'Ownapi Documentation',
     description:
-      'Deploy New API, connect AI providers, and integrate a unified API. Find installation guides, channel and token configuration, API references, and Skills.',
+      'Deploy Ownapi, connect AI providers, and integrate a unified API. Find installation guides, channel and token configuration, API references, and Skills.',
   },
   zh: {
-    title: 'New API 文档',
+    title: 'Ownapi 文档',
     description:
-      'New API 官方文档：从 Docker 部署、模型渠道与令牌配置，到统一 AI 接口调用、任务插件和 Skills，快速搭建和使用你的 AI 网关。',
+      'Ownapi 官方文档：从 Docker 部署、模型渠道与令牌配置，到统一 AI 接口调用、任务插件和 Skills，快速搭建和使用你的 AI 网关。',
   },
   ja: {
-    title: 'New API ドキュメント',
+    title: 'Ownapi ドキュメント',
     description:
-      'New API のデプロイ、AI プロバイダーの接続、統一 API の利用を解説。インストール、チャネルとトークンの設定、API リファレンス、Skills を紹介します。',
+      'Ownapi のデプロイ、AI プロバイダーの接続、統一 API の利用を解説。インストール、チャネルとトークンの設定、API リファレンス、Skills を紹介します。',
   },
 };
 
@@ -120,7 +121,7 @@ export function createMetadata(override: Metadata): Metadata {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       images: '/assets/logo.png',
-      siteName: 'New API Documentation',
+      siteName: 'Ownapi Documentation',
       type: 'website',
       ...override.openGraph,
     },

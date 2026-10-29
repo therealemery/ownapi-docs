@@ -7,8 +7,8 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 <Callout title="Contract Status and Authoritative Sources">
   This repository marks API v1 as a contract that has not yet been officially released. New capabilities may still use `apiVersion: 1`, and older hosts may reject unrecognized fields. This page summarizes the contract; the complete signature and validation structure are subject to
-  [v1.d.ts](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.d.ts), [v1.schema.json](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.schema.json)
-  and the [original specification](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.md).
+  [v1.d.ts](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.d.ts), [v1.schema.json](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.schema.json)
+  and the [original specification](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.md).
 </Callout>
 
 ## Manifest: `meta`
@@ -28,7 +28,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 | `sortPriority`                  | integer              | Display sort order, larger value means higher priority; does not affect routing priority |
 | `baseUrl`                       | string               | Default upstream address usable by channel type 61                          |
 | `allowedHosts`                  | string[]             | Additional hosts allowed to access beyond channel host, can include port    |
-| `upstreams` | `("vendor" \| "new_api")[]` | Optional upstream kinds; vendor support is implied, while `new_api` enables binding to type-60 New API channels |
+| `upstreams` | `("vendor" \| "new_api")[]` | Optional upstream kinds; vendor support is implied, while `new_api` enables binding to type-60 Ownapi channels |
 | `auth`                          | string / object      | `none`, `api_key`, `vertex_oauth` or authentication object defined by specification |
 | `channelTypes`                  | number[]             | Adaptable legacy channel types; third-party plugins typically use key binding for type 61 |
 | `routes`                        | NativeRoute[]        | Plugin's own native routes                                                  |
@@ -82,7 +82,7 @@ During polling, upstream HTTP status also participates in host determination: 40
 | Field                     | Meaning                                     |
 | ------------------------- | ------------------------------------------- |
 | `taskId`                  | Upstream task ID                            |
-| `publicTaskId`            | New API public task ID                      |
+| `publicTaskId`            | Ownapi public task ID                      |
 | `model` / `upstreamModel` | User model name and upstream model name after channel mapping |
 | `action`                  | Persisted standardized operation            |
 | `data`                    | Current `Task.Data` snapshot                |
@@ -103,7 +103,7 @@ Optional usage and artifact hooks are detected once when the plugin loads. An ex
 
 ### Upstream kinds and gateway connections
 
-`meta.upstreams` accepts unique `vendor` and `new_api` values. Every plugin implicitly supports `vendor`; `new_api` means the driver also addresses an upstream New API gateway with the same plugin installed. Type-60 channels bind plugins through `setting.task_plugin_key` / `setting.task_extend_plugin_keys`. Neither 60 nor 61 may appear in `channelTypes`, and each legacy channel type still belongs to only one plugin.
+`meta.upstreams` accepts unique `vendor` and `new_api` values. Every plugin implicitly supports `vendor`; `new_api` means the driver also addresses an upstream Ownapi gateway with the same plugin installed. Type-60 channels bind plugins through `setting.task_plugin_key` / `setting.task_extend_plugin_keys`. Neither 60 nor 61 may appear in `channelTypes`, and each legacy channel type still belongs to only one plugin.
 
 The host supplies `ctx.upstream` on `DriverContext`, `TaskQueryContext`, `BatchQueryContext`, and the `buildContentRequest` context as `{ kind: "vendor" }` or `{ kind: "new_api" }`. Treat a missing field as `vendor`. For `new_api`, construct the plugin's own native paths, such as `/doubao/api/v3/...` or `/ali/api/v1/...`, instead of copying vendor paths. No prefix change is needed when the paths already match native routes or the plugin uses only host protocols.
 

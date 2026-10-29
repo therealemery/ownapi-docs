@@ -1,18 +1,18 @@
 import { expect, test } from '@playwright/test';
 
-const origin = process.env.SITE_URL || 'https://docs.newapi.ai';
+const origin = process.env.SITE_URL || 'https://docs.ownapi.dev';
 const locales = [
-  { lang: 'zh', htmlLang: 'zh-CN', title: 'New API 文档', ogLocale: 'zh_CN' },
+  { lang: 'zh', htmlLang: 'zh-CN', title: 'Ownapi 文档', ogLocale: 'zh_CN' },
   {
     lang: 'en',
     htmlLang: 'en',
-    title: 'New API Documentation',
+    title: 'Ownapi Documentation',
     ogLocale: 'en_US',
   },
   {
     lang: 'ja',
     htmlLang: 'ja',
-    title: 'New API ドキュメント',
+    title: 'Ownapi ドキュメント',
     ogLocale: 'ja_JP',
   },
 ];
@@ -40,15 +40,13 @@ for (const { lang, htmlLang, title, ogLocale } of locales) {
       ogLocale
     );
     await expect(page.locator('link[hreflang]')).toHaveCount(4);
-    for (const domain of ['ai', 'pro']) {
-      for (const section of ['main', 'footer']) {
-        const link = page
-          .locator(`${section} a[href="https://www.newapi.${domain}/"]`)
-          .first();
-        await expect(link).toBeVisible();
-        await expect(link).not.toHaveAttribute('rel', /nofollow|sponsored|ugc/);
-        await expect(link).toContainText('New API');
-      }
+    for (const section of ['main', 'footer']) {
+      const link = page
+        .locator(`${section} a[href="https://ownapi.dev"]`)
+        .first();
+      await expect(link).toBeVisible();
+      await expect(link).not.toHaveAttribute('rel', /nofollow|sponsored|ugc/);
+      await expect(link).toContainText('Ownapi');
     }
     const data = JSON.parse(
       await page.locator('script[type="application/ld+json"]').innerText()
@@ -137,7 +135,7 @@ test('sitemap and robots use the same canonical origin and existing locales', as
   const response = await request.get('/sitemap.xml');
   expect(response.status()).toBe(200);
   const xml = await response.text();
-  expect(xml).not.toMatch(/localhost|127\.0\.0\.1|www\.newapi|vercel\.app/);
+  expect(xml).not.toMatch(/localhost|127\.0\.0\.1|vercel\.app/);
   expect(xml).toContain(`<loc>${origin}/zh/docs/plugins/installation</loc>`);
   expect(xml).not.toMatch(/\/(en|ja)\/docs\/plugins/);
   const pluginEntry = xml.match(

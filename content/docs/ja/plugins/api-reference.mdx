@@ -8,7 +8,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 <Callout title="契約ステータスと信頼できる情報源">
   現在のリポジトリでは、API v1 はまだ正式にリリースされていない契約としてマークされています。新しい機能は引き続き `apiVersion:
   1` を使用する可能性がありますが、古いホストは認識しないフィールドを拒否します。以下は日本語のリファレンスです。完全なシグネチャと検証構造は、
-  [v1.d.ts](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.d.ts)、[v1.schema.json](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.schema.json)、および[元の仕様](https://github.com/QuantumNous/new-api-plugins/blob/main/docs/plugin-api/v1.md)を参照してください。
+  [v1.d.ts](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.d.ts)、[v1.schema.json](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.schema.json)、および[元の仕様](https://github.com/therealemery/new-api-plugins/blob/main/docs/plugin-api/v1.md)を参照してください。
 </Callout>
 
 ## マニフェスト：`meta`
@@ -28,7 +28,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 | `sortPriority`                  | integer              | 表示順序、値が大きいほど上位；ルーティングの優先順位には影響しない                            |
 | `baseUrl`                       | string               | タイプ61チャネルが使用できるデフォルトのアップストリームアドレス                                |
 | `allowedHosts`                  | string[]             | チャネルホスト以外にアクセスを許可する追加ホスト、ポート指定可能                            |
-| `upstreams` | `("vendor" \| "new_api")[]` | 任意の上流種別。vendor は暗黙に対応し、`new_api` の宣言によりタイプ 60 の New API チャネルに紐付け可能 |
+| `upstreams` | `("vendor" \| "new_api")[]` | 任意の上流種別。vendor は暗黙に対応し、`new_api` の宣言によりタイプ 60 の Ownapi チャネルに紐付け可能 |
 | `auth`                          | string / object      | `none`、`api_key`、`vertex_oauth` または仕様で定義された認証オブジェクト              |
 | `channelTypes`                  | number[]             | 適応可能な古いチャネルタイプ；サードパーティプラグインは通常、タイプ61のキーバインディングを使用           |
 | `routes`                        | NativeRoute[]        | プラグイン独自のネイティブルート                                                    |
@@ -82,7 +82,7 @@ description: {
 | フィールド                      | 意味                               |
 | ------------------------- | ---------------------------------- |
 | `taskId`                  | アップストリームタスクID                        |
-| `publicTaskId`            | New API 公開タスクID                |
+| `publicTaskId`            | Ownapi 公開タスクID                |
 | `model` / `upstreamModel` | ユーザーモデル名とチャネルマッピング後のアップストリームモデル名 |
 | `action`                  | 永続化された標準化操作               |
 | `data`                    | 現在の `Task.Data` スナップショット              |
@@ -103,7 +103,7 @@ description: {
 
 ### 上流種別とゲートウェイ間接続
 
-`meta.upstreams` には重複しない `vendor` と `new_api` を指定できます。すべてのプラグインは暗黙に `vendor` に対応し、`new_api` は同じプラグインを導入した上流 New API ゲートウェイへの対応を示します。タイプ 60 は `setting.task_plugin_key` / `setting.task_extend_plugin_keys` でプラグインを紐付けます。`channelTypes` に 60 と 61 は指定できず、各従来型チャネルの所有権は引き続き単一プラグインに限られます。
+`meta.upstreams` には重複しない `vendor` と `new_api` を指定できます。すべてのプラグインは暗黙に `vendor` に対応し、`new_api` は同じプラグインを導入した上流 Ownapi ゲートウェイへの対応を示します。タイプ 60 は `setting.task_plugin_key` / `setting.task_extend_plugin_keys` でプラグインを紐付けます。`channelTypes` に 60 と 61 は指定できず、各従来型チャネルの所有権は引き続き単一プラグインに限られます。
 
 ホストは `DriverContext`、`TaskQueryContext`、`BatchQueryContext`、`buildContentRequest` のコンテキストに `{ kind: "vendor" }` または `{ kind: "new_api" }` の `ctx.upstream` を渡します。フィールドがない場合は `vendor` として扱います。`new_api` ではベンダーのパスをそのまま使わず、`/doubao/api/v3/...` や `/ali/api/v1/...` など、プラグイン自身のネイティブパスを構築します。既にパスが一致する場合やホストプロトコルのみを使う場合、プレフィックスの変更は不要です。
 

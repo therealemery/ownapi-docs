@@ -7,7 +7,7 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 ## 创建 Task Plugin 渠道
 
-安装并启用插件后，在自己的 New API 实例中打开「渠道」管理，添加渠道：
+安装并启用插件后，在自己的 Ownapi 实例中打开「渠道」管理，添加渠道：
 
 1. 选择 **Task Plugin（任务插件，类型 61）**。
 2. 选择已经注册的插件。
@@ -19,9 +19,9 @@ import { Callout } from 'fumadocs-ui/components/callout';
 
 插件管理由 Root 操作；管理员绑定插件渠道需要 `task_plugin:bind` 权限及相应渠道管理权限。
 
-## 接入另一个 New API 网关
+## 接入另一个 Ownapi 网关
 
-当上游也是 New API 时，选择 **New API（类型 60）**，填写上游网关地址及其 API 密钥，并绑定支持 `new_api` 上游的插件。两端都需要安装、启用同一插件，且版本支持所需契约；未声明 `meta.upstreams` 中的 `new_api` 的插件不能绑定此渠道。
+当上游也是 Ownapi 时，选择 **Ownapi（类型 60）**，填写上游网关地址及其 API 密钥，并绑定支持 `new_api` 上游的插件。两端都需要安装、启用同一插件，且版本支持所需契约；未声明 `meta.upstreams` 中的 `new_api` 的插件不能绑定此渠道。
 
 类型 60 可以绑定多个插件，使用 `setting.task_extend_plugin_keys`，并兼容 `setting.task_plugin_key`。多个已绑定插件支持同一模型时，按插件 key 升序选择首个可用候选。宿主以 Bearer 方式发送上游网关密钥，插件根据 `ctx.upstream.kind` 构造自己的原生路径。不要把厂商 API Key 或 OAuth 凭据当作上游网关密钥。
 

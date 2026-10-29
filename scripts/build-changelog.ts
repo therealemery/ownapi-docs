@@ -7,7 +7,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 // Configuration
-const SOURCE_REPO = process.env.SOURCE_REPO || 'QuantumNous/new-api';
+const SOURCE_REPO = process.env.SOURCE_REPO || 'therealemery/new-api';
+const UPSTREAM_SOURCE_REPO = 'QuantumNous/new-api';
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
 const MAX_RELEASES = 30;
 
@@ -73,9 +74,9 @@ const CHANGELOG_I18N = {
   },
 };
 
-async function fetchGitHubReleases(): Promise<Release[]> {
+async function fetchGitHubReleasesForRepo(repo: string): Promise<Release[]> {
   const headers: Record<string, string> = {
-    'User-Agent': 'New-API-Docs-Builder/1.0',
+    'User-Agent': 'Ownapi-Docs-Builder/1.0',
   };
 
   if (GITHUB_TOKEN) {
@@ -87,21 +88,33 @@ async function fetchGitHubReleases(): Promise<Release[]> {
     );
   }
 
-  const url = `https://api.github.com/repos/${SOURCE_REPO}/releases?per_page=${MAX_RELEASES}`;
+  const url = `https://api.github.com/repos/${repo}/releases?per_page=${MAX_RELEASES}`;
 
+  console.log(`Fetching Releases: ${url}`);
+  const response = await fetch(url, { headers });
+
+  if (!response.ok) {
+    throw new Error(
+      `GitHub API request failed: ${response.status} ${response.statusText}`
+    );
+  }
+
+  const data = (await response.json()) as Release[];
+  console.log(`✓ Successfully fetched ${data.length} releases from ${repo}`);
+  return data;
+}
+
+async function fetchGitHubReleases(): Promise<Release[]> {
   try {
-    console.log(`Fetching Releases: ${url}`);
-    const response = await fetch(url, { headers });
-
-    if (!response.ok) {
-      throw new Error(
-        `GitHub API request failed: ${response.status} ${response.statusText}`
+    const primary = await fetchGitHubReleasesForRepo(SOURCE_REPO);
+    if (primary.length > 0) return primary;
+    if (SOURCE_REPO !== UPSTREAM_SOURCE_REPO) {
+      console.warn(
+        `⚠ No releases on ${SOURCE_REPO}; falling back to ${UPSTREAM_SOURCE_REPO}`
       );
+      return await fetchGitHubReleasesForRepo(UPSTREAM_SOURCE_REPO);
     }
-
-    const data = (await response.json()) as Release[];
-    console.log(`✓ Successfully fetched ${data.length} releases`);
-    return data;
+    return primary;
   } catch (error) {
     console.error('✗ Failed to fetch GitHub Releases:', error);
     throw error;
@@ -278,6 +291,13 @@ async function generateChangelog() {
 
     for (const lang of languages) {
       console.log(`\n📝 Generating ${lang.toUpperCase()} version...`);
+
+      if (!releases.length) {
+        console.warn(
+          `⚠ No releases available; keeping existing ${lang} changelog if present`
+        );
+        continue;
+      }
 
       const markdown = formatReleasesMarkdown(releases, lang);
       const outputPath = path.join(
