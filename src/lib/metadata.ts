@@ -29,17 +29,17 @@ export const siteMetadata: Record<
   en: {
     title: 'Ownapi Documentation',
     description:
-      'Deploy Ownapi, connect AI providers, and integrate a unified API. Find installation guides, channel and token configuration, API references, and Skills.',
+      'Call the Ownapi hosted gateway at ownapi.dev: Bearer auth, OpenAI-compatible chat/completions, models, and client integration guides.',
   },
   zh: {
     title: 'Ownapi 文档',
     description:
-      'Ownapi 官方文档：从 Docker 部署、模型渠道与令牌配置，到统一 AI 接口调用、任务插件和 Skills，快速搭建和使用你的 AI 网关。',
+      'Ownapi 托管网关（ownapi.dev）API 使用文档：鉴权、OpenAI 兼容 Chat/Completions、模型列表与客户端接入示例。',
   },
   ja: {
     title: 'Ownapi ドキュメント',
     description:
-      'Ownapi のデプロイ、AI プロバイダーの接続、統一 API の利用を解説。インストール、チャネルとトークンの設定、API リファレンス、Skills を紹介します。',
+      'Ownapi ホスト型ゲートウェイ（ownapi.dev）の API 利用ガイド：Bearer 認証、OpenAI 互換 Chat/Completions、モデル一覧、クライアント連携。',
   },
 };
 

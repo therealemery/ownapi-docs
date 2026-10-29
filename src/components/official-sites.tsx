@@ -2,14 +2,11 @@ import { ArrowUpRight } from 'lucide-react';
 import { productName, productSiteUrl } from '@/lib/brand';
 
 const labels: Record<string, { title: string; link: string }> = {
-  zh: { title: `了解 ${productName} 项目`, link: `${productName} 官网` },
-  en: {
-    title: `Explore the ${productName} project`,
-    link: `${productName} website`,
-  },
+  zh: { title: '使用托管网关与控制台', link: `${productName} 控制台` },
+  en: { title: 'Hosted gateway and console', link: `${productName} console` },
   ja: {
-    title: `${productName} プロジェクト`,
-    link: `${productName} 公式サイト`,
+    title: 'ホスト型ゲートウェイとコンソール',
+    link: `${productName} コンソール`,
   },
 };
 

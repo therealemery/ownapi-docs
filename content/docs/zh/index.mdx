@@ -1,95 +1,83 @@
 ---
-title: 快速开始
-description: 部署 Ownapi，配置模型渠道与令牌，完成第一次 AI API 调用。
+title: 调用 API
+description: 使用 Ownapi 托管网关（ownapi.dev）调用 OpenAI 兼容接口：鉴权、聊天补全、模型列表与客户端接入。
 ---
 
-import { Blocks, BookOpen, Bot, Boxes, Code2, Container, Headphones, KeyRound, Network, Puzzle } from 'lucide-react';
+import { BookOpen, Bot, Code2, Headphones, KeyRound, List } from 'lucide-react';
 
-Ownapi 是开源的 AI 网关与大模型接口管理系统。按照下面的路径，完成从部署到应用接入。
+Ownapi 在 [ownapi.dev](https://ownapi.dev) 提供托管 AI 网关。本文档说明如何**作为 API 使用者**发起请求，而非自建或部署 New API。
 
-## 开始使用 Ownapi
+## 三步开始调用
 
 <Cards className="sm:grid-cols-3">
   <Card
-    icon={<Boxes />}
-    title="1. 部署实例"
-    description="选择 Docker、面板或集群部署，启动你的 Ownapi。"
-    href="/zh/docs/installation"
-  />
-  <Card
-    icon={<Network />}
-    title="2. 配置模型渠道"
-    description="添加上游服务商，配置密钥与可用模型。"
-    href="/zh/docs/guide/console/channel-management"
-  />
-  <Card
     icon={<KeyRound />}
-    title="3. 创建 API 令牌"
-    description="为应用创建访问令牌，开始调用统一 AI 接口。"
-    href="/zh/docs/guide/console/api-token"
+    title="1. 获取 API 密钥"
+    description="在 Ownapi 控制台创建访问令牌（Bearer Token）。"
+    href="https://ownapi.dev"
+  />
+  <Card
+    icon={<List />}
+    title="2. 查看可用模型"
+    description="GET /v1/models 列出当前账号可用的模型 ID。"
+    href="/zh/docs/api/ai-model/models/list/listmodels"
+  />
+  <Card
+    icon={<Code2 />}
+    title="3. 发起 Chat 请求"
+    description="POST /v1/chat/completions，兼容 OpenAI SDK 与常见客户端。"
+    href="/zh/docs/api/ai-model/chat/openai/createchatcompletion"
   />
 </Cards>
 
-## 选择部署方式
+## 基础信息
 
-<Cards>
-  <Card
-    icon={<Boxes />}
-    title="Docker Compose 部署"
-    description="编排 Ownapi、MySQL 与 Redis 等服务。"
-    href="/zh/docs/installation/deployment-methods/docker-compose-installation"
-  />
-  <Card
-    icon={<Container />}
-    title="Docker 单容器部署"
-    description="使用 Docker 镜像快速启动，适合体验与小规模使用。"
-    href="/zh/docs/installation/deployment-methods/docker-installation"
-  />
-</Cards>
+| 项目 | 值 |
+| --- | --- |
+| API Base URL | `https://ownapi.dev/v1` |
+| 鉴权 | `Authorization: Bearer <你的 API 密钥>` |
+| 协议 | HTTPS，REST + JSON；Chat/Completions 兼容 OpenAI API |
 
-需要图形化面板、集群或本地开发？查看[全部部署方式](/zh/docs/installation)。
+### cURL 示例（非流式）
 
-## 继续探索
+```bash
+curl https://ownapi.dev/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{
+    "model": "gpt-4o-mini",
+    "messages": [{"role": "user", "content": "Hello"}]
+  }'
+```
+
+### 列出模型
+
+```bash
+curl https://ownapi.dev/v1/models \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+将 `YOUR_API_KEY` 替换为控制台中的令牌。模型 ID 以 `/v1/models` 返回为准。
+
+## 继续阅读
 
 <Cards>
   <Card
     icon={<BookOpen />}
-    title="使用指南"
-    description="了解控制台、渠道、令牌与模型管理。"
-    href="/zh/docs/guide/home"
-  />
-  <Card
-    icon={<Code2 />}
     title="API 参考"
-    description="查阅接口参数、响应格式和调用示例。"
+    description="Chat、Embeddings、Images、Audio 等接口说明与在线调试。"
     href="/zh/docs/api"
   />
   <Card
     icon={<Bot />}
     title="AI 应用接入"
-    description="连接 AI 客户端与开发工具。"
+    description="Cherry Studio、Cursor、LangBot 等客户端配置 Base URL 与密钥。"
     href="/zh/docs/apps"
-  />
-  <Card
-    icon={<Puzzle />}
-    title="Skills"
-    description="在 AI 编程助手中使用和管理 Ownapi。"
-    href="/zh/docs/skills"
-  />
-  <Card
-    icon={<Blocks />}
-    title="任务插件"
-    description="安装与开发图片、视频、音乐生成插件。"
-    href="/zh/docs/plugins"
   />
   <Card
     icon={<Headphones />}
     title="帮助支持"
-    description="常见问题、故障排查与社区交流。"
+    description="常见问题与故障排查。"
     href="/zh/docs/support"
   />
 </Cards>
-
-你也可以[浏览插件市场](/zh/plugins)或了解[商务合作](/zh/docs/business)。
-
-项目与生态信息请访问 [Ownapi 官网（ownapi.dev）](https://ownapi.dev/) 或 [Ownapi 官网（ownapi.dev）](https://ownapi.dev/)。

@@ -1,93 +1,83 @@
 ---
-title: クイックスタート
-description: Ownapi をデプロイし、モデルのチャネルとトークンを設定して、最初の AI API を呼び出します。
+title: API の呼び出し
+description: Ownapi ホスト型ゲートウェイ（ownapi.dev）での認証、Chat Completions、モデル一覧、クライアント連携。
 ---
 
-import { BookOpen, Bot, Boxes, Code2, Container, Handshake, Headphones, KeyRound, Network, Puzzle } from 'lucide-react';
+import { BookOpen, Bot, Code2, Headphones, KeyRound, List } from 'lucide-react';
 
-Ownapi は、オープンソースの AI ゲートウェイおよびモデル API 管理システムです。デプロイからアプリの接続まで、順番に進めましょう。
+Ownapi は [ownapi.dev](https://ownapi.dev) でホスト型 AI ゲートウェイを提供しています。ここでは **API 利用者としての呼び出し方** を説明します（New API のセルフホスト手順は対象外です）。
 
-## Ownapi を使い始める
+## 3 ステップ
 
 <Cards className="sm:grid-cols-3">
   <Card
-    icon={<Boxes />}
-    title="1. インスタンスをデプロイ"
-    description="Docker、管理パネル、またはクラスターで起動します。"
-    href="/ja/docs/installation"
-  />
-  <Card
-    icon={<Network />}
-    title="2. チャネルを設定"
-    description="プロバイダー、認証情報、利用するモデルを追加します。"
-    href="/ja/docs/guide/console/channel-management"
-  />
-  <Card
     icon={<KeyRound />}
-    title="3. API トークンを作成"
-    description="アプリ用のトークンを作成し、統一 API を呼び出します。"
-    href="/ja/docs/guide/console/api-token"
+    title="1. API キーを取得"
+    description="Ownapi コンソールで Bearer トークンを作成します。"
+    href="https://ownapi.dev"
+  />
+  <Card
+    icon={<List />}
+    title="2. モデル一覧"
+    description="GET /v1/models で利用可能なモデル ID を確認します。"
+    href="/ja/docs/api/ai-model/models/list/listmodels"
+  />
+  <Card
+    icon={<Code2 />}
+    title="3. Chat リクエスト"
+    description="POST /v1/chat/completions（OpenAI 互換 SDK / クライアント対応）。"
+    href="/ja/docs/api/ai-model/chat/openai/createchatcompletion"
   />
 </Cards>
 
-## デプロイ方法を選ぶ
+## 基本情報
 
-<Cards>
-  <Card
-    icon={<Boxes />}
-    title="Docker Compose"
-    description="Ownapi と MySQL、Redis などのサービスを起動します。"
-    href="/ja/docs/installation/deployment-methods/docker-compose-installation"
-  />
-  <Card
-    icon={<Container />}
-    title="Docker 単一コンテナ"
-    description="Docker イメージを使って試用や小規模な環境を構築します。"
-    href="/ja/docs/installation/deployment-methods/docker-installation"
-  />
-</Cards>
+| 項目 | 値 |
+| --- | --- |
+| API Base URL | `https://ownapi.dev/v1` |
+| 認証 | `Authorization: Bearer <API キー>` |
+| 形式 | HTTPS REST + JSON（Chat / Completions は OpenAI API 互換） |
 
-管理パネル、クラスター、ローカル開発については、[すべてのデプロイ方法](/ja/docs/installation)をご覧ください。
+### cURL（非ストリーム）
 
-## ドキュメントを探す
+```bash
+curl https://ownapi.dev/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_API_KEY" \
+  -d '{
+    "model": "gpt-4o-mini",
+    "messages": [{"role": "user", "content": "Hello"}]
+  }'
+```
+
+### モデル一覧
+
+```bash
+curl https://ownapi.dev/v1/models \
+  -H "Authorization: Bearer YOUR_API_KEY"
+```
+
+`YOUR_API_KEY` はコンソールのトークンに置き換えてください。モデル ID は `/v1/models` のレスポンスに従います。
+
+## 次に読む
 
 <Cards>
   <Card
     icon={<BookOpen />}
-    title="ユーザーガイド"
-    description="インスタンス、チャネル、トークン、モデルの管理。"
-    href="/ja/docs/guide/home"
-  />
-  <Card
-    icon={<Code2 />}
     title="API リファレンス"
-    description="パラメーター、レスポンス、呼び出し例。"
+    description="Chat、Embeddings、Images、Audio など。"
     href="/ja/docs/api"
   />
   <Card
     icon={<Bot />}
-    title="AI アプリの接続"
-    description="AI クライアントや開発ツールとの連携。"
+    title="AI アプリ連携"
+    description="各クライアントでの Base URL とキー設定。"
     href="/ja/docs/apps"
-  />
-  <Card
-    icon={<Puzzle />}
-    title="Skills"
-    description="AI コーディングエージェントで Ownapi を利用・管理。"
-    href="/ja/docs/skills"
   />
   <Card
     icon={<Headphones />}
     title="ヘルプとサポート"
-    description="よくある質問、問題の解決、コミュニティ。"
+    description="FAQ とトラブルシューティング。"
     href="/ja/docs/support"
   />
-  <Card
-    icon={<Handshake />}
-    title="ビジネス提携"
-    description="コラボレーションと商用サービス。"
-    href="/ja/docs/business"
-  />
 </Cards>
-
-プロジェクトとエコシステムについては、[Ownapi 公式サイト（ownapi.dev）](https://ownapi.dev/) または [Ownapi 公式サイト（ownapi.dev）](https://ownapi.dev/) をご覧ください。

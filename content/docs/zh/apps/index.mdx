@@ -17,7 +17,7 @@ import {
 
 ## 概述
 
-Ownapi 兼容多种流行的 AI 应用和工具。以下是已验证支持的应用列表及配置指南。
+将 **API Base URL** 设为 `https://ownapi.dev/v1`，并在各客户端填入 Ownapi 控制台中的 Bearer 密钥。以下是已验证的应用与配置指南。
 
 ## 支持的应用
 
@@ -38,13 +38,13 @@ Ownapi 兼容多种流行的 AI 应用和工具。以下是已验证支持的应
       />
     }
     title="AQBot"
-    description="本地优先的桌面 AI 工作台，支持多服务商对话、ACP Agent，可通过 aqbot:// 一键导入 Ownapi。"
+    description="本地优先的桌面 AI 工作台，支持多服务商对话、ACP Agent，可通过 aqbot:// 一键导入 New API。"
     href="/zh/docs/apps/aqbot"
   />
   <Card
     icon={<Settings />}
     title="CC Switch"
-    description="支持一键填入，点击 Ownapi 后弹窗配置 Claude/Codex/Gemini 及主模型与各型号。"
+    description="支持一键填入，点击 New API 后弹窗配置 Claude/Codex/Gemini 及主模型与各型号。"
     href="/zh/docs/apps/cc-switch"
   />
   <Card
@@ -68,7 +68,7 @@ Ownapi 兼容多种流行的 AI 应用和工具。以下是已验证支持的应
   <Card
     icon={<Bot />}
     title="OpenClaw"
-    description="自托管 AI 助手平台 — 安装 OpenClaw，对接 Ownapi，支持飞书、Discord、Slack 等多渠道 AI 代理管理。"
+    description="自托管 AI 助手平台 — 安装 OpenClaw，对接 New API，支持飞书、Discord、Slack 等多渠道 AI 代理管理。"
     href="/zh/docs/apps/openclaw"
   />
   <Card
@@ -117,10 +117,10 @@ Ownapi 兼容多种流行的 AI 应用和工具。以下是已验证支持的应
 
 ## 集成指南
 
-大多数应用只需要配置以下信息即可连接 Ownapi：
+大多数应用只需要配置以下信息即可连接 New API：
 
-1. **API 地址**：您的 Ownapi 服务地址
-2. **API Key**：在 Ownapi 控制台生成的令牌
+1. **API 地址**：您的 New API 服务地址
+2. **API Key**：在 New API 控制台生成的令牌
 3. **模型名称**：选择需要使用的模型
 
 具体配置步骤请参考各应用的详细文档。
