@@ -17,6 +17,19 @@ const locales = [
   },
 ];
 
+test('unlocalized entry paths redirect to the default English locale', async ({
+  request,
+}) => {
+  for (const [path, location] of [
+    ['/', '/en/'],
+    ['/docs', '/en/docs'],
+  ] as const) {
+    const response = await request.get(path, { maxRedirects: 0 });
+    expect(response.status(), path).toBe(307);
+    expect(response.headers().location, path).toBe(location);
+  }
+});
+
 for (const { lang, htmlLang, title, ogLocale } of locales) {
   test(`${lang}: homepage metadata and crawlable navigation without JavaScript`, async ({
     page,
