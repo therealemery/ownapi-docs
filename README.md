@@ -30,24 +30,43 @@ SITE_URL=https://docs.ownapi.dev bun run build
 
 Set the same variable in CI or on your host (for example Cloudflare Pages **Environment variables**). It must be a full HTTP(S) origin with no path, query, or fragment.
 
-## Deploying to Cloudflare Pages (docs.ownapi.dev)
+## Deploying to Cloudflare (docs.ownapi.dev)
 
-Ownapi documentation is intended to run on **Cloudflare Pages** at `https://docs.ownapi.dev`, not as a Docker container on the API/gateway server.
+Ownapi documentation is intended to run at `https://docs.ownapi.dev` via **OpenNext on Cloudflare Workers** (or Cloudflare’s Next.js adapter), not as a Docker container on the API/gateway server.
 
-Recommended Pages settings:
+Recommended build settings:
 
 | Setting | Value |
 | -------- | ----- |
-| Build command | `bun run build` (or `npm run build`) |
-| Build output | Standard Next.js app (`.next` after `next build`) — use Cloudflare’s **Next.js** / OpenNext adapter workflow, not a static `out/` export only |
+| Build command | `SITE_URL=https://docs.ownapi.dev bun run build` |
+| Build output | Standard Next.js app (`.next` after `next build`) — OpenNext / `@opennextjs/cloudflare`, **not** `output: 'export'` (middleware + API routes remain) |
 | Node.js | `24` (see `engines` in `package.json`) |
-| `SITE_URL` | `https://docs.ownapi.dev` (build-time; already the code default if unset) |
+| `SITE_URL` | `https://docs.ownapi.dev` (build-time canonical origin) |
+
+### Workers Free / Error 1102 (CPU limit)
+
+Documentation under `/{lang}/docs/**` is **pre-rendered at build time** (`force-static` + `generateStaticParams`). Per-request work on doc pages should be limited to serving cached HTML/assets, not full SSR.
+
+| Route class | Rendering |
+| ----------- | --------- |
+| `/{lang}`, `/{lang}/docs/**` | Static HTML (SSG at build) |
+| `/` | Static redirect page + **middleware only when the path has no locale prefix** |
+| Hidden self-host paths (`installation`, `guide`, `plugins`, …) | `next.config` **redirects** to `/{lang}/docs` (no doc page generated) |
+| `/api/search`, `/api/chat`, `/api/plugins`, `/api/proxy` | Dynamic (only when invoked) |
+| `/og/docs/**`, `*.txt` / `llms.mdx` exports | Mostly static; OG/LLM routes skip hidden doc slugs |
+
+**Ops checklist after deploy**
+
+1. Keep **incremental / R2 cache** enabled in OpenNext so cold doc hits serve prebuilt HTML instead of re-rendering MDX.
+2. Verify a cold request: `curl -sI https://docs.ownapi.dev/zh/docs` — expect `200` without Cloudflare **1102**; repeat for a deep doc URL.
+3. Verify hidden redirect: `curl -sI https://docs.ownapi.dev/zh/docs/installation` → `307/308` to `/zh/docs`.
+4. Locale switcher links are static paths (`/en/docs`, `/zh/docs`, …); no change required in Wrangler unless you customize asset caching headers.
 
 Notes:
 
 - **Prebuild**: `prebuild` runs `scripts/prebuild.ts` (changelog from GitHub releases). Optional: `SOURCE_REPO=therealemery/new-api`, `GITHUB_TOKEN` for rate limits.
-- **Runtime routes**: `/api/chat`, `/api/search`, `/api/plugins`, `/api/proxy`, OG images, and middleware need a Next-compatible edge/Workers runtime — pure static hosting is not enough.
-- **Optional features**: `INKEEP_API_KEY` (AI search), `GITHUB_APP_ID` / `GITHUB_APP_PRIVATE_KEY` (docs feedback), `NEXT_PUBLIC_GA_ID` (analytics).
+- **Middleware**: runs for `/` and non-localized paths only (locale detection). Localized doc URLs bypass middleware to reduce Workers CPU.
+- **Optional features**: AI search UI is disabled in the docs layout; `/api/search` remains for Fumadocs search if re-enabled. `INKEEP_API_KEY`, `GITHUB_APP_*`, `NEXT_PUBLIC_GA_ID` are optional.
 
 Preview builds should still set `SITE_URL` to the production docs origin if you want canonical URLs to point at `docs.ownapi.dev`.
 

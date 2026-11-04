@@ -1,49 +1,29 @@
 import { createI18nMiddleware } from 'fumadocs-core/i18n/middleware';
-import { NextResponse } from 'next/server';
 import type { NextFetchEvent, NextRequest } from 'next/server';
 import { i18n } from '@/lib/i18n';
 
 const i18nMiddleware = createI18nMiddleware(i18n);
 
-/** Self-host / admin doc paths hidden from the public Ownapi API usage site. */
-const HIDDEN_DOC_PREFIXES = [
-  '/docs/installation',
-  '/docs/guide',
-  '/docs/plugins',
-  '/docs/skills',
-  '/docs/business',
-  '/docs/api/management',
-];
-
-function redirectHiddenDocs(pathname: string, request: NextRequest) {
-  for (const lang of i18n.languages) {
-    if (pathname === `/${lang}/plugins` || pathname.startsWith(`/${lang}/plugins/`)) {
-      return NextResponse.redirect(new URL(`/${lang}/docs`, request.url));
-    }
-    for (const prefix of HIDDEN_DOC_PREFIXES) {
-      const base = `/${lang}${prefix}`;
-      if (pathname === base || pathname.startsWith(`${base}/`)) {
-        return NextResponse.redirect(new URL(`/${lang}/docs`, request.url));
-      }
-    }
-  }
-  return null;
-}
-
+/**
+ * Locale detection + default-language redirects only for paths without a
+ * leading `/en|zh|ja` segment. Localized doc URLs are pre-rendered at build
+ * time and should not pay i18n middleware cost on Workers.
+ */
 export default function middleware(
   request: NextRequest,
   event: NextFetchEvent
 ) {
-  const hidden = redirectHiddenDocs(request.nextUrl.pathname, request);
-  if (hidden) return hidden;
   return i18nMiddleware(request, event);
 }
 
 export const config = {
-  // Matcher ignoring API routes, Next.js internals, and static assets
-  // Important: exclude metadata routes like `/robots.txt` and `/sitemap.xml`
-  // so they won't be redirected to `/{lang}/...` which would 404 unless you implement localized metadata routes.
   matcher: [
-    '/((?!api|og/|_next/static|_next/image|favicon.ico|assets/|robots\\.txt|sitemap\\.xml|llms?\\.txt|llm-full\\.txt|llms-full\\.txt).*)',
+    '/',
+    /*
+     * Exclude localized app routes (`/en`, `/zh`, `/ja`, and their children).
+     * Hidden self-host doc paths under those locales use `redirects()` in
+     * next.config.mjs instead of middleware.
+     */
+    '/((?!en(?:/|$)|zh(?:/|$)|ja(?:/|$)|api|og/|_next/static|_next/image|favicon.ico|assets/|robots\\.txt|sitemap\\.xml|llms?\\.txt|llm-full\\.txt|llms-full\\.txt).*)',
   ],
 };

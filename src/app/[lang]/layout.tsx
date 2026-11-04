@@ -8,6 +8,9 @@ import { productName, productSiteUrl } from '@/lib/brand';
 import { createMetadata, siteMetadata } from '@/lib/metadata';
 import { notFound } from 'next/navigation';
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 const { provider } = defineI18nUI(i18n, {
   translations: {
     en: {

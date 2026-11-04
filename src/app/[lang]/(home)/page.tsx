@@ -12,6 +12,9 @@ import { OfficialSites } from '@/components/official-sites';
 import { getLocalePath, i18n } from '@/lib/i18n';
 import { productName, productSiteUrl } from '@/lib/brand';
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 const contentMap = {
   en: {
     badge: 'Hosted AI gateway',

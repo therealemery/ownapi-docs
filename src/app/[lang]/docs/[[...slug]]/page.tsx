@@ -15,6 +15,10 @@ import { onRateAction } from '@/lib/github';
 import { i18n } from '@/lib/i18n';
 import { createPageMetadata } from '@/lib/metadata';
 import { docsRepoName, docsRepoOwner } from '@/lib/brand';
+import { isHiddenDocSlug } from '@/lib/hidden-docs';
+
+export const dynamic = 'force-static';
+export const revalidate = false;
 
 // GitHub repository info for source links
 const owner = docsRepoOwner;
@@ -77,10 +81,13 @@ export default async function Page(props: {
 }
 
 export async function generateStaticParams() {
-  const params = source.generateParams();
+  const params = source
+    .generateParams()
+    .filter(({ slug }) => !isHiddenDocSlug(slug));
   // Pre-render fallbacks without adding untranslated pages to navigation or search.
   for (const page of source.getPages('zh')) {
     if (page.slugs[0] !== 'plugins') continue;
+    if (isHiddenDocSlug(page.slugs)) continue;
     for (const lang of i18n.languages) {
       if (lang !== 'zh' && !source.getPage(page.slugs, lang)) {
         params.push({ lang, slug: page.slugs });

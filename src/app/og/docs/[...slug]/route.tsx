@@ -3,8 +3,10 @@ import { notFound } from 'next/navigation';
 import { ImageResponse } from 'next/og';
 import { generate as DefaultImage } from 'fumadocs-ui/og';
 import { i18n } from '@/lib/i18n';
+import { isHiddenDocSlug } from '@/lib/hidden-docs';
 
 export const revalidate = false;
+export const dynamic = 'force-static';
 
 export async function GET(
   _req: Request,
@@ -33,7 +35,10 @@ export async function GET(
 }
 
 export function generateStaticParams() {
-  return source.getPages().map((page) => ({
-    slug: getPageImage(page).segments,
-  }));
+  return source
+    .getPages()
+    .filter((page) => !isHiddenDocSlug(page.slugs))
+    .map((page) => ({
+      slug: getPageImage(page).segments,
+    }));
 }

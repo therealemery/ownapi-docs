@@ -1,4 +1,5 @@
 import { createMDX } from 'fumadocs-mdx/next';
+import { buildHiddenDocRedirects } from './hidden-docs.mjs';
 
 const withMDX = createMDX();
 
@@ -25,6 +26,9 @@ const config = {
         'new-api-docs-v1.vercel.app',
       ],
     },
+  },
+  async redirects() {
+    return buildHiddenDocRedirects();
   },
   async rewrites() {
     return [
