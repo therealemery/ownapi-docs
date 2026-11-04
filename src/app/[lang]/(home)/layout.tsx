@@ -8,13 +8,7 @@ import {
 } from 'fumadocs-ui/layouts/home/navbar';
 import { Footer } from '@/components/footer';
 import Link from 'fumadocs-core/link';
-import {
-  Rocket,
-  HelpCircle,
-  Sparkles,
-  BookOpen,
-  type LucideIcon,
-} from 'lucide-react';
+import { Rocket, BookOpen, type LucideIcon } from 'lucide-react';
 import { getLocalePath } from '@/lib/i18n';
 import { productSiteUrl } from '@/lib/brand';
 
@@ -24,8 +18,6 @@ export const revalidate = false;
 const NAV_ITEMS = [
   { key: 'start', icon: Rocket, path: '' },
   { key: 'api', icon: BookOpen, path: '/api' },
-  { key: 'apps', icon: Sparkles, path: '/apps' },
-  { key: 'support', icon: HelpCircle, path: '/support' },
 ] as const;
 
 const i18nText: Record<
@@ -39,39 +31,24 @@ const i18nText: Record<
       text: 'Call the API',
       desc: 'Base URL, Bearer auth, and first request.',
     },
-    support: { text: 'Help & Support', desc: 'FAQ and troubleshooting.' },
     api: {
       text: 'API Reference',
       desc: 'OpenAI-compatible endpoints on ownapi.dev.',
-    },
-    apps: {
-      text: 'AI Applications',
-      desc: 'Client integration guides.',
     },
   },
   zh: {
     title: { text: '文档', desc: '' },
     console: { text: '控制台', desc: '' },
     start: { text: '调用 API', desc: 'Base URL、鉴权与示例请求。' },
-    support: { text: '帮助支持', desc: '常见问题与排查。' },
     api: { text: 'API 参考', desc: 'ownapi.dev 上的 OpenAI 兼容接口。' },
-    apps: { text: 'AI 应用', desc: '客户端接入指南。' },
   },
   ja: {
     title: { text: 'ドキュメント', desc: '' },
     console: { text: 'コンソール', desc: '' },
     start: { text: 'API の呼び出し', desc: 'Base URL、Bearer 認証、サンプル。' },
-    support: {
-      text: 'ヘルプ＆サポート',
-      desc: 'FAQ とトラブルシューティング。',
-    },
     api: {
       text: 'API リファレンス',
       desc: 'ownapi.dev の OpenAI 互換 API。',
-    },
-    apps: {
-      text: 'AI アプリケーション',
-      desc: 'クライアント連携ガイド。',
     },
   },
 };
@@ -147,7 +124,7 @@ export default async function Layout({
                 <NavbarMenuTrigger>
                   <Link href={docsUrl}>{texts.title.text}</Link>
                 </NavbarMenuTrigger>
-                <NavbarMenuContent className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                <NavbarMenuContent className="grid gap-3 sm:grid-cols-2">
                   {navItems.map((item) => (
                     <MenuLinkItem key={item.url} item={item} />
                   ))}

@@ -12,6 +12,8 @@ export const hiddenDocSlugPrefixPaths = [
   'plugins',
   'skills',
   'business',
+  'apps',
+  'support',
   'api/management',
 ];
 

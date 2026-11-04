@@ -1,12 +1,6 @@
 import Link from 'next/link';
 import { Hero } from './page.client';
-import {
-  ArrowRight,
-  BookOpen,
-  Code2,
-  Headphones,
-  Sparkles,
-} from 'lucide-react';
+import { ArrowRight, BookOpen, Code2 } from 'lucide-react';
 import { createPageMetadata, siteMetadata, baseUrl } from '@/lib/metadata';
 import { OfficialSites } from '@/components/official-sites';
 import { getLocalePath, i18n } from '@/lib/i18n';
@@ -29,8 +23,6 @@ const contentMap = {
     topics: [
       ['Quick start', 'Base URL, auth, and your first chat completion request.'],
       ['API reference', 'Endpoints, parameters, and interactive reference pages.'],
-      ['AI applications', 'Wire up Cherry Studio, Cursor, LangBot, and more.'],
-      ['Help & support', 'FAQ and troubleshooting.'],
     ],
   },
   zh: {
@@ -47,8 +39,6 @@ const contentMap = {
     topics: [
       ['快速开始', 'Base URL、鉴权与第一次 Chat 请求。'],
       ['API 参考', '接口参数与在线参考页。'],
-      ['AI 应用接入', 'Cherry Studio、Cursor、LangBot 等客户端配置。'],
-      ['帮助支持', '常见问题与排查。'],
     ],
   },
   ja: {
@@ -65,8 +55,6 @@ const contentMap = {
     topics: [
       ['クイックスタート', 'Base URL、認証、最初の Chat リクエスト。'],
       ['API リファレンス', 'エンドポイントとパラメーター。'],
-      ['AI アプリ連携', 'Cherry Studio、Cursor、LangBot など。'],
-      ['ヘルプとサポート', 'FAQ とトラブルシューティング。'],
     ],
   },
 };
@@ -74,8 +62,6 @@ const contentMap = {
 const topicRoutes = [
   { path: 'docs', icon: BookOpen },
   { path: 'docs/api', icon: Code2 },
-  { path: 'docs/apps', icon: Sparkles },
-  { path: 'docs/support', icon: Headphones },
 ];
 
 export async function generateMetadata({
@@ -222,7 +208,7 @@ export default async function Page({
             <ArrowRight className="size-4" aria-hidden />
           </Link>
         </div>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2">
           {topicRoutes.map(({ path, icon: Icon }, index) => (
             <Link
               key={path}
