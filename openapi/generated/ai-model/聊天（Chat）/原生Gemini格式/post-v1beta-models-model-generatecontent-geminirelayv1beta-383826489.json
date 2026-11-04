@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Gemini文本聊天",
+    "title": "Gemini text chat",
     "version": "1.0.0",
-    "description": "代理 Gemini API 请求。\n路径格式: `/v1beta/models/{model_name}:{action}`\n\n例如:\n- `/v1beta/models/gemini-2.5-pro:generateContent`\n- `/v1beta/models/gemini-2.5-pro:streamGenerateContent?alt=sse`\n"
+    "description": "Proxy Gemini API requests.\nPath format: `/v1beta/models/{model_name}:{action}`\n\nExamples:\n- `/v1beta/models/gemini-2.5-pro:generateContent`\n- `/v1beta/models/gemini-2.5-pro:streamGenerateContent?alt=sse`\n"
   },
   "tags": [
     {
-      "name": "聊天（Chat）/原生Gemini格式"
+      "name": "Chat/Native Gemini format"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,17 +23,17 @@
     "/v1beta/models/{model}:generateContent": {
       "post": {
         "tags": [
-          "聊天（Chat）/原生Gemini格式"
+          "Chat/Native Gemini format"
         ],
-        "summary": "Gemini文本聊天",
-        "description": "代理 Gemini API 请求。\n路径格式: `/v1beta/models/{model_name}:{action}`\n\n例如:\n- `/v1beta/models/gemini-2.5-pro:generateContent`\n- `/v1beta/models/gemini-2.5-pro:streamGenerateContent?alt=sse`\n",
+        "summary": "Gemini text chat",
+        "description": "Proxy Gemini API requests.\nPath format: `/v1beta/models/{model_name}:{action}`\n\nExamples:\n- `/v1beta/models/gemini-2.5-pro:generateContent`\n- `/v1beta/models/gemini-2.5-pro:streamGenerateContent?alt=sse`\n",
         "operationId": "geminirelayv1beta",
         "parameters": [
           {
             "name": "model",
             "in": "path",
             "required": true,
-            "description": "模型名称",
+            "description": "Model name",
             "schema": {
               "type": "string"
             }
@@ -186,7 +186,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {

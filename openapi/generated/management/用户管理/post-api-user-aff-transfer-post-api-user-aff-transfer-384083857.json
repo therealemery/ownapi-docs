@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "转换邀请额度",
+    "title": "Convert referral quota",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "用户管理"
+      "name": "User management"
     }
   ],
   "paths": {
     "/api/user/aff_transfer": {
       "post": {
         "tags": [
-          "用户管理"
+          "User management"
         ],
-        "summary": "转换邀请额度",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Convert referral quota",
+        "description": "🔐 Login required (user role)",
         "operationId": "post-api-user-aff-transfer",
         "parameters": [],
         "requestBody": {
@@ -40,7 +40,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

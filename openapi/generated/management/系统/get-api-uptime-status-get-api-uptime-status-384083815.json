@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取Uptime Kuma状态",
+    "title": "Get Uptime Kuma status",
     "version": "1.0.0",
-    "description": "🔓 无需鉴权"
+    "description": "🔓 No authentication required"
   },
   "tags": [
     {
-      "name": "系统"
+      "name": "System"
     }
   ],
   "paths": {
     "/api/uptime/status": {
       "get": {
         "tags": [
-          "系统"
+          "System"
         ],
-        "summary": "获取Uptime Kuma状态",
-        "description": "🔓 无需鉴权",
+        "summary": "Get Uptime Kuma status",
+        "description": "🔓 No authentication required",
         "operationId": "get-api-uptime-status",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

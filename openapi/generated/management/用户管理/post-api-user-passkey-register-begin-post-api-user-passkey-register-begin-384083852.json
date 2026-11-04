@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "开始注册Passkey",
+    "title": "Begin Passkey registration",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "用户管理"
+      "name": "User management"
     }
   ],
   "paths": {
     "/api/user/passkey/register/begin": {
       "post": {
         "tags": [
-          "用户管理"
+          "User management"
         ],
-        "summary": "开始注册Passkey",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Begin Passkey registration",
+        "description": "🔐 Login required (user role)",
         "operationId": "post-api-user-passkey-register-begin",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "两步验证登录",
+    "title": "Two-factor sign-in",
     "version": "1.0.0",
-    "description": "🔓 无需鉴权（登录流程）"
+    "description": "🔓 No authentication (sign-in flow)"
   },
   "tags": [
     {
-      "name": "用户登陆注册"
+      "name": "User sign-in & registration"
     }
   ],
   "paths": {
     "/api/user/login/2fa": {
       "post": {
         "tags": [
-          "用户登陆注册"
+          "User sign-in & registration"
         ],
-        "summary": "两步验证登录",
-        "description": "🔓 无需鉴权（登录流程）",
+        "summary": "Two-factor sign-in",
+        "description": "🔓 No authentication (sign-in flow)",
         "operationId": "post-api-user-login-2fa",
         "parameters": [],
         "requestBody": {
@@ -40,7 +40,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

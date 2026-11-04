@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "原生OpenAI格式",
+    "title": "Native OpenAI format",
     "version": "1.0.0",
-    "description": "将文本转换为向量嵌入"
+    "description": "Create embedding vectors from text"
   },
   "tags": [
     {
-      "name": "嵌入（Embeddings）"
+      "name": "Embeddings"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,10 +23,10 @@
     "/v1/embeddings": {
       "post": {
         "tags": [
-          "嵌入（Embeddings）"
+          "Embeddings"
         ],
-        "summary": "原生OpenAI格式",
-        "description": "将文本转换为向量嵌入",
+        "summary": "Native OpenAI format",
+        "description": "Create embedding vectors from text",
         "operationId": "createembedding",
         "parameters": [],
         "requestBody": {
@@ -58,7 +58,7 @@
                         }
                       }
                     ],
-                    "description": "要嵌入的文本"
+                    "description": "Text to embed"
                   },
                   "encoding_format": {
                     "type": "string",
@@ -70,7 +70,7 @@
                   },
                   "dimensions": {
                     "type": "integer",
-                    "description": "输出向量维度"
+                    "description": "Output embedding dimensions"
                   }
                 },
                 "x-apifox-orders": [
@@ -90,7 +90,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功创建嵌入",
+            "description": "Embedding created",
             "content": {
               "application/json": {
                 "schema": {

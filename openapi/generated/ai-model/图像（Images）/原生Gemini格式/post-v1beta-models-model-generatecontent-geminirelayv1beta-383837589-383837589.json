@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Gemini原生格式",
+    "title": "Native Gemini format",
     "version": "1.0.0",
-    "description": "Gemini 图片生成"
+    "description": "Gemini image generation"
   },
   "tags": [
     {
-      "name": "图像（Images）/原生Gemini格式"
+      "name": "Images/Native Gemini format"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,17 +23,17 @@
     "/v1beta/models/{model}:generateContent/": {
       "post": {
         "tags": [
-          "图像（Images）/原生Gemini格式"
+          "Images/Native Gemini format"
         ],
-        "summary": "Gemini原生格式",
-        "description": "Gemini 图片生成",
+        "summary": "Native Gemini format",
+        "description": "Gemini image generation",
         "operationId": "geminirelayv1beta-383837589",
         "parameters": [
           {
             "name": "model",
             "in": "path",
             "required": true,
-            "description": "模型名称",
+            "description": "Model name",
             "schema": {
               "type": "string"
             }
@@ -83,7 +83,7 @@
                         "properties": {
                           "includeThoughts": {
                             "type": "boolean",
-                            "description": "是否返回思考内容"
+                            "description": "Include reasoning/thinking content"
                           }
                         },
                         "required": [
@@ -149,7 +149,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {

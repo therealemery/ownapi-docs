@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "重置模型倍率",
+    "title": "Reset model ratios",
     "version": "1.0.0",
-    "description": "👑 需要超级管理员权限（Root）"
+    "description": "👑 Root super-admin required"
   },
   "tags": [
     {
-      "name": "系统设置"
+      "name": "System settings"
     }
   ],
   "paths": {
     "/api/option/rest_model_ratio": {
       "post": {
         "tags": [
-          "系统设置"
+          "System settings"
         ],
-        "summary": "重置模型倍率",
-        "description": "👑 需要超级管理员权限（Root）",
+        "summary": "Reset model ratios",
+        "description": "👑 Root super-admin required",
         "operationId": "post-api-option-rest-model-ratio",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "原生OpenAI格式",
+    "title": "Native OpenAI format",
     "version": "1.0.0",
-    "description": "获取当前可用的模型列表。\n\n根据请求头自动识别返回格式：\n- 包含 `x-api-key` 和 `anthropic-version` 头时返回 Anthropic 格式\n- 包含 `x-goog-api-key` 头或 `key` 查询参数时返回 Gemini 格式\n- 其他情况返回 OpenAI 格式\n"
+    "description": "List currently available models.\n\nResponse format is inferred from headers:\n- `x-api-key` + `anthropic-version` → Anthropic format\n- `x-goog-api-key` header or `key` query param → Gemini format\n- Otherwise → OpenAI format\n"
   },
   "tags": [
     {
-      "name": "模型（Models）/列出模型"
+      "name": "Models/List models"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,17 +23,17 @@
     "/v1/models": {
       "get": {
         "tags": [
-          "模型（Models）/列出模型"
+          "Models/List models"
         ],
-        "summary": "原生OpenAI格式",
-        "description": "获取当前可用的模型列表。\n\n根据请求头自动识别返回格式：\n- 包含 `x-api-key` 和 `anthropic-version` 头时返回 Anthropic 格式\n- 包含 `x-goog-api-key` 头或 `key` 查询参数时返回 Gemini 格式\n- 其他情况返回 OpenAI 格式\n",
+        "summary": "Native OpenAI format",
+        "description": "List currently available models.\n\nResponse format is inferred from headers:\n- `x-api-key` + `anthropic-version` → Anthropic format\n- `x-goog-api-key` header or `key` query param → Gemini format\n- Otherwise → OpenAI format\n",
         "operationId": "listmodels",
         "parameters": [
           {
             "name": "key",
             "in": "query",
             "required": false,
-            "description": "Google API Key (用于 Gemini 格式)",
+            "description": "Google API key (Gemini format)",
             "schema": {
               "type": "string"
             }
@@ -42,7 +42,7 @@
             "name": "x-api-key",
             "in": "header",
             "required": false,
-            "description": "Anthropic API Key (用于 Claude 格式)",
+            "description": "Anthropic API key (Claude format)",
             "schema": {
               "type": "string"
             }
@@ -51,7 +51,7 @@
             "name": "anthropic-version",
             "in": "header",
             "required": false,
-            "description": "Anthropic API 版本",
+            "description": "Anthropic API version",
             "schema": {
               "type": "string",
               "examples": [
@@ -63,7 +63,7 @@
             "name": "x-goog-api-key",
             "in": "header",
             "required": false,
-            "description": "Google API Key (用于 Gemini 格式)",
+            "description": "Google API key (Gemini format)",
             "schema": {
               "type": "string"
             }
@@ -76,7 +76,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取模型列表",
+            "description": "Model list retrieved",
             "content": {
               "application/json": {
                 "schema": {
@@ -95,25 +95,25 @@
                         "properties": {
                           "id": {
                             "type": "string",
-                            "description": "模型 ID",
+                            "description": "Model ID",
                             "examples": [
                               "gpt-4"
                             ]
                           },
                           "object": {
                             "type": "string",
-                            "description": "对象类型",
+                            "description": "Object type",
                             "examples": [
                               "model"
                             ]
                           },
                           "created": {
                             "type": "integer",
-                            "description": "创建时间戳"
+                            "description": "Created timestamp"
                           },
                           "owned_by": {
                             "type": "string",
-                            "description": "模型所有者",
+                            "description": "Model owner",
                             "examples": [
                               "openai"
                             ]
@@ -137,7 +137,7 @@
             }
           },
           "401": {
-            "description": "认证失败",
+            "description": "Authentication failed",
             "content": {
               "application/json": {
                 "schema": {
@@ -148,25 +148,25 @@
                       "properties": {
                         "message": {
                           "type": "string",
-                          "description": "错误信息"
+                          "description": "Error message"
                         },
                         "type": {
                           "type": "string",
-                          "description": "错误类型"
+                          "description": "Error type"
                         },
                         "param": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "相关参数"
+                          "description": "Related parameter"
                         },
                         "code": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "错误代码"
+                          "description": "Error code"
                         }
                       },
                       "x-apifox-orders": [

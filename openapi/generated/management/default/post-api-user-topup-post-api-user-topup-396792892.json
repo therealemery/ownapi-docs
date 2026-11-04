@@ -1,9 +1,9 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "使用兑换码",
+    "title": "Redeem code",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -25,8 +25,8 @@
         "tags": [
           "default"
         ],
-        "summary": "使用兑换码",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Redeem code",
+        "description": "🔐 Login required (user role)",
         "operationId": "post-api-user-topup",
         "parameters": [],
         "requestBody": {
@@ -57,7 +57,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {

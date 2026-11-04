@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "更新预填分组",
+    "title": "Update prefill group",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "分组"
+      "name": "Groups"
     }
   ],
   "paths": {
     "/api/prefill_group/": {
       "put": {
         "tags": [
-          "分组"
+          "Groups"
         ],
-        "summary": "更新预填分组",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Update prefill group",
+        "description": "👨‍💼 Admin role required",
         "operationId": "put-api-prefill-group",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

@@ -20,8 +20,9 @@
     "translate": "bun scripts/translate-docs.ts",
     "translate:all": "bun scripts/translate-docs.ts",
     "translate:force": "bun run translate",
-    "generate:openapi:schemas": "bun scripts/generate-openapi-from-http.ts",
-    "generate:openapi": "bun scripts/generate-openapi-from-http.ts && bun scripts/generate-openapi-docs.ts"
+    "generate:openapi:schemas": "bun scripts/generate-openapi-from-http.ts && bun scripts/translate-openapi-generated.ts",
+    "generate:openapi": "bun scripts/generate-openapi-from-http.ts && bun scripts/translate-openapi-generated.ts && bun scripts/generate-openapi-docs.ts",
+    "translate:openapi": "bun scripts/translate-openapi-generated.ts"
   },
   "dependencies": {
     "@ai-sdk/openai-compatible": "^1.0.27",

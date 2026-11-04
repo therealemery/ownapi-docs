@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "原生Gemini格式",
+    "title": "Native Gemini format",
     "version": "1.0.0",
-    "description": "使用指定引擎/模型创建嵌入"
+    "description": "Create embeddings with the specified engine/model"
   },
   "tags": [
     {
-      "name": "嵌入（Embeddings）"
+      "name": "Embeddings"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,17 +23,17 @@
     "/v1/engines/{model}/embeddings": {
       "post": {
         "tags": [
-          "嵌入（Embeddings）"
+          "Embeddings"
         ],
-        "summary": "原生Gemini格式",
-        "description": "使用指定引擎/模型创建嵌入",
+        "summary": "Native Gemini format",
+        "description": "Create embeddings with the specified engine/model",
         "operationId": "createengineembedding",
         "parameters": [
           {
             "name": "model",
             "in": "path",
             "required": true,
-            "description": "模型/引擎 ID",
+            "description": "Model/engine ID",
             "schema": {
               "type": "string"
             }
@@ -68,7 +68,7 @@
                         }
                       }
                     ],
-                    "description": "要嵌入的文本"
+                    "description": "Text to embed"
                   },
                   "encoding_format": {
                     "type": "string",
@@ -80,7 +80,7 @@
                   },
                   "dimensions": {
                     "type": "integer",
-                    "description": "输出向量维度"
+                    "description": "Output embedding dimensions"
                   }
                 },
                 "x-apifox-orders": [
@@ -100,7 +100,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功创建嵌入",
+            "description": "Embedding created",
             "content": {
               "application/json": {
                 "schema": {

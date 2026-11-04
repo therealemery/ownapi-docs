@@ -1,9 +1,9 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "GitHub OAuth登录",
+    "title": "GitHub OAuth sign-in",
     "version": "1.0.0",
-    "description": "🔓 无需鉴权（OAuth回调）"
+    "description": "🔓 No authentication (OAuth callback)"
   },
   "tags": [
     {
@@ -16,8 +16,8 @@
         "tags": [
           "OAuth"
         ],
-        "summary": "GitHub OAuth登录",
-        "description": "🔓 无需鉴权（OAuth回调）",
+        "summary": "GitHub OAuth sign-in",
+        "description": "🔓 No authentication (OAuth callback)",
         "operationId": "get-api-oauth-github",
         "parameters": [
           {
@@ -31,7 +31,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

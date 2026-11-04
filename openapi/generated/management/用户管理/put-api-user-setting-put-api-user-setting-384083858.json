@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "更新用户设置",
+    "title": "Update user settings",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "用户管理"
+      "name": "User management"
     }
   ],
   "paths": {
     "/api/user/setting": {
       "put": {
         "tags": [
-          "用户管理"
+          "User management"
         ],
-        "summary": "更新用户设置",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Update user settings",
+        "description": "🔐 Login required (user role)",
         "operationId": "put-api-user-setting",
         "parameters": [],
         "requestBody": {
@@ -52,7 +52,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

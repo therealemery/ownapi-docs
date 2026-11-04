@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "测试指定渠道",
+    "title": "Test channel by ID",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "渠道管理"
+      "name": "Channel management"
     }
   ],
   "paths": {
     "/api/channel/test/{id}": {
       "get": {
         "tags": [
-          "渠道管理"
+          "Channel management"
         ],
-        "summary": "测试指定渠道",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Test channel by ID",
+        "description": "👨‍💼 Admin role required",
         "operationId": "get-api-channel-test-id",
         "parameters": [
           {
@@ -31,7 +31,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

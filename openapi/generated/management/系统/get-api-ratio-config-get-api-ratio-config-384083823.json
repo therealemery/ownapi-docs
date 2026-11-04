@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取倍率配置",
+    "title": "Get ratio configuration",
     "version": "1.0.0",
-    "description": "🔓 无需鉴权"
+    "description": "🔓 No authentication required"
   },
   "tags": [
     {
-      "name": "系统"
+      "name": "System"
     }
   ],
   "paths": {
     "/api/ratio_config": {
       "get": {
         "tags": [
-          "系统"
+          "System"
         ],
-        "summary": "获取倍率配置",
-        "description": "🔓 无需鉴权",
+        "summary": "Get ratio configuration",
+        "description": "🔓 No authentication required",
         "operationId": "get-api-ratio-config",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

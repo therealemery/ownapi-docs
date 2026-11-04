@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取视频任务状态 ",
+    "title": "Get video task status",
     "version": "1.0.0",
-    "description": "OpenAI 兼容的视频任务状态查询接口。\n\n返回视频任务的详细状态信息。\n"
+    "description": "OpenAI-compatible video task status query.\n\nReturns detailed task status.\n"
   },
   "tags": [
     {
-      "name": "视频（Videos）/Sora格式"
+      "name": "Videos/Sora format"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,17 +23,17 @@
     "/v1/videos/{task_id}": {
       "get": {
         "tags": [
-          "视频（Videos）/Sora格式"
+          "Videos/Sora format"
         ],
-        "summary": "获取视频任务状态 ",
-        "description": "OpenAI 兼容的视频任务状态查询接口。\n\n返回视频任务的详细状态信息。\n",
+        "summary": "Get video task status",
+        "description": "OpenAI-compatible video task status query.\n\nReturns detailed task status.\n",
         "operationId": "getvideo",
         "parameters": [
           {
             "name": "task_id",
             "in": "path",
             "required": true,
-            "description": "视频任务 ID",
+            "description": "Video task ID",
             "schema": {
               "type": "string"
             }
@@ -46,7 +46,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取视频任务状态",
+            "description": "Video task status retrieved",
             "content": {
               "application/json": {
                 "schema": {
@@ -97,7 +97,7 @@
             }
           },
           "404": {
-            "description": "任务不存在",
+            "description": "Task not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -108,25 +108,25 @@
                       "properties": {
                         "message": {
                           "type": "string",
-                          "description": "错误信息"
+                          "description": "Error message"
                         },
                         "type": {
                           "type": "string",
-                          "description": "错误类型"
+                          "description": "Error type"
                         },
                         "param": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "相关参数"
+                          "description": "Related parameter"
                         },
                         "code": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "错误代码"
+                          "description": "Error code"
                         }
                       },
                       "x-apifox-orders": [

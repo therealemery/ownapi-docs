@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "原生Gemini格式",
+    "title": "Native Gemini format",
     "version": "1.0.0",
-    "description": "以 Gemini API 格式返回可用模型列表"
+    "description": "List models in Gemini API format"
   },
   "tags": [
     {
-      "name": "模型（Models）/列出模型"
+      "name": "Models/List models"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,10 +23,10 @@
     "/v1beta/models": {
       "get": {
         "tags": [
-          "模型（Models）/列出模型"
+          "Models/List models"
         ],
-        "summary": "原生Gemini格式",
-        "description": "以 Gemini API 格式返回可用模型列表",
+        "summary": "Native Gemini format",
+        "description": "List models in Gemini API format",
         "operationId": "listmodelsgemini",
         "parameters": [],
         "security": [
@@ -36,7 +36,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取模型列表",
+            "description": "Model list retrieved",
             "content": {
               "application/json": {
                 "schema": {

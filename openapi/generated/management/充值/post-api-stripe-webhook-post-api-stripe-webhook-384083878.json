@@ -3,26 +3,26 @@
   "info": {
     "title": "Stripe Webhook",
     "version": "1.0.0",
-    "description": "🔓 无需鉴权（Webhook回调）"
+    "description": "🔓 No authentication (webhook callback)"
   },
   "tags": [
     {
-      "name": "充值"
+      "name": "Top-up"
     }
   ],
   "paths": {
     "/api/stripe/webhook": {
       "post": {
         "tags": [
-          "充值"
+          "Top-up"
         ],
         "summary": "Stripe Webhook",
-        "description": "🔓 无需鉴权（Webhook回调）",
+        "description": "🔓 No authentication (webhook callback)",
         "operationId": "post-api-stripe-webhook",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

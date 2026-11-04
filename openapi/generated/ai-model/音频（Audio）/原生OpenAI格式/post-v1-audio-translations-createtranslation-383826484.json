@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "音频翻译",
+    "title": "Audio translation",
     "version": "1.0.0",
-    "description": "将音频翻译为英文文本"
+    "description": "Translate audio to English text"
   },
   "tags": [
     {
-      "name": "音频（Audio）/原生OpenAI格式"
+      "name": "Audio/Native OpenAI format"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,10 +23,10 @@
     "/v1/audio/translations": {
       "post": {
         "tags": [
-          "音频（Audio）/原生OpenAI格式"
+          "Audio/Native OpenAI format"
         ],
-        "summary": "音频翻译",
-        "description": "将音频翻译为英文文本",
+        "summary": "Audio translation",
+        "description": "Translate audio to English text",
         "operationId": "createtranslation",
         "parameters": [],
         "requestBody": {
@@ -68,7 +68,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功翻译",
+            "description": "Translation succeeded",
             "content": {
               "application/json": {
                 "schema": {

@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Kling 文生视频",
+    "title": "Kling text-to-video",
     "version": "1.0.0",
-    "description": "使用 Kling 模型从文本描述生成视频。\n\n支持的模型：kling-v1, kling-v1-5 等\n"
+    "description": "Generate video from text with Kling models.\n\nSupported models include kling-v1, kling-v1-5, etc.\n"
   },
   "tags": [
     {
-      "name": "视频（Videos）/可灵格式"
+      "name": "Videos/Kling format"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,10 +23,10 @@
     "/kling/v1/videos/text2video": {
       "post": {
         "tags": [
-          "视频（Videos）/可灵格式"
+          "Videos/Kling format"
         ],
-        "summary": "Kling 文生视频",
-        "description": "使用 Kling 模型从文本描述生成视频。\n\n支持的模型：kling-v1, kling-v1-5 等\n",
+        "summary": "Kling text-to-video",
+        "description": "Generate video from text with Kling models.\n\nSupported models include kling-v1, kling-v1-5, etc.\n",
         "operationId": "createklingtext2video",
         "parameters": [],
         "requestBody": {
@@ -35,88 +35,88 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "description": "视频生成请求",
+                "description": "Video generation request",
                 "properties": {
                   "model": {
                     "type": "string",
-                    "description": "模型/风格 ID",
+                    "description": "Model/style ID",
                     "examples": [
                       "kling-v1"
                     ]
                   },
                   "prompt": {
                     "type": "string",
-                    "description": "文本描述提示词",
+                    "description": "Text prompt",
                     "examples": [
-                      "宇航员站起身走了"
+                      "The astronaut stood up and walked away"
                     ]
                   },
                   "image": {
                     "type": "string",
-                    "description": "图片输入 (URL 或 Base64)",
+                    "description": "Image input (URL or Base64)",
                     "examples": [
                       "https://example.com/image.jpg"
                     ]
                   },
                   "duration": {
                     "type": "number",
-                    "description": "视频时长（秒）",
+                    "description": "Video duration (seconds)",
                     "examples": [
                       5
                     ]
                   },
                   "width": {
                     "type": "integer",
-                    "description": "视频宽度",
+                    "description": "Video width",
                     "examples": [
                       1280
                     ]
                   },
                   "height": {
                     "type": "integer",
-                    "description": "视频高度",
+                    "description": "Video height",
                     "examples": [
                       720
                     ]
                   },
                   "fps": {
                     "type": "integer",
-                    "description": "视频帧率",
+                    "description": "Video frame rate (FPS)",
                     "examples": [
                       30
                     ]
                   },
                   "seed": {
                     "type": "integer",
-                    "description": "随机种子",
+                    "description": "Random seed",
                     "examples": [
                       20231234
                     ]
                   },
                   "n": {
                     "type": "integer",
-                    "description": "生成视频数量",
+                    "description": "Number of videos to generate",
                     "examples": [
                       1
                     ]
                   },
                   "response_format": {
                     "type": "string",
-                    "description": "响应格式",
+                    "description": "Response format",
                     "examples": [
                       "url"
                     ]
                   },
                   "user": {
                     "type": "string",
-                    "description": "用户标识",
+                    "description": "End-user identifier",
                     "examples": [
                       "user-1234"
                     ]
                   },
                   "metadata": {
                     "type": "object",
-                    "description": "扩展参数 (如 negative_prompt, style, quality_level 等)",
+                    "description": "Extra parameters (e.g. negative_prompt, style, quality_level)",
                     "additionalProperties": true,
                     "properties": {},
                     "x-apifox-orders": []
@@ -147,23 +147,23 @@
         ],
         "responses": {
           "200": {
-            "description": "成功创建视频生成任务",
+            "description": "Video generation task created",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "description": "视频生成任务提交响应",
+                  "description": "Video generation task submission response",
                   "properties": {
                     "task_id": {
                       "type": "string",
-                      "description": "任务 ID",
+                      "description": "Task ID",
                       "examples": [
                         "abcd1234efgh"
                       ]
                     },
                     "status": {
                       "type": "string",
-                      "description": "任务状态",
+                      "description": "Task status",
                       "examples": [
                         "queued"
                       ]
@@ -178,7 +178,7 @@
             }
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -189,25 +189,25 @@
                       "properties": {
                         "message": {
                           "type": "string",
-                          "description": "错误信息"
+                          "description": "Error message"
                         },
                         "type": {
                           "type": "string",
-                          "description": "错误类型"
+                          "description": "Error type"
                         },
                         "param": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "相关参数"
+                          "description": "Related parameter"
                         },
                         "code": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "错误代码"
+                          "description": "Error code"
                         }
                       },
                       "x-apifox-orders": [

@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "易支付回调",
+    "title": "Epay callback",
     "version": "1.0.0",
-    "description": "🔓 无需鉴权（支付回调）"
+    "description": "🔓 No authentication (payment callback)"
   },
   "tags": [
     {
-      "name": "充值"
+      "name": "Top-up"
     }
   ],
   "paths": {
     "/api/user/epay/notify": {
       "get": {
         "tags": [
-          "充值"
+          "Top-up"
         ],
-        "summary": "易支付回调",
-        "description": "🔓 无需鉴权（支付回调）",
+        "summary": "Epay callback",
+        "description": "🔓 No authentication (payment callback)",
         "operationId": "get-api-user-epay-notify",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

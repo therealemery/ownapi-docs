@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "搜索用户",
+    "title": "Search users",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "用户管理"
+      "name": "User management"
     }
   ],
   "paths": {
     "/api/user/search": {
       "get": {
         "tags": [
-          "用户管理"
+          "User management"
         ],
-        "summary": "搜索用户",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Search users",
+        "description": "👨‍💼 Admin role required",
         "operationId": "get-api-user-search",
         "parameters": [
           {
@@ -39,7 +39,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "音频转录",
+    "title": "Audio transcription",
     "version": "1.0.0",
-    "description": "将音频转换为文本"
+    "description": "Transcribe audio to text"
   },
   "tags": [
     {
-      "name": "音频（Audio）/原生OpenAI格式"
+      "name": "Audio/Native OpenAI format"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,10 +23,10 @@
     "/v1/audio/transcriptions": {
       "post": {
         "tags": [
-          "音频（Audio）/原生OpenAI格式"
+          "Audio/Native OpenAI format"
         ],
-        "summary": "音频转录",
-        "description": "将音频转换为文本",
+        "summary": "Audio transcription",
+        "description": "Transcribe audio to text",
         "operationId": "createtranscription",
         "parameters": [],
         "requestBody": {
@@ -39,7 +39,7 @@
                   "file": {
                     "type": "string",
                     "format": "binary",
-                    "description": "音频文件"
+                    "description": "Audio file"
                   },
                   "model": {
                     "type": "string",
@@ -49,7 +49,7 @@
                   },
                   "language": {
                     "type": "string",
-                    "description": "ISO-639-1 语言代码"
+                    "description": "ISO-639-1 language code"
                   },
                   "prompt": {
                     "type": "string"
@@ -94,7 +94,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功转录",
+            "description": "Transcription succeeded",
             "content": {
               "application/json": {
                 "schema": {

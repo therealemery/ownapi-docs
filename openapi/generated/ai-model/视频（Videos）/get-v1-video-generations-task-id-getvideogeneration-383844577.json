@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取视频生成任务状态",
+    "title": "Get video generation task status",
     "version": "1.0.0",
-    "description": "查询视频生成任务的状态和结果。\n\n任务状态：\n- `queued`: 排队中\n- `in_progress`: 生成中\n- `completed`: 已完成\n- `failed`: 失败\n"
+    "description": "Query video generation task status and result.\n\nStatuses:\n- `queued`: queued\n- `in_progress`: in progress\n- `completed`: completed\n- `failed`: failed\n"
   },
   "tags": [
     {
-      "name": "视频（Videos）"
+      "name": "Videos"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,17 +23,17 @@
     "/v1/video/generations/{task_id}": {
       "get": {
         "tags": [
-          "视频（Videos）"
+          "Videos"
         ],
-        "summary": "获取视频生成任务状态",
-        "description": "查询视频生成任务的状态和结果。\n\n任务状态：\n- `queued`: 排队中\n- `in_progress`: 生成中\n- `completed`: 已完成\n- `failed`: 失败\n",
+        "summary": "Get video generation task status",
+        "description": "Query video generation task status and result.\n\nStatuses:\n- `queued`: queued\n- `in_progress`: in progress\n- `completed`: completed\n- `failed`: failed\n",
         "operationId": "getvideogeneration",
         "parameters": [
           {
             "name": "task_id",
             "in": "path",
             "required": true,
-            "description": "任务 ID",
+            "description": "Task ID",
             "schema": {
               "type": "string"
             }
@@ -46,23 +46,23 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取任务状态",
+            "description": "Task status retrieved",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "description": "视频任务状态查询响应",
+                  "description": "Video task status response",
                   "properties": {
                     "task_id": {
                       "type": "string",
-                      "description": "任务 ID",
+                      "description": "Task ID",
                       "examples": [
                         "abcd1234efgh"
                       ]
                     },
                     "status": {
                       "type": "string",
-                      "description": "任务状态",
+                      "description": "Task status",
                       "enum": [
                         "queued",
                         "in_progress",
@@ -75,53 +75,53 @@
                     },
                     "url": {
                       "type": "string",
-                      "description": "视频资源 URL（成功时）",
+                      "description": "Video asset URL (on success)",
                       "examples": [
                         "https://example.com/video.mp4"
                       ]
                     },
                     "format": {
                       "type": "string",
-                      "description": "视频格式",
+                      "description": "Video format",
                       "examples": [
                         "mp4"
                       ]
                     },
                     "metadata": {
                       "type": "object",
-                      "description": "视频任务元数据",
+                      "description": "Video task metadata",
                       "properties": {
                         "duration": {
                           "type": "number",
-                          "description": "实际生成的视频时长",
+                          "description": "Actual generated video duration",
                           "examples": [
                             5
                           ]
                         },
                         "fps": {
                           "type": "integer",
-                          "description": "实际帧率",
+                          "description": "Actual frame rate",
                           "examples": [
                             30
                           ]
                         },
                         "width": {
                           "type": "integer",
-                          "description": "实际宽度",
+                          "description": "Actual width",
                           "examples": [
                             1280
                           ]
                         },
                         "height": {
                           "type": "integer",
-                          "description": "实际高度",
+                          "description": "Actual height",
                           "examples": [
                             720
                           ]
                         },
                         "seed": {
                           "type": "integer",
-                          "description": "使用的随机种子",
+                          "description": "Random seed used",
                           "examples": [
                             20231234
                           ]
@@ -137,15 +137,15 @@
                     },
                     "error": {
                       "type": "object",
-                      "description": "视频任务错误信息",
+                      "description": "Video task error message",
                       "properties": {
                         "code": {
                           "type": "integer",
-                          "description": "错误码"
+                          "description": "Error code"
                         },
                         "message": {
                           "type": "string",
-                          "description": "错误信息"
+                          "description": "Error message"
                         }
                       },
                       "x-apifox-orders": [
@@ -167,7 +167,7 @@
             }
           },
           "404": {
-            "description": "任务不存在",
+            "description": "Task not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -178,25 +178,25 @@
                       "properties": {
                         "message": {
                           "type": "string",
-                          "description": "错误信息"
+                          "description": "Error message"
                         },
                         "type": {
                           "type": "string",
-                          "description": "错误类型"
+                          "description": "Error type"
                         },
                         "param": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "相关参数"
+                          "description": "Related parameter"
                         },
                         "code": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "错误代码"
+                          "description": "Error code"
                         }
                       },
                       "x-apifox-orders": [

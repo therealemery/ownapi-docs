@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "文本转语音",
+    "title": "Text to speech",
     "version": "1.0.0",
-    "description": "将文本转换为音频"
+    "description": "Convert text to speech"
   },
   "tags": [
     {
-      "name": "音频（Audio）/原生OpenAI格式"
+      "name": "Audio/Native OpenAI format"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,10 +23,10 @@
     "/v1/audio/speech": {
       "post": {
         "tags": [
-          "音频（Audio）/原生OpenAI格式"
+          "Audio/Native OpenAI format"
         ],
-        "summary": "文本转语音",
-        "description": "将文本转换为音频",
+        "summary": "Text to speech",
+        "description": "Convert text to speech",
         "operationId": "createspeech",
         "parameters": [],
         "requestBody": {
@@ -49,7 +49,7 @@
                   },
                   "input": {
                     "type": "string",
-                    "description": "要转换的文本",
+                    "description": "Text to convert",
                     "maxLength": 4096
                   },
                   "voice": {
@@ -100,7 +100,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功生成音频",
+            "description": "Audio generated",
             "content": {
               "audio/mpeg": {
                 "schema": {

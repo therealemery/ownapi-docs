@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "用户登出",
+    "title": "User sign-out",
     "version": "1.0.0",
-    "description": "🔓 无需鉴权"
+    "description": "🔓 No authentication required"
   },
   "tags": [
     {
-      "name": "用户登陆注册"
+      "name": "User sign-in & registration"
     }
   ],
   "paths": {
     "/api/user/logout": {
       "get": {
         "tags": [
-          "用户登陆注册"
+          "User sign-in & registration"
         ],
-        "summary": "用户登出",
-        "description": "🔓 无需鉴权",
+        "summary": "User sign-out",
+        "description": "🔓 No authentication required",
         "operationId": "get-api-user-logout",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

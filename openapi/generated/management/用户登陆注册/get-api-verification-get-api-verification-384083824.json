@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "发送邮箱验证码",
+    "title": "Send email verification code",
     "version": "1.0.0",
-    "description": "🔓 无需鉴权"
+    "description": "🔓 No authentication required"
   },
   "tags": [
     {
-      "name": "用户登陆注册"
+      "name": "User sign-in & registration"
     }
   ],
   "paths": {
     "/api/verification": {
       "get": {
         "tags": [
-          "用户登陆注册"
+          "User sign-in & registration"
         ],
-        "summary": "发送邮箱验证码",
-        "description": "🔓 无需鉴权",
+        "summary": "Send email verification code",
+        "description": "🔓 No authentication required",
         "operationId": "get-api-verification",
         "parameters": [
           {
@@ -31,7 +31,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

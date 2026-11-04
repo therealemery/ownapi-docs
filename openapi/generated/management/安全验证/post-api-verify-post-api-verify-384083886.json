@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "通用安全验证",
+    "title": "General security verification",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "安全验证"
+      "name": "Security verification"
     }
   ],
   "paths": {
     "/api/verify": {
       "post": {
         "tags": [
-          "安全验证"
+          "Security verification"
         ],
-        "summary": "通用安全验证",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "General security verification",
+        "description": "🔐 Login required (user role)",
         "operationId": "post-api-verify",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

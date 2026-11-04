@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "创建用户",
+    "title": "Create user",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "用户管理"
+      "name": "User management"
     }
   ],
   "paths": {
     "/api/user/": {
       "post": {
         "tags": [
-          "用户管理"
+          "User management"
         ],
-        "summary": "创建用户",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Create user",
+        "description": "👨‍💼 Admin role required",
         "operationId": "post-api-user",
         "parameters": [],
         "requestBody": {
@@ -33,7 +33,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

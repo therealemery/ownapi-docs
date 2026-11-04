@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "原生OpenAI格式",
+    "title": "Native OpenAI format",
     "version": "1.0.0",
-    "description": "检查文本内容是否违反使用政策"
+    "description": "Check whether text violates usage policies"
   },
   "tags": [
     {
-      "name": "审查（Moderations）"
+      "name": "Moderations"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,10 +23,10 @@
     "/v1/moderations": {
       "post": {
         "tags": [
-          "审查（Moderations）"
+          "Moderations"
         ],
-        "summary": "原生OpenAI格式",
-        "description": "检查文本内容是否违反使用政策",
+        "summary": "Native OpenAI format",
+        "description": "Check whether text violates usage policies",
         "operationId": "createmoderation",
         "parameters": [],
         "requestBody": {
@@ -74,7 +74,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功审核",
+            "description": "Moderation succeeded",
             "content": {
               "application/json": {
                 "schema": {

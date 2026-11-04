@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "OpenAI聊天格式",
+    "title": "OpenAI chat format",
     "version": "1.0.0",
-    "description": "Gemini 图片生成"
+    "description": "Gemini image generation"
   },
   "tags": [
     {
-      "name": "图像（Images）/原生Gemini格式"
+      "name": "Images/Native Gemini format"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,10 +23,10 @@
     "/v1/chat/completions": {
       "post": {
         "tags": [
-          "图像（Images）/原生Gemini格式"
+          "Images/Native Gemini format"
         ],
-        "summary": "OpenAI聊天格式",
-        "description": "Gemini 图片生成",
+        "summary": "OpenAI chat format",
+        "description": "Gemini image generation",
         "operationId": "geminirelayv1beta-389846313",
         "parameters": [],
         "requestBody": {
@@ -155,7 +155,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {

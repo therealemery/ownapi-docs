@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取上游倍率",
+    "title": "Get upstream ratios",
     "version": "1.0.0",
-    "description": "👑 需要超级管理员权限（Root）"
+    "description": "👑 Root super-admin required"
   },
   "tags": [
     {
-      "name": "系统设置"
+      "name": "System settings"
     }
   ],
   "paths": {
     "/api/ratio_sync/fetch": {
       "post": {
         "tags": [
-          "系统设置"
+          "System settings"
         ],
-        "summary": "获取上游倍率",
-        "description": "👑 需要超级管理员权限（Root）",
+        "summary": "Get upstream ratios",
+        "description": "👑 Root super-admin required",
         "operationId": "post-api-ratio-sync-fetch",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

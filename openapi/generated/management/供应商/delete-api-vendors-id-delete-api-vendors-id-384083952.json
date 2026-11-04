@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "删除供应商",
+    "title": "Delete vendor",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "供应商"
+      "name": "Vendor"
     }
   ],
   "paths": {
     "/api/vendors/{id}": {
       "delete": {
         "tags": [
-          "供应商"
+          "Vendor"
         ],
-        "summary": "删除供应商",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Delete vendor",
+        "description": "👨‍💼 Admin role required",
         "operationId": "delete-api-vendors-id",
         "parameters": [
           {
@@ -31,7 +31,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

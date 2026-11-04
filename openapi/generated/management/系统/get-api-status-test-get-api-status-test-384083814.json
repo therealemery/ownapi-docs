@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "测试系统状态",
+    "title": "Test system status",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "系统"
+      "name": "System"
     }
   ],
   "paths": {
     "/api/status/test": {
       "get": {
         "tags": [
-          "系统"
+          "System"
         ],
-        "summary": "测试系统状态",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Test system status",
+        "description": "👨‍💼 Admin role required",
         "operationId": "get-api-status-test",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

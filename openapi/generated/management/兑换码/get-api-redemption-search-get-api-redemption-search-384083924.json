@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "搜索兑换码",
+    "title": "Search redemption codes",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "兑换码"
+      "name": "Redemption code"
     }
   ],
   "paths": {
     "/api/redemption/search": {
       "get": {
         "tags": [
-          "兑换码"
+          "Redemption code"
         ],
-        "summary": "搜索兑换码",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Search redemption codes",
+        "description": "👨‍💼 Admin role required",
         "operationId": "get-api-redemption-search",
         "parameters": [
           {
@@ -31,7 +31,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

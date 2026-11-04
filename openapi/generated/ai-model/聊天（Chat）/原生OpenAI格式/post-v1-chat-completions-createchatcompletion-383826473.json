@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "ChatCompletions格式",
+    "title": "Chat Completions format",
     "version": "1.0.0",
-    "description": "根据对话历史创建模型响应。支持流式和非流式响应。\n\n兼容 OpenAI Chat Completions API。\n"
+    "description": "Create a model response from conversation history. Supports streaming and non-streaming.\n\nCompatible with OpenAI Chat Completions API.\n"
   },
   "tags": [
     {
-      "name": "聊天（Chat）/原生OpenAI格式"
+      "name": "Chat/Native OpenAI format"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,10 +23,10 @@
     "/v1/chat/completions": {
       "post": {
         "tags": [
-          "聊天（Chat）/原生OpenAI格式"
+          "Chat/Native OpenAI format"
         ],
-        "summary": "ChatCompletions格式",
-        "description": "根据对话历史创建模型响应。支持流式和非流式响应。\n\n兼容 OpenAI Chat Completions API。\n",
+        "summary": "Chat Completions format",
+        "description": "Create a model response from conversation history. Supports streaming and non-streaming.\n\nCompatible with OpenAI Chat Completions API.\n",
         "operationId": "createchatcompletion",
         "parameters": [],
         "requestBody": {
@@ -42,7 +42,7 @@
                 "properties": {
                   "model": {
                     "type": "string",
-                    "description": "模型 ID",
+                    "description": "Model ID",
                     "examples": [
                       "gpt-4"
                     ]
@@ -65,7 +65,7 @@
                             "tool",
                             "developer"
                           ],
-                          "description": "消息角色"
+                          "description": "Message role"
                         },
                         "content": {
                           "oneOf": [
@@ -95,7 +95,7 @@
                                     "properties": {
                                       "url": {
                                         "type": "string",
-                                        "description": "图片 URL 或 base64"
+                                        "description": "Image URL or base64"
                                       },
                                       "detail": {
                                         "type": "string",
@@ -116,7 +116,7 @@
                                     "properties": {
                                       "data": {
                                         "type": "string",
-                                        "description": "Base64 编码的音频数据"
+                                        "description": "Base64-encoded audio"
                                       },
                                       "format": {
                                         "type": "string",
@@ -173,11 +173,11 @@
                               }
                             }
                           ],
-                          "description": "消息内容"
+                          "description": "Message content"
                         },
                         "name": {
                           "type": "string",
-                          "description": "发送者名称"
+                          "description": "Sender name"
                         },
                         "tool_calls": {
                           "type": "array",
@@ -218,11 +218,11 @@
                         },
                         "tool_call_id": {
                           "type": "string",
-                          "description": "工具调用 ID（用于 tool 角色消息）"
+                          "description": "Tool call ID (for tool role messages)"
                         },
                         "reasoning_content": {
                           "type": "string",
-                          "description": "推理内容"
+                          "description": "Reasoning content"
                         }
                       },
                       "x-apifox-orders": [
@@ -234,32 +234,32 @@
                         "reasoning_content"
                       ]
                     },
-                    "description": "对话消息列表"
+                    "description": "Conversation messages"
                   },
                   "temperature": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 2,
                     "default": 1,
-                    "description": "采样温度"
+                    "description": "Sampling temperature"
                   },
                   "top_p": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1,
                     "default": 1,
-                    "description": "核采样参数"
+                    "description": "Nucleus sampling (top_p)"
                   },
                   "n": {
                     "type": "integer",
                     "minimum": 1,
                     "default": 1,
-                    "description": "生成数量"
+                    "description": "Number of generations"
                   },
                   "stream": {
                     "type": "boolean",
                     "default": false,
-                    "description": "是否流式响应"
+                    "description": "Stream the response"
                   },
                   "stream_options": {
                     "type": "object",
@@ -284,15 +284,15 @@
                         }
                       }
                     ],
-                    "description": "停止序列"
+                    "description": "Stop sequences"
                   },
                   "max_tokens": {
                     "type": "integer",
-                    "description": "最大生成 Token 数"
+                    "description": "Max output tokens"
                   },
                   "max_completion_tokens": {
                     "type": "integer",
-                    "description": "最大补全 Token 数"
+                    "description": "Max completion tokens"
                   },
                   "presence_penalty": {
                     "type": "number",
@@ -339,7 +339,7 @@
                             },
                             "parameters": {
                               "type": "object",
-                              "description": "JSON Schema 格式的参数定义",
+                              "description": "Parameter definition in JSON Schema format",
                               "properties": {},
                               "x-apifox-orders": []
                             }
@@ -405,7 +405,7 @@
                       },
                       "json_schema": {
                         "type": "object",
-                        "description": "JSON Schema 定义",
+                        "description": "JSON Schema definition",
                         "properties": {},
                         "x-apifox-orders": []
                       }
@@ -425,7 +425,7 @@
                       "medium",
                       "high"
                     ],
-                    "description": "推理强度 (用于支持推理的模型)"
+                    "description": "Reasoning effort (for reasoning-capable models)"
                   },
                   "modalities": {
                     "type": "array",
@@ -487,7 +487,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功创建响应",
+            "description": "Response created",
             "content": {
               "application/json": {
                 "schema": {
@@ -532,7 +532,7 @@
                                   "tool",
                                   "developer"
                                 ],
-                                "description": "消息角色"
+                                "description": "Message role"
                               },
                               "content": {
                                 "oneOf": [
@@ -562,7 +562,7 @@
                                           "properties": {
                                             "url": {
                                               "type": "string",
-                                              "description": "图片 URL 或 base64"
+                                              "description": "Image URL or base64"
                                             },
                                             "detail": {
                                               "type": "string",
@@ -583,7 +583,7 @@
                                           "properties": {
                                             "data": {
                                               "type": "string",
-                                              "description": "Base64 编码的音频数据"
+                                              "description": "Base64-encoded audio"
                                             },
                                             "format": {
                                               "type": "string",
@@ -640,11 +640,11 @@
                                     }
                                   }
                                 ],
-                                "description": "消息内容"
+                                "description": "Message content"
                               },
                               "name": {
                                 "type": "string",
-                                "description": "发送者名称"
+                                "description": "Sender name"
                               },
                               "tool_calls": {
                                 "type": "array",
@@ -685,11 +685,11 @@
                               },
                               "tool_call_id": {
                                 "type": "string",
-                                "description": "工具调用 ID（用于 tool 角色消息）"
+                                "description": "Tool call ID (for tool role messages)"
                               },
                               "reasoning_content": {
                                 "type": "string",
-                                "description": "推理内容"
+                                "description": "Reasoning content"
                               }
                             },
                             "x-apifox-orders": [
@@ -723,15 +723,15 @@
                       "properties": {
                         "prompt_tokens": {
                           "type": "integer",
-                          "description": "提示词 Token 数"
+                          "description": "Prompt tokens"
                         },
                         "completion_tokens": {
                           "type": "integer",
-                          "description": "补全 Token 数"
+                          "description": "Completion tokens"
                         },
                         "total_tokens": {
                           "type": "integer",
-                          "description": "总 Token 数"
+                          "description": "Total tokens"
                         },
                         "prompt_tokens_details": {
                           "type": "object",
@@ -802,7 +802,7 @@
             }
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -813,25 +813,25 @@
                       "properties": {
                         "message": {
                           "type": "string",
-                          "description": "错误信息"
+                          "description": "Error message"
                         },
                         "type": {
                           "type": "string",
-                          "description": "错误类型"
+                          "description": "Error type"
                         },
                         "param": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "相关参数"
+                          "description": "Related parameter"
                         },
                         "code": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "错误代码"
+                          "description": "Error code"
                         }
                       },
                       "x-apifox-orders": [
@@ -850,7 +850,7 @@
             }
           },
           "429": {
-            "description": "请求频率限制",
+            "description": "Rate limit exceeded",
             "content": {
               "application/json": {
                 "schema": {
@@ -861,25 +861,25 @@
                       "properties": {
                         "message": {
                           "type": "string",
-                          "description": "错误信息"
+                          "description": "Error message"
                         },
                         "type": {
                           "type": "string",
-                          "description": "错误类型"
+                          "description": "Error type"
                         },
                         "param": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "相关参数"
+                          "description": "Related parameter"
                         },
                         "code": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "错误代码"
+                          "description": "Error code"
                         }
                       },
                       "x-apifox-orders": [

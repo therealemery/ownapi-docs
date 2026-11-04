@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取用户分组列表",
+    "title": "Get user group list",
     "version": "1.0.0",
-    "description": "🔓 无需鉴权"
+    "description": "🔓 No authentication required"
   },
   "tags": [
     {
-      "name": "用户登陆注册"
+      "name": "User sign-in & registration"
     }
   ],
   "paths": {
     "/api/user/groups": {
       "get": {
         "tags": [
-          "用户登陆注册"
+          "User sign-in & registration"
         ],
-        "summary": "获取用户分组列表",
-        "description": "🔓 无需鉴权",
+        "summary": "Get user group list",
+        "description": "🔓 No authentication required",
         "operationId": "get-api-user-groups",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

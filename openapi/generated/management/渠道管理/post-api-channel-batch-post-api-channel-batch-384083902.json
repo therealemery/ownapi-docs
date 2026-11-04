@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "批量删除渠道",
+    "title": "Batch delete channels",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "渠道管理"
+      "name": "Channel management"
     }
   ],
   "paths": {
     "/api/channel/batch": {
       "post": {
         "tags": [
-          "渠道管理"
+          "Channel management"
         ],
-        "summary": "批量删除渠道",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Batch delete channels",
+        "description": "👨‍💼 Admin role required",
         "operationId": "post-api-channel-batch",
         "parameters": [],
         "requestBody": {
@@ -43,7 +43,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取微调任务详情 (未实现)",
+    "title": "Get fine-tuning job details (not implemented)",
     "version": "1.0.0",
-    "description": "此接口尚未实现"
+    "description": "This endpoint is not implemented"
   },
   "tags": [
     {
-      "name": "未实现（Unimplemented）/微调（Fine-tuning）"
+      "name": "Unimplemented/Fine-tuning"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,10 +23,10 @@
     "/v1/fine-tunes/{fine_tune_id}": {
       "get": {
         "tags": [
-          "未实现（Unimplemented）/微调（Fine-tuning）"
+          "Unimplemented/Fine-tuning"
         ],
-        "summary": "获取微调任务详情 (未实现)",
-        "description": "此接口尚未实现",
+        "summary": "Get fine-tuning job details (not implemented)",
+        "description": "This endpoint is not implemented",
         "operationId": "retrievefinetune",
         "parameters": [
           {
@@ -45,7 +45,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "Not implemented",
             "content": {
               "application/json": {
                 "schema": {
@@ -56,25 +56,25 @@
                       "properties": {
                         "message": {
                           "type": "string",
-                          "description": "错误信息"
+                          "description": "Error message"
                         },
                         "type": {
                           "type": "string",
-                          "description": "错误类型"
+                          "description": "Error type"
                         },
                         "param": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "相关参数"
+                          "description": "Related parameter"
                         },
                         "code": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "错误代码"
+                          "description": "Error code"
                         }
                       },
                       "x-apifox-orders": [

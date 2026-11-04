@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "创建兑换码",
+    "title": "Create redemption code",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "兑换码"
+      "name": "Redemption code"
     }
   ],
   "paths": {
     "/api/redemption/": {
       "post": {
         "tags": [
-          "兑换码"
+          "Redemption code"
         ],
-        "summary": "创建兑换码",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Create redemption code",
+        "description": "👨‍💼 Admin role required",
         "operationId": "post-api-redemption",
         "parameters": [],
         "requestBody": {
@@ -33,7 +33,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取所有模型元数据",
+    "title": "Get all model metadata",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "模型管理"
+      "name": "Model management"
     }
   ],
   "paths": {
     "/api/models/": {
       "get": {
         "tags": [
-          "模型管理"
+          "Model management"
         ],
-        "summary": "获取所有模型元数据",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Get all model metadata",
+        "description": "👨‍💼 Admin role required",
         "operationId": "get-api-models",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

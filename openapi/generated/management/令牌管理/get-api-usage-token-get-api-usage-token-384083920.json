@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取令牌使用情况",
+    "title": "Get token usage",
     "version": "1.0.0",
-    "description": "🔑 需要令牌认证（TokenAuth）"
+    "description": "🔑 Bearer token required (TokenAuth)"
   },
   "tags": [
     {
-      "name": "令牌管理"
+      "name": "Token management"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,10 +23,10 @@
     "/api/usage/token/": {
       "get": {
         "tags": [
-          "令牌管理"
+          "Token management"
         ],
-        "summary": "获取令牌使用情况",
-        "description": "🔑 需要令牌认证（TokenAuth）",
+        "summary": "Get token usage",
+        "description": "🔑 Bearer token required (TokenAuth)",
         "operationId": "get-api-usage-token",
         "parameters": [
           {
@@ -45,7 +45,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

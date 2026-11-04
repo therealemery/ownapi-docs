@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取当前用户分组",
+    "title": "Get current user groups",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "用户管理"
+      "name": "User management"
     }
   ],
   "paths": {
     "/api/user/self/groups": {
       "get": {
         "tags": [
-          "用户管理"
+          "User management"
         ],
-        "summary": "获取当前用户分组",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Get current user groups",
+        "description": "🔐 Login required (user role)",
         "operationId": "get-api-user-self-groups",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

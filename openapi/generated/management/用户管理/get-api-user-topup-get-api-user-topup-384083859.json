@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取所有充值记录",
+    "title": "Get all top-up records",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "用户管理"
+      "name": "User management"
     }
   ],
   "paths": {
     "/api/user/topup": {
       "get": {
         "tags": [
-          "用户管理"
+          "User management"
         ],
-        "summary": "获取所有充值记录",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Get all top-up records",
+        "description": "👨‍💼 Admin role required",
         "operationId": "get-api-user-topup",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

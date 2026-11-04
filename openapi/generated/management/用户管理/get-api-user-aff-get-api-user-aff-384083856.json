@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取邀请码",
+    "title": "Get referral code",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "用户管理"
+      "name": "User management"
     }
   ],
   "paths": {
     "/api/user/aff": {
       "get": {
         "tags": [
-          "用户管理"
+          "User management"
         ],
-        "summary": "获取邀请码",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Get referral code",
+        "description": "🔐 Login required (user role)",
         "operationId": "get-api-user-aff",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

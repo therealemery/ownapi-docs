@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取定价信息",
+    "title": "Get pricing info",
     "version": "1.0.0",
-    "description": "🔓 无需鉴权（可选登录）"
+    "description": "🔓 No authentication (optional login)"
   },
   "tags": [
     {
-      "name": "系统"
+      "name": "System"
     }
   ],
   "paths": {
     "/api/pricing": {
       "get": {
         "tags": [
-          "系统"
+          "System"
         ],
-        "summary": "获取定价信息",
-        "description": "🔓 无需鉴权（可选登录）",
+        "summary": "Get pricing info",
+        "description": "🔓 No authentication (optional login)",
         "operationId": "get-api-pricing",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

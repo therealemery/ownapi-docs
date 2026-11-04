@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "原生Gemini格式",
+    "title": "Native Gemini format",
     "version": "1.0.0",
-    "description": "Gemini 音频生成接口。\n可使用gemini-2.5-flash-preview-tts等模型"
+    "description": "Gemini audio generation.\nModels such as gemini-2.5-flash-preview-tts."
   },
   "tags": [
     {
-      "name": "音频（Audio）"
+      "name": "Audio"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,17 +23,17 @@
     "/v1beta/models/{model}:generateContent": {
       "post": {
         "tags": [
-          "音频（Audio）"
+          "Audio"
         ],
-        "summary": "原生Gemini格式",
-        "description": "Gemini 音频生成接口。\n可使用gemini-2.5-flash-preview-tts等模型",
+        "summary": "Native Gemini format",
+        "description": "Gemini audio generation.\nModels such as gemini-2.5-flash-preview-tts.",
         "operationId": "geminirelayv1beta-383836364",
         "parameters": [
           {
             "name": "model",
             "in": "path",
             "required": true,
-            "description": "模型名称",
+            "description": "Model name",
             "schema": {
               "type": "string"
             }
@@ -146,7 +146,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {

@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "发起易支付",
+    "title": "Start Epay payment",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "充值"
+      "name": "Top-up"
     }
   ],
   "paths": {
     "/api/user/pay": {
       "post": {
         "tags": [
-          "充值"
+          "Top-up"
         ],
-        "summary": "发起易支付",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Start Epay payment",
+        "description": "🔐 Login required (user role)",
         "operationId": "post-api-user-pay",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

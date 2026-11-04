@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取验证状态",
+    "title": "Get verification status",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "安全验证"
+      "name": "Security verification"
     }
   ],
   "paths": {
     "/api/verify/status": {
       "get": {
         "tags": [
-          "安全验证"
+          "Security verification"
         ],
-        "summary": "获取验证状态",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Get verification status",
+        "description": "🔐 Login required (user role)",
         "operationId": "get-api-verify-status",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

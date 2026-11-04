@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "删除已禁用渠道",
+    "title": "Delete disabled channels",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "渠道管理"
+      "name": "Channel management"
     }
   ],
   "paths": {
     "/api/channel/disabled": {
       "delete": {
         "tags": [
-          "渠道管理"
+          "Channel management"
         ],
-        "summary": "删除已禁用渠道",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Delete disabled channels",
+        "description": "👨‍💼 Admin role required",
         "operationId": "delete-api-channel-disabled",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

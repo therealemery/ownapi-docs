@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取个人日志",
+    "title": "Get your logs",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "日志"
+      "name": "Logs"
     }
   ],
   "paths": {
     "/api/log/self": {
       "get": {
         "tags": [
-          "日志"
+          "Logs"
         ],
-        "summary": "获取个人日志",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Get your logs",
+        "description": "🔐 Login required (user role)",
         "operationId": "get-api-log-self",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

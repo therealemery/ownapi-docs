@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取所有额度数据",
+    "title": "Get all quota usage",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "数据统计"
+      "name": "Usage statistics"
     }
   ],
   "paths": {
     "/api/data/": {
       "get": {
         "tags": [
-          "数据统计"
+          "Usage statistics"
         ],
-        "summary": "获取所有额度数据",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Get all quota usage",
+        "description": "👨‍💼 Admin role required",
         "operationId": "get-api-data",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

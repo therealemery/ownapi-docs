@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "用户注册",
+    "title": "User registration",
     "version": "1.0.0",
-    "description": "🔓 无需鉴权"
+    "description": "🔓 No authentication required"
   },
   "tags": [
     {
-      "name": "用户登陆注册"
+      "name": "User sign-in & registration"
     }
   ],
   "paths": {
     "/api/user/register": {
       "post": {
         "tags": [
-          "用户登陆注册"
+          "User sign-in & registration"
         ],
-        "summary": "用户注册",
-        "description": "🔓 无需鉴权",
+        "summary": "User registration",
+        "description": "🔓 No authentication required",
         "operationId": "post-api-user-register",
         "parameters": [],
         "requestBody": {
@@ -56,7 +56,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

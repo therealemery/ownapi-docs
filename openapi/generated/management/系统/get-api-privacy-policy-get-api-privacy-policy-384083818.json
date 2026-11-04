@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取隐私政策",
+    "title": "Get privacy policy",
     "version": "1.0.0",
-    "description": "🔓 无需鉴权"
+    "description": "🔓 No authentication required"
   },
   "tags": [
     {
-      "name": "系统"
+      "name": "System"
     }
   ],
   "paths": {
     "/api/privacy-policy": {
       "get": {
         "tags": [
-          "系统"
+          "System"
         ],
-        "summary": "获取隐私政策",
-        "description": "🔓 无需鉴权",
+        "summary": "Get privacy policy",
+        "description": "🔓 No authentication required",
         "operationId": "get-api-privacy-policy",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

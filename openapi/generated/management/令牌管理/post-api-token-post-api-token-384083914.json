@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "创建令牌",
+    "title": "Create token",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "令牌管理"
+      "name": "Token management"
     }
   ],
   "paths": {
     "/api/token/": {
       "post": {
         "tags": [
-          "令牌管理"
+          "Token management"
         ],
-        "summary": "创建令牌",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Create token",
+        "description": "🔐 Login required (user role)",
         "operationId": "post-api-token",
         "parameters": [],
         "requestBody": {
@@ -33,7 +33,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

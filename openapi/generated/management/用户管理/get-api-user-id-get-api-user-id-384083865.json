@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取指定用户",
+    "title": "Get user by ID",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "用户管理"
+      "name": "User management"
     }
   ],
   "paths": {
     "/api/user/{id}": {
       "get": {
         "tags": [
-          "用户管理"
+          "User management"
         ],
-        "summary": "获取指定用户",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Get user by ID",
+        "description": "👨‍💼 Admin role required",
         "operationId": "get-api-user-id",
         "parameters": [
           {
@@ -31,7 +31,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

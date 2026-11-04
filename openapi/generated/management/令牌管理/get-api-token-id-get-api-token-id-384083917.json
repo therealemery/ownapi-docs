@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "获取指定令牌",
+    "title": "Get token by ID",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "令牌管理"
+      "name": "Token management"
     }
   ],
   "paths": {
     "/api/token/{id}": {
       "get": {
         "tags": [
-          "令牌管理"
+          "Token management"
         ],
-        "summary": "获取指定令牌",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Get token by ID",
+        "description": "🔐 Login required (user role)",
         "operationId": "get-api-token-id",
         "parameters": [
           {
@@ -31,7 +31,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "修复渠道能力",
+    "title": "Fix channel capabilities",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "渠道管理"
+      "name": "Channel management"
     }
   ],
   "paths": {
     "/api/channel/fix": {
       "post": {
         "tags": [
-          "渠道管理"
+          "Channel management"
         ],
-        "summary": "修复渠道能力",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Fix channel capabilities",
+        "description": "👨‍💼 Admin role required",
         "operationId": "post-api-channel-fix",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

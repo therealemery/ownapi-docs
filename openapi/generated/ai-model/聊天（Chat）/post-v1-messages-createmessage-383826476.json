@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "原生Claude格式",
+    "title": "Native Claude format",
     "version": "1.0.0",
-    "description": "Anthropic Claude Messages API 格式的请求。\n需要在请求头中包含 `anthropic-version`。\n"
+    "description": "Anthropic Claude Messages API request.\nInclude the `anthropic-version` header.\n"
   },
   "tags": [
     {
-      "name": "聊天（Chat）"
+      "name": "Chat"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,17 +23,17 @@
     "/v1/messages": {
       "post": {
         "tags": [
-          "聊天（Chat）"
+          "Chat"
         ],
-        "summary": "原生Claude格式",
-        "description": "Anthropic Claude Messages API 格式的请求。\n需要在请求头中包含 `anthropic-version`。\n",
+        "summary": "Native Claude format",
+        "description": "Anthropic Claude Messages API request.\nInclude the `anthropic-version` header.\n",
         "operationId": "createmessage",
         "parameters": [
           {
             "name": "anthropic-version",
             "in": "header",
             "required": true,
-            "description": "Anthropic API 版本",
+            "description": "Anthropic API version",
             "schema": {
               "type": "string",
               "examples": [
@@ -45,7 +45,7 @@
             "name": "x-api-key",
             "in": "header",
             "required": false,
-            "description": "Anthropic API Key (可选，也可使用 Bearer Token)",
+            "description": "Anthropic API key (optional; Bearer token also works)",
             "schema": {
               "type": "string"
             }
@@ -317,7 +317,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功创建响应",
+            "description": "Response created",
             "content": {
               "application/json": {
                 "schema": {

@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "即梦视频生成",
+    "title": "Jimeng video generation",
     "version": "1.0.0",
-    "description": "即梦官方 API 格式的视频生成接口。\n\n支持通过 Action 参数指定操作类型：\n- `CVSync2AsyncSubmitTask`: 提交视频生成任务\n- `CVSync2AsyncGetResult`: 获取任务结果\n\n需要在查询参数中指定 Action 和 Version。\n"
+    "description": "Jimeng official API video generation endpoint.\n\nUse the Action parameter:\n- `CVSync2AsyncSubmitTask`: submit a video generation task\n- `CVSync2AsyncGetResult`: fetch task result\n\nSpecify Action and Version in query parameters.\n"
   },
   "tags": [
     {
-      "name": "视频（Videos）/即梦格式"
+      "name": "Videos/Jimeng format"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,17 +23,17 @@
     "/jimeng/": {
       "post": {
         "tags": [
-          "视频（Videos）/即梦格式"
+          "Videos/Jimeng format"
         ],
-        "summary": "即梦视频生成",
-        "description": "即梦官方 API 格式的视频生成接口。\n\n支持通过 Action 参数指定操作类型：\n- `CVSync2AsyncSubmitTask`: 提交视频生成任务\n- `CVSync2AsyncGetResult`: 获取任务结果\n\n需要在查询参数中指定 Action 和 Version。\n",
+        "summary": "Jimeng video generation",
+        "description": "Jimeng official API video generation endpoint.\n\nUse the Action parameter:\n- `CVSync2AsyncSubmitTask`: submit a video generation task\n- `CVSync2AsyncGetResult`: fetch task result\n\nSpecify Action and Version in query parameters.\n",
         "operationId": "createjimengvideo",
         "parameters": [
           {
             "name": "Action",
             "in": "query",
             "required": true,
-            "description": "API 操作类型",
+            "description": "API action type",
             "schema": {
               "type": "string",
               "enum": [
@@ -46,7 +46,7 @@
             "name": "Version",
             "in": "query",
             "required": true,
-            "description": "API 版本",
+            "description": "API version",
             "schema": {
               "type": "string"
             }
@@ -58,22 +58,22 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "description": "即梦官方 API 请求格式",
+                "description": "Jimeng official API request format",
                 "properties": {
                   "req_key": {
                     "type": "string",
-                    "description": "请求类型标识"
+                    "description": "Request type identifier"
                   },
                   "prompt": {
                     "type": "string",
-                    "description": "文本描述"
+                    "description": "Text description"
                   },
                   "binary_data_base64": {
                     "type": "array",
                     "items": {
                       "type": "string"
                     },
-                    "description": "Base64 编码的图片数据"
+                    "description": "Base64-encoded image data"
                   }
                 },
                 "x-apifox-orders": [
@@ -92,7 +92,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功处理请求",
+            "description": "Request processed successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -100,15 +100,15 @@
                   "properties": {
                     "code": {
                       "type": "integer",
-                      "description": "响应码"
+                      "description": "Response code"
                     },
                     "message": {
                       "type": "string",
-                      "description": "响应消息"
+                      "description": "Response message"
                     },
                     "data": {
                       "type": "object",
-                      "description": "响应数据",
+                      "description": "Response data",
                       "x-apifox-orders": []
                     }
                   },
@@ -122,7 +122,7 @@
             }
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -133,25 +133,25 @@
                       "properties": {
                         "message": {
                           "type": "string",
-                          "description": "错误信息"
+                          "description": "Error message"
                         },
                         "type": {
                           "type": "string",
-                          "description": "错误类型"
+                          "description": "Error type"
                         },
                         "param": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "相关参数"
+                          "description": "Related parameter"
                         },
                         "code": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "错误代码"
+                          "description": "Error code"
                         }
                       },
                       "x-apifox-orders": [

@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "搜索个人日志",
+    "title": "Search your logs",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "日志"
+      "name": "Logs"
     }
   ],
   "paths": {
     "/api/log/self/search": {
       "get": {
         "tags": [
-          "日志"
+          "Logs"
         ],
-        "summary": "搜索个人日志",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Search your logs",
+        "description": "🔐 Login required (user role)",
         "operationId": "get-api-log-self-search",
         "parameters": [
           {
@@ -31,7 +31,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

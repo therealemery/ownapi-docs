@@ -1,28 +1,28 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "删除无效兑换码",
+    "title": "Delete invalid redemption codes",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "兑换码"
+      "name": "Redemption code"
     }
   ],
   "paths": {
     "/api/redemption/invalid": {
       "delete": {
         "tags": [
-          "兑换码"
+          "Redemption code"
         ],
-        "summary": "删除无效兑换码",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Delete invalid redemption codes",
+        "description": "👨‍💼 Admin role required",
         "operationId": "delete-api-redemption-invalid",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

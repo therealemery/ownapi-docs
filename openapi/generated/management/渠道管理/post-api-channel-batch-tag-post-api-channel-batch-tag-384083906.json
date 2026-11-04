@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "批量设置渠道标签",
+    "title": "Batch set channel tags",
     "version": "1.0.0",
-    "description": "👨‍💼 需要管理员权限（Admin）"
+    "description": "👨‍💼 Admin role required"
   },
   "tags": [
     {
-      "name": "渠道管理"
+      "name": "Channel management"
     }
   ],
   "paths": {
     "/api/channel/batch/tag": {
       "post": {
         "tags": [
-          "渠道管理"
+          "Channel management"
         ],
-        "summary": "批量设置渠道标签",
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "summary": "Batch set channel tags",
+        "description": "👨‍💼 Admin role required",
         "operationId": "post-api-channel-batch-tag",
         "parameters": [],
         "requestBody": {
@@ -47,7 +47,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }

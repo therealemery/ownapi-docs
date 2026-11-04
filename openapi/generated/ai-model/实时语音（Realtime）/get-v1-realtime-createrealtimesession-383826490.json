@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "原生OpenAI格式",
+    "title": "Native OpenAI format",
     "version": "1.0.0",
-    "description": "建立 WebSocket 连接用于实时对话。\n\n**注意**: 这是一个 WebSocket 端点，需要使用 WebSocket 协议连接。\n\n连接 URL 示例: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n"
+    "description": "Open a WebSocket for real-time conversation.\n\n**Note**: WebSocket endpoint—connect with the WebSocket protocol.\n\nExample URL: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n"
   },
   "tags": [
     {
-      "name": "实时语音（Realtime）"
+      "name": "Realtime"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,17 +23,17 @@
     "/v1/realtime": {
       "get": {
         "tags": [
-          "实时语音（Realtime）"
+          "Realtime"
         ],
-        "summary": "原生OpenAI格式",
-        "description": "建立 WebSocket 连接用于实时对话。\n\n**注意**: 这是一个 WebSocket 端点，需要使用 WebSocket 协议连接。\n\n连接 URL 示例: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n",
+        "summary": "Native OpenAI format",
+        "description": "Open a WebSocket for real-time conversation.\n\n**Note**: WebSocket endpoint—connect with the WebSocket protocol.\n\nExample URL: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n",
         "operationId": "createrealtimesession",
         "parameters": [
           {
             "name": "model",
             "in": "query",
             "required": false,
-            "description": "要使用的模型",
+            "description": "Model to use",
             "schema": {
               "type": "string",
               "examples": [
@@ -49,10 +49,10 @@
         ],
         "responses": {
           "101": {
-            "description": "WebSocket 协议切换"
+            "description": "WebSocket protocol upgrade"
           },
           "400": {
-            "description": "请求错误",
+            "description": "Request error",
             "content": {
               "application/json": {
                 "schema": {
@@ -63,25 +63,25 @@
                       "properties": {
                         "message": {
                           "type": "string",
-                          "description": "错误信息"
+                          "description": "Error message"
                         },
                         "type": {
                           "type": "string",
-                          "description": "错误类型"
+                          "description": "Error type"
                         },
                         "param": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "相关参数"
+                          "description": "Related parameter"
                         },
                         "code": {
                           "type": [
                             "string",
                             "null"
                           ],
-                          "description": "错误代码"
+                          "description": "Error code"
                         }
                       },
                       "x-apifox-orders": [

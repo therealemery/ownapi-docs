@@ -1,13 +1,13 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Gemini媒体识别",
+    "title": "Gemini multimodal recognition",
     "version": "1.0.0",
-    "description": "Gemini图像、PDF、音频、视频识别请求\n\n⚠️注意：原生 Gemini 格式请求支持通过 inlineData（base64）或 fileData.fileUri（可公开访问的 URL，支持 YouTube 链接）传递媒体。通过 Gemini File API 上传的文件 URI 能否访问，取决于上游渠道 Key 的权限，建议优先使用可公开访问的 URL。OpenAI 格式（chat/completions）请求转换为 Gemini 时，媒体将统一下载并转换为 inlineData（base64）传递。"
+    "description": "Gemini image, PDF, audio, and video understanding request.\n\n⚠️ Note: Native Gemini requests support media via inlineData (base64) or fileData.fileUri (publicly accessible URLs, including YouTube links). Whether file URIs uploaded through the Gemini File API are reachable depends on upstream channel key permissions; prefer publicly accessible URLs. When OpenAI-format (chat/completions) requests are converted to Gemini, media is downloaded and sent as inlineData (base64)."
   },
   "tags": [
     {
-      "name": "聊天（Chat）/原生Gemini格式"
+      "name": "Chat/Native Gemini format"
     }
   ],
   "components": {
@@ -15,7 +15,7 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
       }
     }
   },
@@ -23,17 +23,17 @@
     "/v1beta/models/{model}:generateContent": {
       "post": {
         "tags": [
-          "聊天（Chat）/原生Gemini格式"
+          "Chat/Native Gemini format"
         ],
-        "summary": "Gemini媒体识别",
-        "description": "Gemini图像、PDF、音频、视频识别请求\n\n⚠️注意：原生 Gemini 格式请求支持通过 inlineData（base64）或 fileData.fileUri（可公开访问的 URL，支持 YouTube 链接）传递媒体。通过 Gemini File API 上传的文件 URI 能否访问，取决于上游渠道 Key 的权限，建议优先使用可公开访问的 URL。OpenAI 格式（chat/completions）请求转换为 Gemini 时，媒体将统一下载并转换为 inlineData（base64）传递。",
+        "summary": "Gemini multimodal recognition",
+        "description": "Gemini image, PDF, audio, and video understanding request.\n\n⚠️ Note: Native Gemini requests support media via inlineData (base64) or fileData.fileUri (publicly accessible URLs, including YouTube links). Whether file URIs uploaded through the Gemini File API are reachable depends on upstream channel key permissions; prefer publicly accessible URLs. When OpenAI-format (chat/completions) requests are converted to Gemini, media is downloaded and sent as inlineData (base64).",
         "operationId": "geminirelayv1beta-391536411",
         "parameters": [
           {
             "name": "model",
             "in": "path",
             "required": true,
-            "description": "模型名称",
+            "description": "Model name",
             "schema": {
               "type": "string"
             }
@@ -186,7 +186,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {

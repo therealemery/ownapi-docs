@@ -570,6 +570,9 @@ async function main() {
   console.log(
     `✅ Generated ${count} per-endpoint OpenAPI files into ${outRoot}`
   );
+  console.log(
+    'Tip: run `bun scripts/translate-openapi-generated.ts` (or `bun run translate:openapi`) to apply English schema strings.'
+  );
   console.log('Tip: set HTTP_SOURCE_URL to override the default Apifox URL.');
 }
 

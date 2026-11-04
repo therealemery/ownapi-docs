@@ -1,23 +1,23 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "更新令牌",
+    "title": "Update token",
     "version": "1.0.0",
-    "description": "🔐 需要登录（User权限）"
+    "description": "🔐 Login required (user role)"
   },
   "tags": [
     {
-      "name": "令牌管理"
+      "name": "Token management"
     }
   ],
   "paths": {
     "/api/token/": {
       "put": {
         "tags": [
-          "令牌管理"
+          "Token management"
         ],
-        "summary": "更新令牌",
-        "description": "🔐 需要登录（User权限）",
+        "summary": "Update token",
+        "description": "🔐 Login required (user role)",
         "operationId": "put-api-token",
         "parameters": [],
         "requestBody": {
@@ -33,7 +33,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功"
+            "description": "Success"
           }
         }
       }
