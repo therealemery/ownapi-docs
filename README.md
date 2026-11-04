@@ -51,7 +51,7 @@ Documentation under `/{lang}/docs/**` is **pre-rendered at build time** (`force-
 | ----------- | --------- |
 | `/{lang}`, `/{lang}/docs/**` | Static HTML (SSG at build) |
 | `/` | Static redirect page + **middleware only when the path has no locale prefix** |
-| Hidden self-host paths (`installation`, `guide`, `plugins`, …) | `next.config` **redirects** to `/{lang}/docs` (no doc page generated) |
+| Hidden paths (`installation`, `guide`, `plugins`, `apps`, `support`, …) | `next.config` **redirects** to `/{lang}/docs` (no doc page generated) |
 | `/api/search`, `/api/chat`, `/api/plugins`, `/api/proxy` | Dynamic (only when invoked) |
 | `/og/docs/**`, `*.txt` / `llms.mdx` exports | Mostly static; OG/LLM routes skip hidden doc slugs |
 

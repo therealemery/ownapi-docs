@@ -142,6 +142,23 @@ test('Chinese-only plugin pages do not advertise missing translations', async ({
   expect(fallback.headers().location).toBe('/en/docs');
 });
 
+test('apps and support sections redirect to the docs home in every locale', async ({
+  request,
+}) => {
+  for (const lang of ['en', 'zh', 'ja'] as const) {
+    for (const path of [
+      `/${lang}/docs/apps`,
+      `/${lang}/docs/apps/cherry-studio`,
+      `/${lang}/docs/support`,
+      `/${lang}/docs/support/faq`,
+    ]) {
+      const response = await request.get(path, { maxRedirects: 0 });
+      expect(response.status(), path).toBe(307);
+      expect(response.headers().location, path).toBe(`/${lang}/docs`);
+    }
+  }
+});
+
 test('sitemap and robots use the same canonical origin and existing locales', async ({
   request,
 }) => {
