@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Log out current user",
+    "version": "1.0.0",
+    "description": "🔐 Login required (user role)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/self": {
+      "delete": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Log out current user",
+        "description": "🔐 Login required (user role)",
+        "operationId": "delete-api-user-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

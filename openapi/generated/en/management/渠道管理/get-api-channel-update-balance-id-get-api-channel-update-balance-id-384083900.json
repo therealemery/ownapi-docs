@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Update balance for a channel",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Channel management"
+    }
+  ],
+  "paths": {
+    "/api/channel/update_balance/{id}": {
+      "get": {
+        "tags": [
+          "Channel management"
+        ],
+        "summary": "Update balance for a channel",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-channel-update-balance-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

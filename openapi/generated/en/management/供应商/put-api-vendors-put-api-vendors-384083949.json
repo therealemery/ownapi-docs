@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Update vendor",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Vendor"
+    }
+  ],
+  "paths": {
+    "/api/vendors/": {
+      "put": {
+        "tags": [
+          "Vendor"
+        ],
+        "summary": "Update vendor",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "put-api-vendors",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

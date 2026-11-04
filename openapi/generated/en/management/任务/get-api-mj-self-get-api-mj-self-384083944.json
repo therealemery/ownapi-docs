@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get your Midjourney tasks",
+    "version": "1.0.0",
+    "description": "🔐 Login required (user role)"
+  },
+  "tags": [
+    {
+      "name": "Tasks"
+    }
+  ],
+  "paths": {
+    "/api/mj/self": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Get your Midjourney tasks",
+        "description": "🔐 Login required (user role)",
+        "operationId": "get-api-mj-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

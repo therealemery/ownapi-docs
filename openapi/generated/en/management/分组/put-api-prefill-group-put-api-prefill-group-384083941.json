@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Update prefill group",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Groups"
+    }
+  ],
+  "paths": {
+    "/api/prefill_group/": {
+      "put": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Update prefill group",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "put-api-prefill-group",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

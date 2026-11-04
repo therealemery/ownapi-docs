@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get your logs",
+    "version": "1.0.0",
+    "description": "🔐 Login required (user role)"
+  },
+  "tags": [
+    {
+      "name": "Logs"
+    }
+  ],
+  "paths": {
+    "/api/log/self": {
+      "get": {
+        "tags": [
+          "Logs"
+        ],
+        "summary": "Get your logs",
+        "description": "🔐 Login required (user role)",
+        "operationId": "get-api-log-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

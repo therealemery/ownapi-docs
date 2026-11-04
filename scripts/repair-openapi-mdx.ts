@@ -7,7 +7,7 @@
  * - This causes prerender failures like: "Cannot destructure property 'dereferenced' ... undefined".
  *
  * This script:
- * - Builds an index of all JSON files under `openapi/generated/` (recursive) by basename.
+ * - Builds an index of JSON files under `openapi/generated/zh/` (canonical MDX paths omit `/zh`).
  * - Scans `content/docs/{en,ja}/api/` (recursive) MDX files for `document={"...json"}` paths.
  * - If a referenced JSON doesn't exist, it rewrites it to the unique matching JSON path by basename.
  */
@@ -44,14 +44,15 @@ async function walkFiles(
 }
 
 async function buildOpenApiIndex(): Promise<Map<string, string[]>> {
-  const root = path.join(process.cwd(), 'openapi', 'generated');
+  const root = path.join(process.cwd(), 'openapi', 'generated', 'zh');
   const files = await walkFiles(root, (p) => p.toLowerCase().endsWith('.json'));
   const index = new Map<string, string[]>();
   for (const abs of files) {
     const base = path.basename(abs);
-    const rel = toPosix(path.relative(process.cwd(), abs));
+    const relFromZh = toPosix(path.relative(root, abs));
+    const canonical = `openapi/generated/${relFromZh}`;
     const arr = index.get(base) ?? [];
-    arr.push(rel);
+    arr.push(canonical);
     index.set(base, arr);
   }
   return index;
@@ -67,13 +68,22 @@ function extractDocumentPaths(mdx: string): string[] {
 }
 
 async function pathExists(relPosix: string): Promise<boolean> {
-  const abs = path.join(process.cwd(), ...relPosix.split('/'));
-  try {
-    const s = await stat(abs);
-    return s.isFile();
-  } catch {
-    return false;
+  const candidates = [relPosix];
+  if (relPosix.startsWith('openapi/generated/') && !relPosix.startsWith('openapi/generated/zh/')) {
+    candidates.push(
+      relPosix.replace(/^openapi\/generated\//, 'openapi/generated/zh/')
+    );
   }
+  for (const rel of candidates) {
+    const abs = path.join(process.cwd(), ...rel.split('/'));
+    try {
+      const s = await stat(abs);
+      if (s.isFile()) return true;
+    } catch {
+      // try next
+    }
+  }
+  return false;
 }
 
 async function repairLocale(locale: Locale, index: Map<string, string[]>) {

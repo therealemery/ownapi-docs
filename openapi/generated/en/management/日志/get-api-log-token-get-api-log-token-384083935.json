@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get logs by token",
+    "version": "1.0.0",
+    "description": "🔓 No authentication (query via token)"
+  },
+  "tags": [
+    {
+      "name": "Logs"
+    }
+  ],
+  "paths": {
+    "/api/log/token": {
+      "get": {
+        "tags": [
+          "Logs"
+        ],
+        "summary": "Get logs by token",
+        "description": "🔓 No authentication (query via token)",
+        "operationId": "get-api-log-token",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

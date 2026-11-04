@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Sync upstream models",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Model management"
+    }
+  ],
+  "paths": {
+    "/api/models/sync_upstream": {
+      "post": {
+        "tags": [
+          "Model management"
+        ],
+        "summary": "Sync upstream models",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "post-api-models-sync-upstream",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

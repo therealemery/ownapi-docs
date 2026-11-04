@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get your tasks",
+    "version": "1.0.0",
+    "description": "🔐 Login required (user role)"
+  },
+  "tags": [
+    {
+      "name": "Tasks"
+    }
+  ],
+  "paths": {
+    "/api/task/self": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Get your tasks",
+        "description": "🔐 Login required (user role)",
+        "operationId": "get-api-task-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

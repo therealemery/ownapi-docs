@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get user top-up history",
+    "version": "1.0.0",
+    "description": "🔐 Login required (user role)"
+  },
+  "tags": [
+    {
+      "name": "Top-up"
+    }
+  ],
+  "paths": {
+    "/api/user/topup/self": {
+      "get": {
+        "tags": [
+          "Top-up"
+        ],
+        "summary": "Get user top-up history",
+        "description": "🔐 Login required (user role)",
+        "operationId": "get-api-user-topup-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

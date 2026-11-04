@@ -1,0 +1,56 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Batch set channel tags",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Channel management"
+    }
+  ],
+  "paths": {
+    "/api/channel/batch/tag": {
+      "post": {
+        "tags": [
+          "Channel management"
+        ],
+        "summary": "Batch set channel tags",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "post-api-channel-batch-tag",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "tag": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "ids",
+                  "tag"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

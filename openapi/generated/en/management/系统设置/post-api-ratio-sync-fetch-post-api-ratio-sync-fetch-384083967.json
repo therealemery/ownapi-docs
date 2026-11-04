@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get upstream ratios",
+    "version": "1.0.0",
+    "description": "👑 Root super-admin required"
+  },
+  "tags": [
+    {
+      "name": "System settings"
+    }
+  ],
+  "paths": {
+    "/api/ratio_sync/fetch": {
+      "post": {
+        "tags": [
+          "System settings"
+        ],
+        "summary": "Get upstream ratios",
+        "description": "👑 Root super-admin required",
+        "operationId": "post-api-ratio-sync-fetch",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

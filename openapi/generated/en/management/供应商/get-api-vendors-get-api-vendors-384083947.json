@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get all vendors",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Vendor"
+    }
+  ],
+  "paths": {
+    "/api/vendors/": {
+      "get": {
+        "tags": [
+          "Vendor"
+        ],
+        "summary": "Get all vendors",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-vendors",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

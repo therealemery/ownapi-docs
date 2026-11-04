@@ -1,0 +1,54 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get token usage",
+    "version": "1.0.0",
+    "description": "🔑 Bearer token required (TokenAuth)"
+  },
+  "tags": [
+    {
+      "name": "Token management"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/api/usage/token/": {
+      "get": {
+        "tags": [
+          "Token management"
+        ],
+        "summary": "Get token usage",
+        "description": "🔑 Bearer token required (TokenAuth)",
+        "operationId": "get-api-usage-token",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

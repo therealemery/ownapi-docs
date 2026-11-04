@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Search vendors",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Vendor"
+    }
+  ],
+  "paths": {
+    "/api/vendors/search": {
+      "get": {
+        "tags": [
+          "Vendor"
+        ],
+        "summary": "Search vendors",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-vendors-search",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Test system status",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "System"
+    }
+  ],
+  "paths": {
+    "/api/status/test": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "Test system status",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-status-test",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

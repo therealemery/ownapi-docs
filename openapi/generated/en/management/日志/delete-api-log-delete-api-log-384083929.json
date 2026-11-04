@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Delete historical logs",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Logs"
+    }
+  ],
+  "paths": {
+    "/api/log/": {
+      "delete": {
+        "tags": [
+          "Logs"
+        ],
+        "summary": "Delete historical logs",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "delete-api-log",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

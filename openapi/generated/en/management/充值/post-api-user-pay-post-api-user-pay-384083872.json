@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Start Epay payment",
+    "version": "1.0.0",
+    "description": "🔐 Login required (user role)"
+  },
+  "tags": [
+    {
+      "name": "Top-up"
+    }
+  ],
+  "paths": {
+    "/api/user/pay": {
+      "post": {
+        "tags": [
+          "Top-up"
+        ],
+        "summary": "Start Epay payment",
+        "description": "🔐 Login required (user role)",
+        "operationId": "post-api-user-pay",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

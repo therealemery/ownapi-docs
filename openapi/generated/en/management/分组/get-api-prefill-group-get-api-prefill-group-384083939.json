@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get prefill groups",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Groups"
+    }
+  ],
+  "paths": {
+    "/api/prefill_group/": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Get prefill groups",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-prefill-group",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

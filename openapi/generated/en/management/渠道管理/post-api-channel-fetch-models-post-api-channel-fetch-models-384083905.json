@@ -1,0 +1,57 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get model list",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Channel management"
+    }
+  ],
+  "paths": {
+    "/api/channel/fetch_models": {
+      "post": {
+        "tags": [
+          "Channel management"
+        ],
+        "summary": "Get model list",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "post-api-channel-fetch-models",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "base_url": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "integer"
+                  },
+                  "key": {
+                    "type": "string"
+                  }
+                },
+                "x-apifox-orders": [
+                  "base_url",
+                  "type",
+                  "key"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

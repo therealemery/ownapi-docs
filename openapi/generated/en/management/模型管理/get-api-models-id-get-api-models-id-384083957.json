@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get model by ID",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Model management"
+    }
+  ],
+  "paths": {
+    "/api/models/{id}": {
+      "get": {
+        "tags": [
+          "Model management"
+        ],
+        "summary": "Get model by ID",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-models-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

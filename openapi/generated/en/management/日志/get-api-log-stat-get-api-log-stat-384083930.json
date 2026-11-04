@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get log statistics",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Logs"
+    }
+  ],
+  "paths": {
+    "/api/log/stat": {
+      "get": {
+        "tags": [
+          "Logs"
+        ],
+        "summary": "Get log statistics",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-log-stat",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

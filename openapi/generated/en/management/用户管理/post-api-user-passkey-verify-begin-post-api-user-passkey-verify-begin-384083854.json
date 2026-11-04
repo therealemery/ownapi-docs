@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Begin Passkey verification",
+    "version": "1.0.0",
+    "description": "🔐 Login required (user role)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/passkey/verify/begin": {
+      "post": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Begin Passkey verification",
+        "description": "🔐 Login required (user role)",
+        "operationId": "post-api-user-passkey-verify-begin",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

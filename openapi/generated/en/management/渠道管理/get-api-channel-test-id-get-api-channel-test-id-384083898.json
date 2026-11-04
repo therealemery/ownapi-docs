@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Test channel by ID",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Channel management"
+    }
+  ],
+  "paths": {
+    "/api/channel/test/{id}": {
+      "get": {
+        "tags": [
+          "Channel management"
+        ],
+        "summary": "Test channel by ID",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-channel-test-id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

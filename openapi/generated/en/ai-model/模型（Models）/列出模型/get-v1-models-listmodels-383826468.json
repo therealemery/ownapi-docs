@@ -1,0 +1,191 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Native OpenAI format",
+    "version": "1.0.0",
+    "description": "List currently available models.\n\nResponse format is inferred from headers:\n- `x-api-key` + `anthropic-version` → Anthropic format\n- `x-goog-api-key` header or `key` query param → Gemini format\n- Otherwise → OpenAI format\n"
+  },
+  "tags": [
+    {
+      "name": "Models / List models"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Authenticate with a Bearer token.\nFormat: `Authorization: Bearer sk-xxxxxx`\n"
+      }
+    }
+  },
+  "paths": {
+    "/v1/models": {
+      "get": {
+        "tags": [
+          "Models / List models"
+        ],
+        "summary": "Native OpenAI format",
+        "description": "List currently available models.\n\nResponse format is inferred from headers:\n- `x-api-key` + `anthropic-version` → Anthropic format\n- `x-goog-api-key` header or `key` query param → Gemini format\n- Otherwise → OpenAI format\n",
+        "operationId": "listmodels",
+        "parameters": [
+          {
+            "name": "key",
+            "in": "query",
+            "required": false,
+            "description": "Google API key (Gemini format)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "required": false,
+            "description": "Anthropic API key (Claude format)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "anthropic-version",
+            "in": "header",
+            "required": false,
+            "description": "Anthropic API version",
+            "schema": {
+              "type": "string",
+              "examples": [
+                "2023-06-01"
+              ]
+            }
+          },
+          {
+            "name": "x-goog-api-key",
+            "in": "header",
+            "required": false,
+            "description": "Google API key (Gemini format)",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Model list retrieved",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "object": {
+                      "type": "string",
+                      "examples": [
+                        "list"
+                      ]
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "description": "Model ID",
+                            "examples": [
+                              "gpt-4"
+                            ]
+                          },
+                          "object": {
+                            "type": "string",
+                            "description": "Object type",
+                            "examples": [
+                              "model"
+                            ]
+                          },
+                          "created": {
+                            "type": "integer",
+                            "description": "Created timestamp"
+                          },
+                          "owned_by": {
+                            "type": "string",
+                            "description": "Model owner",
+                            "examples": [
+                              "openai"
+                            ]
+                          }
+                        },
+                        "x-apifox-orders": [
+                          "id",
+                          "object",
+                          "created",
+                          "owned_by"
+                        ]
+                      }
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "object",
+                    "data"
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Authentication failed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "description": "Error message"
+                        },
+                        "type": {
+                          "type": "string",
+                          "description": "Error type"
+                        },
+                        "param": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Related parameter"
+                        },
+                        "code": {
+                          "type": [
+                            "string",
+                            "null"
+                          ],
+                          "description": "Error code"
+                        }
+                      },
+                      "x-apifox-orders": [
+                        "message",
+                        "type",
+                        "param",
+                        "code"
+                      ]
+                    }
+                  },
+                  "x-apifox-orders": [
+                    "error"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

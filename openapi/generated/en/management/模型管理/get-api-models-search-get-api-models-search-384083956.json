@@ -1,0 +1,40 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Search models",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Model management"
+    }
+  ],
+  "paths": {
+    "/api/models/search": {
+      "get": {
+        "tags": [
+          "Model management"
+        ],
+        "summary": "Search models",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-models-search",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

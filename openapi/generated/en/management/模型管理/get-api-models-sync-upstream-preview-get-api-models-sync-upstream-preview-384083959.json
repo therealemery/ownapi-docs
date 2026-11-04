@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Preview upstream model sync",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Model management"
+    }
+  ],
+  "paths": {
+    "/api/models/sync_upstream/preview": {
+      "get": {
+        "tags": [
+          "Model management"
+        ],
+        "summary": "Preview upstream model sync",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-models-sync-upstream-preview",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

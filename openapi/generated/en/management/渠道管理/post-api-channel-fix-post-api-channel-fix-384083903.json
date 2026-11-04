@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Fix channel capabilities",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Channel management"
+    }
+  ],
+  "paths": {
+    "/api/channel/fix": {
+      "post": {
+        "tags": [
+          "Channel management"
+        ],
+        "summary": "Fix channel capabilities",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "post-api-channel-fix",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

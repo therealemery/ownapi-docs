@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get all groups",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Groups"
+    }
+  ],
+  "paths": {
+    "/api/group/": {
+      "get": {
+        "tags": [
+          "Groups"
+        ],
+        "summary": "Get all groups",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-group",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get referral code",
+    "version": "1.0.0",
+    "description": "🔐 Login required (user role)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/aff": {
+      "get": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Get referral code",
+        "description": "🔐 Login required (user role)",
+        "operationId": "get-api-user-aff",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

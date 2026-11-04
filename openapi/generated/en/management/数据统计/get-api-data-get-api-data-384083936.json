@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get all quota usage",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Usage statistics"
+    }
+  ],
+  "paths": {
+    "/api/data/": {
+      "get": {
+        "tags": [
+          "Usage statistics"
+        ],
+        "summary": "Get all quota usage",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-data",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

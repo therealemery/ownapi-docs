@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get channels available to sync",
+    "version": "1.0.0",
+    "description": "👑 Root super-admin required"
+  },
+  "tags": [
+    {
+      "name": "System settings"
+    }
+  ],
+  "paths": {
+    "/api/ratio_sync/channels": {
+      "get": {
+        "tags": [
+          "System settings"
+        ],
+        "summary": "Get channels available to sync",
+        "description": "👑 Root super-admin required",
+        "operationId": "get-api-ratio-sync-channels",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

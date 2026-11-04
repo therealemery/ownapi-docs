@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Delete Passkey",
+    "version": "1.0.0",
+    "description": "🔐 Login required (user role)"
+  },
+  "tags": [
+    {
+      "name": "User management"
+    }
+  ],
+  "paths": {
+    "/api/user/passkey": {
+      "delete": {
+        "tags": [
+          "User management"
+        ],
+        "summary": "Delete Passkey",
+        "description": "🔐 Login required (user role)",
+        "operationId": "delete-api-user-passkey",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

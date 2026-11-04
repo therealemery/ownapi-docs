@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get your quota usage",
+    "version": "1.0.0",
+    "description": "🔐 Login required (user role)"
+  },
+  "tags": [
+    {
+      "name": "Usage statistics"
+    }
+  ],
+  "paths": {
+    "/api/data/self": {
+      "get": {
+        "tags": [
+          "Usage statistics"
+        ],
+        "summary": "Get your quota usage",
+        "description": "🔐 Login required (user role)",
+        "operationId": "get-api-data-self",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Get all Midjourney tasks",
+    "version": "1.0.0",
+    "description": "👨‍💼 Admin role required"
+  },
+  "tags": [
+    {
+      "name": "Tasks"
+    }
+  ],
+  "paths": {
+    "/api/mj/": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Get all Midjourney tasks",
+        "description": "👨‍💼 Admin role required",
+        "operationId": "get-api-mj",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}

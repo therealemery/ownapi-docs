@@ -1,0 +1,31 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Regenerate backup codes",
+    "version": "1.0.0",
+    "description": "🔐 Login required (user role)"
+  },
+  "tags": [
+    {
+      "name": "Two-factor authentication"
+    }
+  ],
+  "paths": {
+    "/api/user/2fa/backup_codes": {
+      "post": {
+        "tags": [
+          "Two-factor authentication"
+        ],
+        "summary": "Regenerate backup codes",
+        "description": "🔐 Login required (user role)",
+        "operationId": "post-api-user-2fa-backup-codes",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    }
+  }
+}
