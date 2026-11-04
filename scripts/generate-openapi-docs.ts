@@ -159,18 +159,27 @@ async function walkJsonFiles(dir: string): Promise<string[]> {
 
 async function getSchemaInputs(
   kind: 'aiModel' | 'management'
-): Promise<string[]> {
+): Promise<Record<string, unknown>> {
   const generatedDir =
     kind === 'aiModel'
-      ? './openapi/generated/ai-model'
-      : './openapi/generated/management';
+      ? './openapi/generated/zh/ai-model'
+      : './openapi/generated/zh/management';
   const generated = await walkJsonFiles(generatedDir);
   if (generated.length === 0) {
     throw new Error(
       `No generated OpenAPI files found in ${generatedDir}. Please run: bun run generate:openapi`
     );
   }
-  return generated;
+  const zhRoot = path.join(process.cwd(), 'openapi/generated/zh');
+  const entries = await Promise.all(
+    generated.map(async (absolutePath) => {
+      const rel = path.relative(zhRoot, absolutePath).split(path.sep).join('/');
+      const canonicalKey = `openapi/generated/${rel}`;
+      const raw = await readFile(absolutePath, 'utf8');
+      return [canonicalKey, JSON.parse(raw) as unknown] as const;
+    })
+  );
+  return Object.fromEntries(entries);
 }
 
 async function writeMetaJson(dir: string, meta: Record<string, unknown>) {
@@ -223,7 +232,9 @@ async function generate() {
   // Generate AI Model API docs with custom path control
   const aiModelMeta = new Map<string, string>(); // dir -> title
   await generateFiles({
-    input: createOpenAPI({ input: await getSchemaInputs('aiModel') }),
+    input: createOpenAPI({
+      input: async () => await getSchemaInputs('aiModel'),
+    }),
     output: './content/docs/zh/api/ai-model',
     per: 'custom',
     includeDescription: true,
@@ -276,7 +287,9 @@ async function generate() {
   // Generate Management API docs with custom path control
   const managementMeta = new Map<string, string>(); // dir -> title
   await generateFiles({
-    input: createOpenAPI({ input: await getSchemaInputs('management') }),
+    input: createOpenAPI({
+      input: async () => await getSchemaInputs('management'),
+    }),
     output: './content/docs/zh/api/management',
     per: 'custom',
     includeDescription: true,

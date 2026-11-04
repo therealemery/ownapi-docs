@@ -1,0 +1,126 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Edit image",
+    "version": "1.0.0",
+    "description": "Create an edited or extended image from a source image and prompt.\n\n"
+  },
+  "tags": [
+    {
+      "name": "Images / Native OpenAI format"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "paths": {
+    "/v1/images/edits/": {
+      "post": {
+        "tags": [
+          "Images / Native OpenAI format"
+        ],
+        "summary": "Edit image",
+        "description": "Create an edited or extended image from a source image and prompt.\n\n",
+        "operationId": "post-v1-images-edits",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "image": {
+                    "description": "Image to edit. Valid square PNG under 4MB. If no mask is provided, transparency is used as the mask.",
+                    "type": "string",
+                    "format": "binary",
+                    "examples": [
+                      "cmMtdXBsb2FkLTE2ODc4MzMzNDc3NTEtMjA=/31225951_59371037e9_small.png"
+                    ]
+                  },
+                  "mask": {
+                    "description": "Additional image whose fully transparent pixels mark edit regions. Valid PNG under 4MB, same dimensions as the source image.",
+                    "type": "string",
+                    "format": "binary",
+                    "examples": [
+                      []
+                    ]
+                  },
+                  "prompt": {
+                    "description": "Image prompt (max 1000 characters).",
+                    "type": "string",
+                    "examples": [
+                      "A cute baby sea otter wearing a beret."
+                    ]
+                  },
+                  "n": {
+                    "description": "Number of images to generate (1–10).",
+                    "type": "string",
+                    "examples": [
+                      "1"
+                    ]
+                  },
+                  "size": {
+                    "description": "Image size: one of `256x256`, `512x512`, or `1024x1024`.",
+                    "type": "string",
+                    "examples": [
+                      "1024x1024"
+                    ]
+                  },
+                  "response_format": {
+                    "description": "Response format: `url` or `b64_json`.",
+                    "type": "string",
+                    "examples": [
+                      "url"
+                    ]
+                  },
+                  "user": {
+                    "description": "Unique end-user identifier for abuse monitoring. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices/end-user-ids).",
+                    "type": "string",
+                    "examples": [
+                      ""
+                    ]
+                  },
+                  "model": {
+                    "type": "string",
+                    "examples": [
+                      "dall-e-2"
+                    ]
+                  }
+                },
+                "required": [
+                  "image",
+                  "prompt"
+                ]
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

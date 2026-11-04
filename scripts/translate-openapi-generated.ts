@@ -1,12 +1,11 @@
 /**
- * Translate user-visible Chinese strings in per-endpoint OpenAPI JSON files to English.
+ * Build English OpenAPI JSON from the Chinese export under `openapi/generated/zh`.
  *
- * `openapi/generated` is the English source of truth for playground schema UI (shared
- * across locales). Re-running `generate:openapi` from Apifox overwrites these files with
- * Chinese; run `npm run translate:openapi` (or the combined generate script) afterward.
+ * Writes parallel files to `openapi/generated/en` (same paths/filenames). MDX keeps
+ * canonical keys `openapi/generated/...`; runtime picks zh vs en by docs locale.
  */
 
-import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { readFileSync } from 'node:fs';
 import {
@@ -16,9 +15,13 @@ import {
 
 const glossaryPath = path.join(process.cwd(), 'scripts/openapi-en-glossary.json');
 
-const GENERATED_DIR =
-  process.env.OPENAPI_OUT_DIR?.trim() ||
-  path.join(process.cwd(), 'openapi/generated');
+const SOURCE_DIR =
+  process.env.OPENAPI_ZH_DIR?.trim() ||
+  path.join(process.cwd(), 'openapi/generated/zh');
+
+const OUT_DIR =
+  process.env.OPENAPI_EN_DIR?.trim() ||
+  path.join(process.cwd(), 'openapi/generated/en');
 
 const TRANSLATABLE_KEYS = new Set([
   'description',
@@ -299,18 +302,23 @@ function collectRemainingCjk(obj: unknown, key: string | null, out: Set<string>)
 }
 
 async function main() {
-  const files = await walkJsonFiles(GENERATED_DIR);
+  const files = await walkJsonFiles(SOURCE_DIR);
   const remaining = new Set<string>();
 
   for (const file of files) {
+    const rel = path.relative(SOURCE_DIR, file);
+    const outFile = path.join(OUT_DIR, rel);
+    await mkdir(path.dirname(outFile), { recursive: true });
     const raw = await readFile(file, 'utf8');
     const doc = JSON.parse(raw) as unknown;
     const translated = translateValue('root', doc, []);
-    await writeFile(file, `${JSON.stringify(translated, null, 2)}\n`, 'utf8');
+    await writeFile(outFile, `${JSON.stringify(translated, null, 2)}\n`, 'utf8');
     collectRemainingCjk(translated, null, remaining);
   }
 
-  console.log(`✅ Translated ${files.length} OpenAPI files in ${GENERATED_DIR}`);
+  console.log(
+    `✅ Wrote ${files.length} English OpenAPI files to ${OUT_DIR} (from ${SOURCE_DIR})`
+  );
   if (remaining.size > 0) {
     console.warn(`⚠ ${remaining.size} Chinese strings remain (add to openapi-en-glossary.json):`);
     for (const s of [...remaining].sort((a, b) => b.length - a.length).slice(0, 30)) {

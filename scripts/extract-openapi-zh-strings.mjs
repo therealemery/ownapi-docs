@@ -41,7 +41,7 @@ function collectStrings(obj, key, out) {
   }
 }
 
-const root = path.join(process.cwd(), 'openapi/generated');
+const root = path.join(process.cwd(), 'openapi/generated/zh');
 const files = await walk(root);
 const set = new Set();
 for (const f of files) {

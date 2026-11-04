@@ -477,7 +477,8 @@ function buildSecurity(
 }
 
 async function main() {
-  const outRoot = process.env.OPENAPI_OUT_DIR?.trim() || './openapi/generated';
+  const outRoot =
+    process.env.OPENAPI_OUT_DIR?.trim() || './openapi/generated/zh';
 
   // Clean old output to prevent stale files
   await rm(outRoot, { recursive: true, force: true });
