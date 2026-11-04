@@ -18,6 +18,9 @@ import {
 import { getLocalePath } from '@/lib/i18n';
 import { productSiteUrl } from '@/lib/brand';
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 const NAV_ITEMS = [
   { key: 'start', icon: Rocket, path: '' },
   { key: 'api', icon: BookOpen, path: '/api' },

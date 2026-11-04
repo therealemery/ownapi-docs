@@ -9,6 +9,9 @@ import 'katex/dist/katex.min.css';
 import { notFound } from 'next/navigation';
 import { i18n } from '@/lib/i18n';
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 export default async function Layout({
   params,
   children,

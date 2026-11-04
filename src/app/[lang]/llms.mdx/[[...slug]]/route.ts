@@ -1,7 +1,9 @@
 import { getLLMText, source } from '@/lib/source';
 import { notFound } from 'next/navigation';
+import { isHiddenDocSlug } from '@/lib/hidden-docs';
 
 export const revalidate = false;
+export const dynamic = 'force-static';
 
 export async function GET(
   _req: Request,
@@ -20,5 +22,7 @@ export async function GET(
 }
 
 export function generateStaticParams() {
-  return source.generateParams();
+  return source
+    .generateParams()
+    .filter(({ slug }) => !isHiddenDocSlug(slug));
 }
