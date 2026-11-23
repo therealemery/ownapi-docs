@@ -27,7 +27,7 @@ export const linkItems: LinkItemType[] = [
 export const logo = (
   <Image
     alt={productName}
-    src="/assets/ownapi.svg"
+    src="/assets/ownapi.png"
     width={20}
     height={20}
     className="size-5"

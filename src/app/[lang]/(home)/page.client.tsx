@@ -190,7 +190,7 @@ export function Hero({ children }: { children: ReactNode }) {
           <div className="hidden size-72 lg:block">
             {mounted && (
               <Image
-                src="/assets/newapi.svg"
+                src="/assets/ownapi-hero.png"
                 alt="logo"
                 width={288}
                 height={288}
