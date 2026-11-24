@@ -4,7 +4,7 @@ name: Build Docs Image
 # pulls this image — it never builds (see 运维.md 部署铁律).
 on:
   push:
-    branches: [main]
+    branches: [main, deploy/lightsail]
     paths-ignore:
       - '**/*.md'
       - 'LICENSE'
