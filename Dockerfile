@@ -45,16 +45,17 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
+RUN chown -R node:node /app
 
 # Runtime secrets (INKEEP_API_KEY etc.) are NOT baked into the image; they are
 # injected by compose at container start.
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/next.config.mjs ./next.config.mjs
-COPY --from=builder /app/hidden-docs.mjs ./hidden-docs.mjs
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/content ./content
+COPY --chown=node:node --from=builder /app/package.json ./package.json
+COPY --chown=node:node --from=builder /app/next.config.mjs ./next.config.mjs
+COPY --chown=node:node --from=builder /app/hidden-docs.mjs ./hidden-docs.mjs
+COPY --chown=node:node --from=builder /app/node_modules ./node_modules
+COPY --chown=node:node --from=builder /app/.next ./.next
+COPY --chown=node:node --from=builder /app/public ./public
+COPY --chown=node:node --from=builder /app/content ./content
 
 USER node
 
